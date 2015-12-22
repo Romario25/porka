@@ -27,7 +27,7 @@ AppAsset::register($this);
 
 
     <title>Главная - PornClub</title>
-    <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="shortcut icon" href="/img/favicon.ico">
     <link rel="icon" type="image/gif" href="img/favicon.gif">
 
     <?php $this->head() ?>
@@ -42,7 +42,7 @@ AppAsset::register($this);
 <div class="herounit black-bg opensans">
     <div class="g w1140 page-top">
         <div class="c x3d12--d x2d4--t x1--m vmiddle">
-            <a class="ta-cll" href="#" title="Порно фото и видео в HD качестве"><img class="inflated-v-half logotype" src="img/pornclub-logo.png" alt="PornClub Network Social"></a>
+            <a class="ta-cll" href="#" title="Порно фото и видео в HD качестве"><img class="inflated-v-half logotype" src="/img/pornclub-logo.png" alt="PornClub Network Social"></a>
         </div>
         <div class="c x5d12--d x2d4--t x1--m vmiddle nav">
             <ul class="inline unstyled">
@@ -67,14 +67,15 @@ AppAsset::register($this);
     </div>
 </div>
 <!-- page-top -->
-
+<div class="g w1140 main">
 <?= $content ?>
+</div>
 
 <!-- footer -->
 <div class="herounit black-bg">
     <footer class="g w1140 page-bottom">
         <div class="c x2d12--d x1d4--t x1d2--m vmiddle">
-            <a href="#" title="Порно фото и видео в HD качестве"><img class="inflated-v-half logotype" src="img/pornclub-logo.png" alt="PornClub Network Social"></a>
+            <a href="#" title="Порно фото и видео в HD качестве"><img class="inflated-v-half logotype" src="/img/pornclub-logo.png" alt="PornClub Network Social"></a>
         </div>
         <div class="c x4d12--d x1d4--t x1d2--m vmiddle">
             <ul class="inline unstyled">
@@ -95,11 +96,11 @@ AppAsset::register($this);
             <div class="c x5d12--d x1d2--t x1--m text-right">
                 <p class="fs14">Поделитесь с друзьями</p>
                 <p>
-                    <a class="social" href="http://vk.com" title="Поделиться вКонтакте"><img src="img/icon-vk.png" alt="Поделиться вКонтакте"></a>
-                    <a class="social" href="http://facebook.com" title="Поделиться в Facebook"><img src="img/icon-fb.png" alt="Поделиться в Facebook"></a>
-                    <a class="social" href="http://twitter.com" title="Поделиться в Twitter"><img src="img/icon-tw.png" alt="Поделиться в Twitter"></a>
-                    <a class="social" href="http://ok.ru" title="Поделиться в Одноклассниках"><img src="img/icon-ok.png" alt="Поделиться в Одноклассниках"></a>
-                    <a class="social" href="http://plus.google.com" title="Поделиться в Google Plus"><img src="img/icon-gp.png" alt="Поделиться в Google Plus"></a>
+                    <a class="social" href="http://vk.com" title="Поделиться вКонтакте"><img src="/img/icon-vk.png" alt="Поделиться вКонтакте"></a>
+                    <a class="social" href="http://facebook.com" title="Поделиться в Facebook"><img src="/img/icon-fb.png" alt="Поделиться в Facebook"></a>
+                    <a class="social" href="http://twitter.com" title="Поделиться в Twitter"><img src="/img/icon-tw.png" alt="Поделиться в Twitter"></a>
+                    <a class="social" href="http://ok.ru" title="Поделиться в Одноклассниках"><img src="/img/icon-ok.png" alt="Поделиться в Одноклассниках"></a>
+                    <a class="social" href="http://plus.google.com" title="Поделиться в Google Plus"><img src="/img/icon-gp.png" alt="Поделиться в Google Plus"></a>
                 </p>
             </div>
         </div>

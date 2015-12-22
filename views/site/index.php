@@ -7,7 +7,7 @@
 <!-- slider -->
 
 <!-- main -->
-<div class="g w1140 main">
+
     <div class="c-c">
         <div class="c">
             <p class="fs24 fw300 text-center opensans"><a class="pink" href="#" title="Эксклюзивные порно фото и видео в HD качестве!">Смотреть <span class="fw700">350+</span> видео в <span class="fw700">HD качестве</span></a></p>
@@ -512,5 +512,5 @@
     </div>
     <!-- gallery -->
 
-</div>
+
 <!-- main -->
