@@ -96,8 +96,9 @@ AdminAsset::register($this);
             'links'              => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]);
         ?>
-        <?= $content ?>
         <?= Alert::widget() ?>
+        <?= $content ?>
+
     </div>
 </div>
 <?php $this->endBody() ?>

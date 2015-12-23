@@ -16,7 +16,11 @@ $this->params['breadcrumbs'][] = $this->title;
     </p>
 
     <p>
-        <?= Html::a("Видео", ['#'], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a("Настройки приложения", ['/admin/config/index'], ['class' => 'btn btn-primary']) ?>
+    </p>
+
+    <p>
+        <?= Html::a("Видео", ['/admin/video/index'], ['class' => 'btn btn-primary']) ?>
     </p>
 
 </div>
