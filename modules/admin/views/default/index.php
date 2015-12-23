@@ -14,4 +14,9 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
         <?= Html::a("Категории", ['/admin/category/index'], ['class' => 'btn btn-primary']) ?>
     </p>
+
+    <p>
+        <?= Html::a("Видео", ['#'], ['class' => 'btn btn-primary']) ?>
+    </p>
+
 </div>

@@ -7,24 +7,12 @@ class m151223_112411_add_column_in extends Migration
 {
     public function up()
     {
-
+        $this->addColumn("category", "show_expand", $this->boolean()->defaultValue(0));
     }
 
     public function down()
     {
-        echo "m151223_112411_add_column_in cannot be reverted.\n";
-
-        return false;
+        $this->dropColumn('category', 'show_expand');
     }
 
-    /*
-    // Use safeUp/safeDown to run migration code within a transaction
-    public function safeUp()
-    {
-    }
-
-    public function safeDown()
-    {
-    }
-    */
 }

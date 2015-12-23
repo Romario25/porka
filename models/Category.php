@@ -10,6 +10,7 @@ use Yii;
  * @property integer $id
  * @property string $name
  * @property string $url
+ * @property boolean $show_expand - показывать ли в развернутом состоянии пункт меню
  */
 class Category extends \yii\db\ActiveRecord
 {
@@ -28,6 +29,7 @@ class Category extends \yii\db\ActiveRecord
     {
         return [
             [['name', 'url'], 'required'],
+            ['show_expand', 'boolean'],
             [['name', 'url'], 'string', 'max' => 255]
         ];
     }
