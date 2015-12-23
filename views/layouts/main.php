@@ -42,7 +42,7 @@ AppAsset::register($this);
 <div class="herounit black-bg opensans">
     <div class="g w1140 page-top">
         <div class="c x3d12--d x2d4--t x1--m vmiddle">
-            <a class="ta-cll" href="#" title="Порно фото и видео в HD качестве"><img class="inflated-v-half logotype" src="/img/pornclub-logo.png" alt="PornClub Network Social"></a>
+            <a class="ta-cll" href="/" title="Порно фото и видео в HD качестве"><img class="inflated-v-half logotype" src="/img/pornclub-logo.png" alt="PornClub Network Social"></a>
         </div>
         <div class="c x5d12--d x2d4--t x1--m vmiddle nav">
             <ul class="inline unstyled">
