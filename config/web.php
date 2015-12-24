@@ -49,7 +49,7 @@ $config = [
             'showScriptName' => false,
             'enableStrictParsing' => false,
             'rules' => [
-                // ...
+                '<_c:(category)>/<url:\w+>' => 'category/index',
             ],
         ],
     ],

@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Video;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -49,7 +50,10 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
-        return $this->render('index');
+
+        $videos = Video::find()->all();
+
+        return $this->render('index', ['videos'=>$videos]);
     }
 
     public function actionLogin()

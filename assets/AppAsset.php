@@ -30,7 +30,8 @@ class AppAsset extends AssetBundle
         '/js/minify.min.js',
         '/js/no-hover.min.js',
         '/js/jquery.nice-select.min.js',
-        'js/html5shiv.js'
+        'js/html5shiv.js',
+        'js/uppod.js'
     ];
 
     public $jsOptions = [
