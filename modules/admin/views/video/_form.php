@@ -31,6 +31,10 @@ use yii\widgets\ActiveForm;
         'prompt' => 'Выберите категорию'
     ]); ?>
 
+    <?= $form->field($model, 'duration')->textInput()->label("Длительность"); ?>
+
+    <?= $form->field($model, 'actor')->textInput()->label('Актер'); ?>
+
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>

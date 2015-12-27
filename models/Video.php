@@ -23,6 +23,8 @@ use yii\web\UploadedFile;
  * @property string $preview_url
  * @property integer $category_id
  * @property string $url
+ * @property string $duration
+ * @property string $actor
  *
  * @property Category $category
  */
@@ -73,11 +75,11 @@ class Video extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title'], 'required'],
+            [['title', 'category_id', 'url', 'duration', 'actor'], 'required'],
             [['create_at', 'update_at'], 'safe'],
             [['description', 'url'], 'string'],
             [['category_id'], 'integer'],
-            ['videoFile', 'file'],
+            ['videoFile', 'file', 'skipOnEmpty' => false],
             ['screenFiles', 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg', 'maxFiles' => 4],
             [['title', 'object_url', 'preview_url'], 'string', 'max' => 255]
         ];
