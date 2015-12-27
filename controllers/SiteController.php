@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\PhotoCatalog;
 use app\models\Video;
 use Yii;
 use yii\filters\AccessControl;
@@ -52,8 +53,12 @@ class SiteController extends Controller
     {
 
         $videos = Video::find()->all();
+        $photos = PhotoCatalog::find()->all();
 
-        return $this->render('index', ['videos'=>$videos]);
+        return $this->render('index', [
+            'videos'=>$videos,
+            'photos'=>$photos
+        ]);
     }
 
     public function actionLogin()

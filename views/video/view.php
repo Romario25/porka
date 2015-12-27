@@ -6,7 +6,7 @@
     <div class="herounit darkgray-bg">
         <div class="g w1140 ta-center">
             <div class="c x1d6--d x1d3--t vmiddle inflated-v">
-                <p class="fs22 fw400 pink chopped opensans ta-cll">Nicole Aniston</p>
+                <p class="fs22 fw400 pink chopped opensans ta-cll"><?= $video->actor; ?></p>
                 <p class="fs12 gray chopped opensans ta-cll"><?= $video->update_at; ?></p>
             </div>
             <div class="c x1d2--d x1d3--t vmiddle inflated-v">
@@ -18,7 +18,7 @@
                     <p class="c fs24 fw400 white chopped text-right">98%</p>
                 </div>
                 <div class="cc x1d3 vmiddle">
-                    <span class="fs10 gray uppercase"><span class="white">80</span> лайков<br><span class="white">5624</span> просмотров</span>
+                    <span class="fs10 gray uppercase"><span class="white">80</span> лайков<br><span class="white"><?= $video->hits; ?></span> просмотров</span>
                 </div>
                 <!-- <div class="cc x1d3 vmiddle ta-center">
                     <a href="#"><img src="img/i-like.png" alt=""></a>

@@ -1,5 +1,6 @@
 <?php
 /** @var \app\models\Video $videos */
+/** @var \app\models\PhotoCatalog $photos */
 ?>
 <div class="g w1140 main">
 <!-- slider -->
@@ -163,36 +164,7 @@
         </div>
 
         <!-- menu -->
-        <nav class="c navitron">
-            <ul class="relative">
-                <div class="cc x5d6--d x1--t x1--m itemset">
-                    <li class="cc x1d5--d x1d5--t x1--m item"><a href="#">Модели</a></li>
-                    <li class="cc x1d5--d x1d5--t x1--m item"><a href="#">Экзотика</a></li>
-                    <li class="cc x1d5--d x1d5--t x1--m item"><a href="#">Мамочки</a></li>
-                    <li class="cc x1d5--d x1d5--t x1--m item"><a href="#">Лесбиянки</a></li>
-                    <li class="cc x1d5--d x1d5--t x1--m item"><a href="#">Брюнетки</a></li>
-                </div>
-                <li class="cc x1d6--d x1--t x1--m item relative">
-                    <input type="checkbox" id="dropdown-trigger2" class="dropdown-trigger hidden">
-                    <label for="dropdown-trigger2">Все категории</label>
-
-                    <div class="dropdown">
-                        <ul>
-                            <li><a href="#">Мастурбация</a></li>
-                            <li><a href="#">Большие попки</a></li>
-                            <li><a href="#">Азиатки</a></li>
-                            <li><a href="#">Большие попки</a></li>
-                            <li><a href="#">Зрелые</a></li>
-                            <li><a href="#">Мастурбация</a></li>
-                            <li><a href="#">Большие попки</a></li>
-                            <li><a href="#">Азиатки</a></li>
-                            <li><a href="#">Большие попки</a></li>
-                            <li><a href="#">Зрелые</a></li>
-                        </ul>
-                    </div>
-                </li>
-            </ul>
-        </nav>
+       <?= \app\components\widgets\CategoryWidget::widget([]); ?>
         <!-- menu -->
 
         <!-- intro text -->
@@ -208,174 +180,29 @@
     <!-- gallery -->
     <div class="gray-bg">
         <div class="c-c gallery">
+            <?php foreach($photos as $photo): ?>
             <article class="c x1d4--d x1d3--t x1d2--m gallery-element">
                 <div class="photo-element new">
                     <a href="#">
                         <div class="preview">
-                            <img src="http://placehold.it/300x400?text=+" class="r" alt="Видео: Отсосала и дала в попку...">
-                            <div class="duration">30 фото</div>
+                            <img src="<?= (isset($photo->photos[0]))?$photo->photos[0]:"#"; ?>" class="r" alt="<?= $photo->title; ?>">
+                            <div class="duration"><?= $photo->photosCount; ?> фото</div>
                         </div>
-                        <p class="fs20 semichopped black cursive text-center">Jessica Albert</p>
-                        <h1 class="title semichopped">Отсосала у классного мужика прямов жопу получила член...</h1>
+                        <p class="fs20 semichopped black cursive text-center"><?= $photo->actor?></p>
+                        <h1 class="title semichopped"><?= $photo->title; ?></h1>
                     </a>
                     <div class="cc meta">
                         <div class="c x1d2--d x1d2--t x1--m">
-                            <span>12 мар 2015</span>
+                            <span><?= $photo->update_at; ?></span>
                         </div>
                         <div class="cc x1d2--d x1d2--t x1--m">
-                            <span class="c x1d2--d x1d2--t x1--m nowrap">114&nbsp;<i class="fa fa-eye"></i></span>
+                            <span class="c x1d2--d x1d2--t x1--m nowrap"><?= $photo->hits; ?>&nbsp;<i class="fa fa-eye"></i></span>
                             <span class="c x1d2--d x1d2--t x1--m nowrap">86%&nbsp;<i class="fa fa-thumbs-up"></i></span>
                         </div>
                     </div>
                 </div>
             </article>
-            <article class="c x1d4--d x1d3--t x1d2--m gallery-element">
-                <div class="photo-element new">
-                    <a href="#">
-                        <div class="preview">
-                            <img src="http://placehold.it/300x400?text=+" class="r" alt="Видео: Отсосала и дала в попку...">
-                            <div class="duration">30 фото</div>
-                        </div>
-                        <p class="fs20 semichopped black cursive text-center">Jessica Albert</p>
-                        <h1 class="title semichopped">Отсосала у классного мужика прямов жопу получила член...</h1>
-                    </a>
-                    <div class="cc meta">
-                        <div class="c x1d2--d x1d2--t x1--m">
-                            <span>12 мар 2015</span>
-                        </div>
-                        <div class="cc x1d2--d x1d2--t x1--m">
-                            <span class="c x1d2--d x1d2--t x1--m nowrap">114&nbsp;<i class="fa fa-eye"></i></span>
-                            <span class="c x1d2--d x1d2--t x1--m nowrap">86%&nbsp;<i class="fa fa-thumbs-up"></i></span>
-                        </div>
-                    </div>
-                </div>
-            </article>
-            <article class="c x1d4--d x1d3--t x1d2--m gallery-element">
-                <div class="photo-element">
-                    <a href="#">
-                        <div class="preview">
-                            <img src="http://placehold.it/300x400?text=+" class="r" alt="Видео: Отсосала и дала в попку...">
-                            <div class="duration">30 фото</div>
-                        </div>
-                        <p class="fs20 semichopped black cursive text-center">Jessica Albert</p>
-                        <h1 class="title semichopped">Отсосала у классного мужика прямов жопу получила член...</h1>
-                    </a>
-                    <div class="cc meta">
-                        <div class="c x1d2--d x1d2--t x1--m">
-                            <span>12 мар 2015</span>
-                        </div>
-                        <div class="cc x1d2--d x1d2--t x1--m">
-                            <span class="c x1d2--d x1d2--t x1--m nowrap">114&nbsp;<i class="fa fa-eye"></i></span>
-                            <span class="c x1d2--d x1d2--t x1--m nowrap">86%&nbsp;<i class="fa fa-thumbs-up"></i></span>
-                        </div>
-                    </div>
-                </div>
-            </article>
-            <article class="c x1d4--d x1d3--t x1d2--m gallery-element">
-                <div class="photo-element">
-                    <a href="#">
-                        <div class="preview">
-                            <img src="http://placehold.it/300x400?text=+" class="r" alt="Видео: Отсосала и дала в попку...">
-                            <div class="duration">30 фото</div>
-                        </div>
-                        <p class="fs20 semichopped black cursive text-center">Jessica Albert</p>
-                        <h1 class="title semichopped">Отсосала у классного мужика прямов жопу получила член...</h1>
-                    </a>
-                    <div class="cc meta">
-                        <div class="c x1d2--d x1d2--t x1--m">
-                            <span>12 мар 2015</span>
-                        </div>
-                        <div class="cc x1d2--d x1d2--t x1--m">
-                            <span class="c x1d2--d x1d2--t x1--m nowrap">114&nbsp;<i class="fa fa-eye"></i></span>
-                            <span class="c x1d2--d x1d2--t x1--m nowrap">86%&nbsp;<i class="fa fa-thumbs-up"></i></span>
-                        </div>
-                    </div>
-                </div>
-            </article>
-            <article class="c x1d4--d x1d3--t x1d2--m gallery-element">
-                <div class="photo-element">
-                    <a href="#">
-                        <div class="preview">
-                            <img src="http://placehold.it/300x400?text=+" class="r" alt="Видео: Отсосала и дала в попку...">
-                            <div class="duration">30 фото</div>
-                        </div>
-                        <p class="fs20 semichopped black cursive text-center">Jessica Albert</p>
-                        <h1 class="title semichopped">Отсосала у классного мужика прямов жопу получила член...</h1>
-                    </a>
-                    <div class="cc meta">
-                        <div class="c x1d2--d x1d2--t x1--m">
-                            <span>12 мар 2015</span>
-                        </div>
-                        <div class="cc x1d2--d x1d2--t x1--m">
-                            <span class="c x1d2--d x1d2--t x1--m nowrap">114&nbsp;<i class="fa fa-eye"></i></span>
-                            <span class="c x1d2--d x1d2--t x1--m nowrap">86%&nbsp;<i class="fa fa-thumbs-up"></i></span>
-                        </div>
-                    </div>
-                </div>
-            </article>
-            <article class="c x1d4--d x1d3--t x1d2--m gallery-element">
-                <div class="photo-element">
-                    <a href="#">
-                        <div class="preview">
-                            <img src="http://placehold.it/300x400?text=+" class="r" alt="Видео: Отсосала и дала в попку...">
-                            <div class="duration">30 фото</div>
-                        </div>
-                        <p class="fs20 semichopped black cursive text-center">Jessica Albert</p>
-                        <h1 class="title semichopped">Отсосала у классного мужика прямов жопу получила член...</h1>
-                    </a>
-                    <div class="cc meta">
-                        <div class="c x1d2--d x1d2--t x1--m">
-                            <span>12 мар 2015</span>
-                        </div>
-                        <div class="cc x1d2--d x1d2--t x1--m">
-                            <span class="c x1d2--d x1d2--t x1--m nowrap">114&nbsp;<i class="fa fa-eye"></i></span>
-                            <span class="c x1d2--d x1d2--t x1--m nowrap">86%&nbsp;<i class="fa fa-thumbs-up"></i></span>
-                        </div>
-                    </div>
-                </div>
-            </article>
-            <article class="c x1d4--d x1d3--t x1d2--m gallery-element">
-                <div class="photo-element">
-                    <a href="#">
-                        <div class="preview">
-                            <img src="http://placehold.it/300x400?text=+" class="r" alt="Видео: Отсосала и дала в попку...">
-                            <div class="duration">30 фото</div>
-                        </div>
-                        <p class="fs20 semichopped black cursive text-center">Jessica Albert</p>
-                        <h1 class="title semichopped">Отсосала у классного мужика прямов жопу получила член...</h1>
-                    </a>
-                    <div class="cc meta">
-                        <div class="c x1d2--d x1d2--t x1--m">
-                            <span>12 мар 2015</span>
-                        </div>
-                        <div class="cc x1d2--d x1d2--t x1--m">
-                            <span class="c x1d2--d x1d2--t x1--m nowrap">114&nbsp;<i class="fa fa-eye"></i></span>
-                            <span class="c x1d2--d x1d2--t x1--m nowrap">86%&nbsp;<i class="fa fa-thumbs-up"></i></span>
-                        </div>
-                    </div>
-                </div>
-            </article>
-            <article class="c x1d4--d x1d3--t x1d2--m gallery-element">
-                <div class="photo-element">
-                    <a href="#">
-                        <div class="preview">
-                            <img src="http://placehold.it/300x400?text=+" class="r" alt="Видео: Отсосала и дала в попку...">
-                            <div class="duration">30 фото</div>
-                        </div>
-                        <p class="fs20 semichopped black cursive text-center">Jessica Albert</p>
-                        <h1 class="title semichopped">Отсосала у классного мужика прямов жопу получила член...</h1>
-                    </a>
-                    <div class="cc meta">
-                        <div class="c x1d2--d x1d2--t x1--m">
-                            <span>12 мар 2015</span>
-                        </div>
-                        <div class="cc x1d2--d x1d2--t x1--m">
-                            <span class="c x1d2--d x1d2--t x1--m nowrap">114&nbsp;<i class="fa fa-eye"></i></span>
-                            <span class="c x1d2--d x1d2--t x1--m nowrap">86%&nbsp;<i class="fa fa-thumbs-up"></i></span>
-                        </div>
-                    </div>
-                </div>
-            </article>
+            <?php endforeach; ?>
         </div>
 
 

@@ -11,6 +11,7 @@ namespace app\controllers;
 
 use app\models\PhotoCatalog;
 use yii\web\Controller;
+use yii\web\HttpException;
 
 class PhotoController extends Controller
 {
@@ -25,6 +26,11 @@ class PhotoController extends Controller
         $model = PhotoCatalog::find()->where("url = :url", [
            ':url' => $url
         ])->one();
+
+        if($model == null) throw new HttpException(404);
+
+        // счетчик показов
+        $model->updateCounters(['hits' => 1]);
 
         return $this->render('view', [
            'model' => $model

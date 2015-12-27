@@ -9,6 +9,7 @@
 namespace app\controllers;
 
 
+use app\components\HitsCounter;
 use app\models\Video;
 use yii\web\Controller;
 use yii\web\HttpException;
@@ -19,6 +20,9 @@ class VideoController extends Controller
         $video = Video::find()->where("url = :url", [":url"=>$url])->one();
 
         if($video == null) throw new HttpException(404);
+
+        // счетчик показов
+        $video->updateCounters(['hits' => 1]);
 
         return $this->render('view', ['video'=>$video]);
     }
