@@ -70,6 +70,7 @@ class VideoController extends Controller
 
         if ($model->load(Yii::$app->request->post())) {
             $model->videoFile = UploadedFile::getInstance($model, 'videoFile');
+            $model->screenFiles = UploadedFile::getInstances($model, 'screenFiles');
             if($model->save()){
                 return $this->redirect(['index']);
             } else {

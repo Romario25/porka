@@ -3,7 +3,7 @@
 /** @var \app\models\Category $category */
 ?>
 
-
+<div class="g w1140 main">
 <!-- main -->
 
 <div class="c-c">
@@ -402,5 +402,5 @@
 </div>
 <!-- gallery -->
 
-
+</div>
 <!-- main -->

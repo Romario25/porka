@@ -1,10 +1,11 @@
 <?php
 /** @var \app\models\Video $videos */
 ?>
+<div class="g w1140 main">
 <!-- slider -->
 <div class="herounit blue-gradient-bg">
     <div class="g w1140 slider">
-        <a href="#"><img class="r" src="images/slide-01.png" alt=""></a>
+        <a href="#"><img class="r" src="/images/slide-01.png" alt=""></a>
     </div>
 </div>
 <!-- slider -->
@@ -35,28 +36,13 @@
             <?php foreach($videos as $video): ?>
                 <article class="c x1d3--d x1d3--t x1d2--m gallery-element">
                     <div class="video-element new">
-                        <a href="#">
-                            <div class="preview">
-<!--                                <img src="http://placehold.it/400x300?text=+" class="r" alt="Видео: Отсосала и дала в попку...">-->
-                                <video width="336" height="252" id="video1">
-                                    <source src="<?php echo $video->object_url; ?>" type="video/mp4">
-                                    Your browser does not support the video tag.
-                                </video>
-                                <script>
-                                    $(function(){
-                                        $(".preview").click(function(){
-                                          // alert("start_video");
-                                            var myVideo = document.getElementById("video1");
-                                            if (myVideo.paused)
-                                                myVideo.play();
-                                            else
-                                                myVideo.pause();
-                                            return false;
-                                        });
+                        <a href="/video/<?= $video->url; ?>">
+                            <div class="preview" >
+
+                                <img src="<?= $video->screens[0];?>" data="<?= implode(",", $video->screens); ?>" class="r" alt="Видео: Отсосала и дала в попку...">
 
 
-                                    });
-                                </script>
+
                                 <div class="duration">31:54</div>
                             </div>
                             <h1 class="title"><?= $video->title ?></h1>
@@ -73,6 +59,38 @@
                     </div>
                 </article>
             <?php endforeach; ?>
+
+<!--            <script>-->
+<!--                $(function() {-->
+<!--                    $('.preview').hover(function() {-->
+<!--                       console.log("START");-->
+<!--                        var _this = $(this).child(),-->
+<!--                            images = _this.getAttribute('data').split(',');-->
+<!--                       console.log(images);-->
+<!--                        counter = 0;-->
+<!--                        this.setAttribute('data-src', _this.src);-->
+<!--                        //-->
+<!--                        _this.timer = setInterval(function() {-->
+<!--                            if(counter > images.length-1) {-->
+<!--                                counter = 0;-->
+<!--                            }-->
+<!--                            _this.src=images[counter];-->
+<!--                            console.log(counter);-->
+<!--                            console.log(images[counter]);-->
+<!---->
+<!--                            counter++;-->
+<!---->
+<!--                        }, 500);-->
+<!---->
+<!--                    }, function() {-->
+<!--                        this.src = this.getAttribute('data-src');-->
+<!--                        //alert("test");-->
+<!--                        clearInterval(this.timer);-->
+<!--                    });-->
+<!--                });-->
+<!--            </script>-->
+
+
         </div>
 
 
@@ -409,5 +427,5 @@
     </div>
     <!-- gallery -->
 
-
+</div>
 <!-- main -->

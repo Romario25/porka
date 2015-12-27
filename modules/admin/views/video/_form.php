@@ -25,7 +25,11 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'videoFile')->fileInput(); ?>
 
-    <?= $form->field($model, 'category_id')->dropDownList(ArrayHelper::map(Category::find()->all(), 'id', 'name')); ?>
+    <?= $form->field($model, 'screenFiles[]')->fileInput(['multiple' => true, 'accept' => 'image/*']); ?>
+
+    <?= $form->field($model, 'category_id')->dropDownList(ArrayHelper::map(Category::find()->all(), 'id', 'name'), [
+        'prompt' => 'Выберите категорию'
+    ]); ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

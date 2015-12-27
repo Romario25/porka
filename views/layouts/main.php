@@ -46,8 +46,8 @@ AppAsset::register($this);
         </div>
         <div class="c x5d12--d x2d4--t x1--m vmiddle nav">
             <ul class="inline unstyled">
-                <li class="cc x1d3 navitem current"><a class="fw600" href="#" title="Порно видео HD"><span class="fa fa-video-camera"></span> Видео</a></li>
-                <li class="cc x1d3 navitem"><a class="fw600" href="#" title="Порно фото"><span class="fa fa-picture-o"></span> Фото</a></li>
+                <li class="cc x1d3 navitem <?= (Yii::$app->controller->id == 'video')?'current':''?>"><a class="fw600" href="/video" title="Порно видео HD"><span class="fa fa-video-camera"></span> Видео</a></li>
+                <li class="cc x1d3 navitem <?= (Yii::$app->controller->id == 'photo')?'current':''?>"><a class="fw600" href="/photo" title="Порно фото"><span class="fa fa-picture-o"></span> Фото</a></li>
                 <li class="cc x1d3 navitem"><a class="fw600" href="#" title="Порно фото"><span class="fa fa-star-o"></span> Новое</a></li>
             </ul>
         </div>
@@ -67,9 +67,9 @@ AppAsset::register($this);
     </div>
 </div>
 <!-- page-top -->
-<div class="g w1140 main">
+
 <?= $content ?>
-</div>
+
 
 <!-- footer -->
 <div class="herounit black-bg">

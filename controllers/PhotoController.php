@@ -1,0 +1,33 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: ataman
+ * Date: 26.12.15
+ * Time: 22:57
+ */
+
+namespace app\controllers;
+
+
+use app\models\PhotoCatalog;
+use yii\web\Controller;
+
+class PhotoController extends Controller
+{
+    public function actionIndex(){
+
+        $photos = PhotoCatalog::find()->all();
+
+        return $this->render("index", ['photos' => $photos]);
+    }
+
+    public function actionView($url){
+        $model = PhotoCatalog::find()->where("url = :url", [
+           ':url' => $url
+        ])->one();
+
+        return $this->render('view', [
+           'model' => $model
+        ]);
+    }
+}
