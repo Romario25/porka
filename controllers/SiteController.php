@@ -2,10 +2,13 @@
 
 namespace app\controllers;
 
+use app\models\Config;
 use app\models\PhotoCatalog;
 use app\models\Video;
+use Mailchimp;
 use Yii;
 use yii\filters\AccessControl;
+use yii\validators\EmailValidator;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
@@ -99,5 +102,25 @@ class SiteController extends Controller
     public function actionAbout()
     {
         return $this->render('about');
+    }
+
+    public function actionSubscribe(){
+        if(Yii::$app->request->isAjax){
+            $email = Yii::$app->request->post('email');
+            $validator = new EmailValidator();
+            if($validator->validate($email)){
+                $config = Config::find()->where("name = :name", [":name"=>'mailChimpKey'])->one();
+                $mc = new Mailchimp($config['value']);
+                $result = $mc->users->invite($email);
+                if($result['status'] == 'success'){
+                    echo "'Ваш электронный адрес добавлен в подписчики'";
+                } else {
+                    echo "error";
+                }
+            } else {
+                echo "Неправильный электронный адрес";
+            }
+        }
+
     }
 }

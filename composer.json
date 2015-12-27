@@ -18,7 +18,8 @@
         "yiisoft/yii2": ">=2.0.5",
         "yiisoft/yii2-bootstrap": "*",
         "yiisoft/yii2-swiftmailer": "*",
-        "aws/aws-sdk-php": "^3.12"
+        "aws/aws-sdk-php": "^3.12",
+        "mailchimp/mailchimp": "*"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",
