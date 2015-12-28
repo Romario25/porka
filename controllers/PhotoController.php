@@ -27,6 +27,8 @@ class PhotoController extends Controller
            ':url' => $url
         ])->one();
 
+
+
         if($model == null) throw new HttpException(404);
 
         // счетчик показов
