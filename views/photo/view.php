@@ -7,7 +7,7 @@
     <div class="herounit darkgray-bg">
         <div class="g w1140 ta-center">
             <div class="c x1d6--d x1d3--t vmiddle inflated-v">
-                <p class="fs22 fw400 pink chopped opensans ta-cll">Nicole Aniston</p>
+                <p class="fs22 fw400 pink chopped opensans ta-cll"><?= $model->actor; ?></p>
                 <p class="fs12 gray chopped opensans ta-cll"><?= $model->update_at; ?></p>
             </div>
             <div class="c x1d2--d x1d3--t vmiddle inflated-v">
@@ -52,37 +52,55 @@
 
 
         ?>
-        <?php foreach($model->photos as $photo): ?>
-        <div class="cc x1d2--d x1d2--t x1--m thumb">
-            <div class="c x1d2">
-                <a  href="#" class="thumbnail"><img onload="thumb(this, 255, 340)" class="r" src="<?= $photo; ?>" alt=""></a>
-            </div>
-            <div class="cc x1d2">
-                <a href="#" class="c thumbnail" style="margin:0 0 20px 0;"><img class="r" src="<?= $photo; ?>" alt=""></a>
-                <a href="#" class="c thumbnail" style="margin:0;"><img class="r" src="<?= $photo; ?>" alt=""></a>
-            </div>
+        <div class="c-c gallery">
+            <?php foreach(\app\models\Photos::find()->where("catalog_id = :catalog_id", [':catalog_id'=>$model->id])->all() as $photo): ?>
+                <article class="c x1d4--d x1d3--t x1d2--m gallery-element">
+                    <div class="photo-element">
+                        <div >
+                            <a href="<?= $photo->url ?>" rel="fancybox" class="thumbnail"><img src="<?= $photo->url_thumbnail; ?>" class="r" alt=""></a>
+                        </div>
+                    </div>
+                </article>
+            <?php endforeach; ?>
         </div>
-        <?php endforeach; ?>
-        <script>
-            function thumb(img, width, height)
-            {
-                var x_ratio = width / img.width;
-                var y_ratio = height / img.height;
+<?php
+echo newerton\fancybox\FancyBox::widget([
+    'target' => 'a[rel=fancybox]',
+    'helpers' => true,
+    'mouse' => true,
+    'config' => [
+        'maxWidth' => '90%',
+        'maxHeight' => '90%',
+        'playSpeed' => 7000,
+        'padding' => 0,
+        'fitToView' => false,
+        'width' => '70%',
+        'height' => '70%',
+        'autoSize' => false,
+        'closeClick' => false,
+        'openEffect' => 'elastic',
+        'closeEffect' => 'elastic',
+        'prevEffect' => 'elastic',
+        'nextEffect' => 'elastic',
+        'closeBtn' => false,
+        'openOpacity' => true,
+        'helpers' => [
+            'title' => ['type' => 'float'],
+            'buttons' => [],
+            'thumbs' => ['width' => 68, 'height' => 50],
+            'overlay' => [
+                'css' => [
+                    'background' => 'rgba(0, 0, 0, 0.8)'
+                ]
+            ]
+        ],
+    ]
+]);
+?>
 
-                var ratio = Math.min(x_ratio, y_ratio);
-                var use_x_ratio = x_ratio<y_ratio ? 1 : 0;
+<!-- intro text -->
 
-                var w = use_x_ratio ? width : Math.ceil(img.width * ratio);
-                var h = !use_x_ratio ? height : Math.ceil(img.height * ratio);
 
-                img.width = w;
-                img.height = h;
-            }
-        </script>
-
-        <!-- intro text -->
-
-    </article>
 
     <div class="gray-bg">
         <div class="c-c gallery">

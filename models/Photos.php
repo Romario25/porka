@@ -10,6 +10,7 @@ use Yii;
  * @property integer $id
  * @property integer $catalog_id
  * @property string $url
+ * @property string $url_thumbnail
  *
  * @property PhotoCatalog $catalog
  */
@@ -30,7 +31,7 @@ class Photos extends \yii\db\ActiveRecord
     {
         return [
             [['catalog_id'], 'integer'],
-            [['url'], 'string', 'max' => 255]
+            [['url', 'url_thumbnail'], 'string', 'max' => 255]
         ];
     }
 

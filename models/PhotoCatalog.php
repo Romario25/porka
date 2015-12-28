@@ -9,6 +9,7 @@ use yii\behaviors\SluggableBehavior;
 use yii\behaviors\TimestampBehavior;
 use yii\db\Expression;
 use yii\helpers\ArrayHelper;
+use yii\imagine\Image;
 use yii\web\UploadedFile;
 
 /**
@@ -109,7 +110,15 @@ class PhotoCatalog extends \yii\db\ActiveRecord
      */
     public function getPhotos()
     {
-        return $this->hasMany(Photos::className(), ['catalog_id' => 'id'])->select("url")->asArray()->column();
+        return $this->hasMany(Photos::className(), ['catalog_id' => 'id'])->select("url_thumbnail")->asArray()->column();
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getPhotosThumbnails()
+    {
+        return $this->hasMany(Photos::className(), ['catalog_id' => 'id'])->select("url_thumbnail")->asArray()->column();
     }
 
     /**
@@ -150,6 +159,11 @@ class PhotoCatalog extends \yii\db\ActiveRecord
 
             foreach($this->photosUpload as $photo){
                 $nameFile = time() . '_'.$photo->baseName.'.' . $photo->extension;
+
+                // сохраняем превьюшки
+                Image::thumbnail($photo->tempName, 255, 340)
+                    ->save('../web/uploads/thumbnail/'.$nameFile, ['quality' => 80]);
+
                 $res = $s3->putObject([
                     'Bucket' => $config['amazon_bucket'],
                     'Key' => 'photo/'.$nameFile,
@@ -159,6 +173,7 @@ class PhotoCatalog extends \yii\db\ActiveRecord
                 $photos = new Photos();
                 $photos->url = $res['ObjectURL'];
                 $photos->catalog_id = $this->id;
+                $photos->url_thumbnail = '/uploads/thumbnail/'.$nameFile;
                 $photos->save();
             }
 
