@@ -51,7 +51,33 @@
                     </div>
                 </article>
             <?php endforeach; ?>
+            <script>
+                $(function() {
+                    $('.preview').hover(function() {
+                       console.log("START");
+                        console.log($(this).find("img").attr('data'));
+                        var _this = this,
+                            curImage = $(this).find("img"),
+                            images = curImage.attr('data').split(',');
+                        counter = 0;
+                        console.log(images);
 
+                        curImage.attr('data-src', curImage.attr('src'));
+
+                        _this.timer = setInterval(function() {
+                            if(counter > images.length -1) {
+                                counter = 0;
+                            }
+                            curImage.attr('src', images[counter]);
+                            counter++;
+                        }, 500);
+
+                    }, function() {
+                        $(this).find("img").attr('src', $(this).find("img").attr('data-src'));
+                        clearInterval(this.timer);
+                    });
+                });
+            </script>
         </div>
         <!-- gallery -->
 
