@@ -79,8 +79,8 @@ class Video extends \yii\db\ActiveRecord
             [['create_at', 'update_at'], 'safe'],
             [['description', 'url'], 'string'],
             [['category_id'], 'integer'],
-            ['videoFile', 'file', 'skipOnEmpty' => false],
-            ['screenFiles', 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg', 'maxFiles' => 4],
+            ['videoFile', 'file', 'skipOnEmpty' => ($this->isNewRecord)?false:true],
+            ['screenFiles', 'file', 'skipOnEmpty' => ($this->isNewRecord)?false:true, 'extensions' => 'png, jpg', 'maxFiles' => 4],
             [['title', 'object_url', 'preview_url'], 'string', 'max' => 255]
         ];
     }

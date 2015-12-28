@@ -6,6 +6,7 @@ use app\models\Config;
 use app\models\PhotoCatalog;
 use app\models\Video;
 use Mailchimp;
+use Mailchimp_Lists;
 use Yii;
 use yii\filters\AccessControl;
 use yii\validators\EmailValidator;
@@ -105,16 +106,19 @@ class SiteController extends Controller
     }
 
     public function actionSubscribe(){
+
         if(Yii::$app->request->isAjax){
             $email = Yii::$app->request->post('email');
             $validator = new EmailValidator();
             if($validator->validate($email)){
-                $config = Config::find()->where("name = :name", [":name"=>'mailChimpKey'])->one();
-                $mc = new Mailchimp($config['value']);
-                $result = $mc->users->invite($email);
-                if($result['status'] == 'success'){
+                $mc = new Mailchimp(Config::find()->where('name = :name', [':name'=>'mailChimpKey'])->one()->value);
+                $Mailchimp_Lists = new Mailchimp_Lists( $mc );
+                $subscriber = $Mailchimp_Lists->subscribe( Config::find()->where('name = :name', [':name'=>'mailChimpListId'])->one()->value, array( 'email' => htmlentities($email) ) );
+                if ( ! empty( $subscriber['leid'] ) ) {
                     echo "'Ваш электронный адрес добавлен в подписчики'";
-                } else {
+                }
+                else
+                {
                     echo "error";
                 }
             } else {
