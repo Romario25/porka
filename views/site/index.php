@@ -11,12 +11,19 @@ use yii\helpers\Html;
     <div class="g w1140 slider">
 <!--        <a href="#"><img class="r" src="/images/slide-01.png" alt=""></a>-->
         <?php
-        $images = [
-            Html::a(Html::img("http://goods.marketgid.com/img/new-year.jpg", ['alt' => 'Для праздников и карнавалов', 'title' => 'Для праздников и карнавалов']), ['category/dla_prazdnikov_i_karnavalov/2054']),
-            Html::a(Html::img("http://goods.marketgid.com/img/appliances.png", ['alt' => 'Бытовая техника', 'title' => 'Бытовая техника']), ['category/bytovaa_tehnika/8']),
-            Html::a(Html::img("http://goods.marketgid.com/img/auto.png", ['alt' => 'Автотовары', 'title' => 'Автотовары']), ['category/avto_velo_moto/6']),
-            //Html::a(Html::img("/img/chancellery.png", ['alt' => 'Канцелярия', 'title' => 'Канцелярия']), ['category/kancelarskie_prinadleznosti/1246']),
-        ];
+//        $images = [
+//            Html::a(Html::img("http://goods.marketgid.com/img/new-year.jpg", ['alt' => 'Для праздников и карнавалов', 'title' => 'Для праздников и карнавалов']), ['category/dla_prazdnikov_i_karnavalov/2054']),
+//            Html::a(Html::img("http://goods.marketgid.com/img/appliances.png", ['alt' => 'Бытовая техника', 'title' => 'Бытовая техника']), ['category/bytovaa_tehnika/8']),
+//            Html::a(Html::img("http://goods.marketgid.com/img/auto.png", ['alt' => 'Автотовары', 'title' => 'Автотовары']), ['category/avto_velo_moto/6']),
+//            //Html::a(Html::img("/img/chancellery.png", ['alt' => 'Канцелярия', 'title' => 'Канцелярия']), ['category/kancelarskie_prinadleznosti/1246']),
+//        ];
+
+        $slider = \app\models\Slider::find()->all();
+        $images = [];
+        foreach($slider as $slide){
+            $images[] = Html::a(Html::img($slide->src, ['alt' => $slide->title, 'title' => $slide->title]), [$slide->url]);
+        }
+
         echo yii\bootstrap\Carousel::widget(['items' => $images, 'controls' => false]);
         ?>
     </div>

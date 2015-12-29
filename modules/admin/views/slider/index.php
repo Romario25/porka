@@ -6,19 +6,19 @@ use yii\grid\GridView;
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Videos';
+$this->title = 'Sliders';
 $this->params['breadcrumbs'][] = [
     'label' => 'Admin',
     'url' => "/admin/default/index"
 ];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="video-index">
+<div class="slider-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Video', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Slider', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -27,13 +27,17 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'create_at',
-            'update_at',
             'title',
-            'description:ntext',
-            // 'object_url:url',
-            // 'preview_url:url',
-            // 'category_id',
+            [
+                'header' => 'Изображение',
+                'format' => 'html',
+                'value' => function($value){
+                    return Html::img($value['src'], ['width'=>'250']);
+                    //return print_r($value);
+                }
+            ],
+            //'src',
+            //'url:url',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

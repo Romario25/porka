@@ -8,6 +8,10 @@ use yii\grid\GridView;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Photo Catalogs';
+$this->params['breadcrumbs'][] = [
+    'label' => 'Admin',
+    'url' => "/admin/default/index"
+];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="photo-catalog-index">

@@ -27,4 +27,8 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a("Фотографии", ['/admin/photocatalog/index'], ['class' => 'btn btn-primary']) ?>
     </p>
 
+    <p>
+        <?= Html::a("Слайдер", ['/admin/slider/index'], ['class' => 'btn btn-primary']) ?>
+    </p>
+
 </div>
