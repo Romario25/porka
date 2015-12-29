@@ -10,6 +10,7 @@ namespace app\controllers;
 
 
 use app\models\PhotoCatalog;
+use yii\data\Pagination;
 use yii\web\Controller;
 use yii\web\HttpException;
 
@@ -17,9 +18,25 @@ class PhotoController extends Controller
 {
     public function actionIndex(){
 
-        $photos = PhotoCatalog::find()->all();
+        // выполняем запрос
+        $query = PhotoCatalog::find();
+        // делаем копию выборки
+        $countQuery = clone $query;
+        // подключаем класс Pagination, выводим по 10 пунктов на страницу
+        $pages = new Pagination(['totalCount' => $countQuery->count(), 'pageSize' => 16]);
+        // приводим параметры в ссылке к ЧПУ
+        $pages->pageSizeParam = false;
+        $photos = $query->offset($pages->offset)
+            ->orderBy('id DESC')
+            ->limit($pages->limit)
+            ->all();
 
-        return $this->render("index", ['photos' => $photos]);
+
+
+        return $this->render("index", [
+            'photos' => $photos,
+            'pages' => $pages,
+        ]);
     }
 
     public function actionView($url){

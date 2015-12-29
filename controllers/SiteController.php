@@ -5,6 +5,8 @@ namespace app\controllers;
 use app\models\Config;
 use app\models\PhotoCatalog;
 use app\models\Video;
+use DateTime;
+use DateTimeZone;
 use Mailchimp;
 use Mailchimp_Lists;
 use Yii;
@@ -56,8 +58,8 @@ class SiteController extends Controller
     public function actionIndex()
     {
 
-        $videos = Video::find()->all();
-        $photos = PhotoCatalog::find()->all();
+        $videos = Video::find()->orderBy('id DESC')->limit(8)->all();
+        $photos = PhotoCatalog::find()->orderBy('id DESC')->limit(8)->all();
 
         return $this->render('index', [
             'videos'=>$videos,
@@ -125,6 +127,12 @@ class SiteController extends Controller
                 echo "Неправильный электронный адрес";
             }
         }
+
+    }
+
+    public function actionTest(){
+
+        echo date_diff(new DateTime(), new DateTime('2015-12-27'))->days;
 
     }
 }

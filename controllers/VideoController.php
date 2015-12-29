@@ -11,6 +11,7 @@ namespace app\controllers;
 
 use app\components\HitsCounter;
 use app\models\Video;
+use yii\data\Pagination;
 use yii\web\Controller;
 use yii\web\HttpException;
 
@@ -29,8 +30,21 @@ class VideoController extends Controller
 
     public function actionIndex(){
 
-        $videos = Video::find()->all();
+        $query = Video::find();
+        // делаем копию выборки
+        $countQuery = clone $query;
+        // подключаем класс Pagination, выводим по 10 пунктов на страницу
+        $pages = new Pagination(['totalCount' => $countQuery->count(), 'pageSize' => 16]);
+        // приводим параметры в ссылке к ЧПУ
+        $pages->pageSizeParam = false;
+        $videos = $query->offset($pages->offset)
+            ->orderBy('id DESC')
+            ->limit($pages->limit)
+            ->all();
 
-        return $this->render('index', ['videos'=>$videos]);
+        return $this->render('index', [
+            'videos'=>$videos,
+            'pages' => $pages
+        ]);
     }
 }

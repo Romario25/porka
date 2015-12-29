@@ -48,7 +48,7 @@ AppAsset::register($this);
             <ul class="inline unstyled">
                 <li class="cc x1d3 navitem <?= (Yii::$app->controller->id == 'video')?'current':''?>"><a class="fw600" href="/video" title="Порно видео HD"><span class="fa fa-video-camera"></span> Видео</a></li>
                 <li class="cc x1d3 navitem <?= (Yii::$app->controller->id == 'photo')?'current':''?>"><a class="fw600" href="/photo" title="Порно фото"><span class="fa fa-picture-o"></span> Фото</a></li>
-                <li class="cc x1d3 navitem"><a class="fw600" href="#" title="Порно фото"><span class="fa fa-star-o"></span> Новое</a></li>
+                <li class="cc x1d3 navitem <?= (Yii::$app->controller->id == 'new')?'current':''?>"><a class="fw600" href="/new" title="Порно фото"><span class="fa fa-star-o"></span> Новое</a></li>
             </ul>
         </div>
         <p class="c semichopped x4d12--d x1--m vmiddle fs24 text-center">Эксклюзивные порно фото и&nbsp;видео в <span class="fw700">HD&nbsp;качестве!</span></p>

@@ -1,38 +1,18 @@
 <?php
 /** @var \app\models\Video $videos */
 use app\components\MyHelper;
-use yii\helpers\Html;
 
 /** @var \app\models\PhotoCatalog $photos */
 ?>
 <div class="g w1140 main">
-<!-- slider -->
-<div class="herounit blue-gradient-bg">
-    <div class="g w1140 slider">
-<!--        <a href="#"><img class="r" src="/images/slide-01.png" alt=""></a>-->
-        <?php
-        $images = [
-            Html::a(Html::img("http://goods.marketgid.com/img/new-year.jpg", ['alt' => 'Для праздников и карнавалов', 'title' => 'Для праздников и карнавалов']), ['category/dla_prazdnikov_i_karnavalov/2054']),
-            Html::a(Html::img("http://goods.marketgid.com/img/appliances.png", ['alt' => 'Бытовая техника', 'title' => 'Бытовая техника']), ['category/bytovaa_tehnika/8']),
-            Html::a(Html::img("http://goods.marketgid.com/img/auto.png", ['alt' => 'Автотовары', 'title' => 'Автотовары']), ['category/avto_velo_moto/6']),
-            //Html::a(Html::img("/img/chancellery.png", ['alt' => 'Канцелярия', 'title' => 'Канцелярия']), ['category/kancelarskie_prinadleznosti/1246']),
-        ];
-        echo yii\bootstrap\Carousel::widget(['items' => $images, 'controls' => false]);
-        ?>
-    </div>
-</div>
-<!-- slider -->
 
-<!-- main -->
 
     <div class="c-c">
-        <div class="c">
-            <p class="fs24 fw300 text-center opensans"><a class="pink" href="#" title="Эксклюзивные порно фото и видео в HD качестве!">Смотреть <span class="fw700">350+</span> видео в <span class="fw700">HD качестве</span></a></p>
-        </div>
+
 
         <?php
 
-            echo \app\components\widgets\CategoryWidget::widget([]);
+        echo \app\components\widgets\CategoryWidget::widget([]);
         ?>
         <!-- intro text -->
         <div class="c text-center">
@@ -113,7 +93,7 @@ use yii\helpers\Html;
     <!-- gallery -->
 
     <!-- subscription -->
-   <?= \app\components\widgets\SubscriptionWidget::widget([]); ?>
+    <?= \app\components\widgets\SubscriptionWidget::widget([]); ?>
     <!-- subscription -->
 
     <div class="c-c">
@@ -123,7 +103,7 @@ use yii\helpers\Html;
         </div>
 
         <!-- menu -->
-       <?= \app\components\widgets\CategoryWidget::widget([]); ?>
+        <?= \app\components\widgets\CategoryWidget::widget([]); ?>
         <!-- menu -->
 
         <!-- intro text -->
@@ -140,33 +120,33 @@ use yii\helpers\Html;
     <div class="gray-bg">
         <div class="c-c gallery">
             <?php foreach($photos as $photo): ?>
-            <article class="c x1d4--d x1d3--t x1d2--m gallery-element">
-                <div class="photo-element <?= (MyHelper::isClassNew($photo->create_at))?'new':''; ?>">
-                    <a href="/photo/<?= $photo->url; ?>">
-                        <div class="preview">
-                            <img src="<?= (isset($photo->photos[0]))?$photo->photos[0]:"#"; ?>" class="r" alt="<?= $photo->title; ?>">
-                            <div class="duration"><?= $photo->photosCount; ?> фото</div>
-                        </div>
-                        <p class="fs20 semichopped black cursive text-center"><?= $photo->actor?></p>
-                        <h1 class="title semichopped"><?= $photo->title; ?></h1>
-                    </a>
-                    <div class="cc meta">
-                        <div class="c x1d2--d x1d2--t x1--m">
-                            <span><?= $photo->update_at; ?></span>
-                        </div>
-                        <div class="cc x1d2--d x1d2--t x1--m">
-                            <span class="c x1d2--d x1d2--t x1--m nowrap"><?= $photo->hits; ?>&nbsp;<i class="fa fa-eye"></i></span>
-                            <span class="c x1d2--d x1d2--t x1--m nowrap">86%&nbsp;<i class="fa fa-thumbs-up"></i></span>
+                <article class="c x1d4--d x1d3--t x1d2--m gallery-element">
+                    <div class="photo-element <?= (MyHelper::isClassNew($photo->create_at))?'new':''; ?>">
+                        <a href="/photo/<?= $photo->url; ?>">
+                            <div class="preview">
+                                <img src="<?= (isset($photo->photos[0]))?$photo->photos[0]:"#"; ?>" class="r" alt="<?= $photo->title; ?>">
+                                <div class="duration"><?= $photo->photosCount; ?> фото</div>
+                            </div>
+                            <p class="fs20 semichopped black cursive text-center"><?= $photo->actor?></p>
+                            <h1 class="title semichopped"><?= $photo->title; ?></h1>
+                        </a>
+                        <div class="cc meta">
+                            <div class="c x1d2--d x1d2--t x1--m">
+                                <span><?= $photo->update_at; ?></span>
+                            </div>
+                            <div class="cc x1d2--d x1d2--t x1--m">
+                                <span class="c x1d2--d x1d2--t x1--m nowrap"><?= $photo->hits; ?>&nbsp;<i class="fa fa-eye"></i></span>
+                                <span class="c x1d2--d x1d2--t x1--m nowrap">86%&nbsp;<i class="fa fa-thumbs-up"></i></span>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </article>
+                </article>
             <?php endforeach; ?>
         </div>
 
 
         <!-- teasers -->
-       <?php echo \app\components\widgets\TeaserWidget::widget([]); ?>
+        <?php echo \app\components\widgets\TeaserWidget::widget([]); ?>
         <!-- teasers -->
 
     </div>
