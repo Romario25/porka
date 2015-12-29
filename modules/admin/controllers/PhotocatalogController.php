@@ -89,10 +89,16 @@ class PhotocatalogController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post()) ) {
+
+            $model->photosUpload = UploadedFile::getInstances($model, 'photosUpload');
+
+            if($model->save()){
+                return $this->redirect(['index']);
+            }
+
         } else {
-            return $this->render('update', [
+            return $this->render('create', [
                 'model' => $model,
             ]);
         }

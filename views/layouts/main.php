@@ -52,18 +52,7 @@ AppAsset::register($this);
             </ul>
         </div>
         <p class="c semichopped x4d12--d x1--m vmiddle fs24 text-center">Эксклюзивные порно фото и&nbsp;видео в <span class="fw700">HD&nbsp;качестве!</span></p>
-        <form class="cc site-search" action="" method="">
-            <input type="text" class="cc x5d6--d x9d12--t x4d6--m" placeholder="Поиск модели">
-            <div class="cc x1d12--d x2d12--t x1d6--m gray-bg">
-                <select name="" id="">
-                    <option value="">Видео</option>
-                    <option value="">Фото</option>
-                </select>
-            </div>
-            <div class="cc x1d12--d x1d12--t x1d6--m gray-bg">
-                <button class="cc search-submit-btn" type="submit"><i class="fa fa-search"></i></button>
-            </div>
-        </form>
+        <?php echo  \app\components\widgets\SearchWidget::widget([]); ?>
     </div>
 </div>
 <!-- page-top -->

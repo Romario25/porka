@@ -30,7 +30,7 @@
                 <div class="photo-element new">
                     <a href="/photo/<?= $photo->url; ?>">
                         <div class="preview">
-                            <img src="<?= (isset($photo->photos[0]))?$photo->photos[0]:"#" ?>" class="r" alt="Видео: Отсосала и дала в попку...">
+                            <img src="<?= (isset($photo->photos[0]))?$photo->photos[0]:"#" ?>" class="r" alt="<?= $photo->title ?>">
                             <div class="duration"><?= $photo->photosCount; ?> фото</div>
                         </div>
                         <p class="fs20 semichopped black cursive text-center">Jessica Albert</p>

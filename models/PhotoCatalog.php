@@ -74,7 +74,7 @@ class PhotoCatalog extends \yii\db\ActiveRecord
             [['category_id', 'plus', 'minus', 'hits'], 'integer'],
             [['create_at', 'update_at'], 'safe'],
             [['description'], 'string'],
-            ['photosUpload', 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg', 'maxFiles' => 20],
+            ['photosUpload', 'file', 'skipOnEmpty' => ($this->isNewRecord)?false:true, 'extensions' => 'png, jpg', 'maxFiles' => 20],
             [['title'], 'string', 'max' => 255]
         ];
     }
