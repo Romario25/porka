@@ -4,6 +4,7 @@ namespace app\models;
 
 use Aws\S3\Exception\S3Exception;
 use Aws\S3\S3Client;
+use Imagine\Image\Box;
 use Yii;
 use yii\behaviors\SluggableBehavior;
 use yii\behaviors\TimestampBehavior;
@@ -161,13 +162,24 @@ class PhotoCatalog extends \yii\db\ActiveRecord
                 $nameFile = time() . '_'.$photo->baseName.'.' . $photo->extension;
 
                 // сохраняем превьюшки
-                Image::thumbnail($photo->tempName, 255, 340)
+                // Сохраняем оригинал фотки в temp папку
+                $photo->saveAs("../web/uploads/temp/".$nameFile);
+                Image::getImagine()->open("../web/uploads/temp/".$nameFile)->flipHorizontally()->save("../web/uploads/temp/".$nameFile);
+
+                // Вешаем ваатермарку
+                Image::watermark('../web/uploads/temp/'.$nameFile, "../web/uploads/watermark/watermark_big.png")
+                    ->save('../web/uploads/temp/'.$nameFile);
+
+                // сохраняем превьюшки
+                Image::thumbnail('../web/uploads/temp/'.$nameFile, 255, 340)
                     ->save('../web/uploads/thumbnail/'.$nameFile, ['quality' => 80]);
+
+
 
                 $res = $s3->putObject([
                     'Bucket' => $config['amazon_bucket'],
                     'Key' => 'photo/'.$nameFile,
-                    'Body' => fopen($photo->tempName, 'rb'),
+                    'Body' => fopen("../web/uploads/temp/".$nameFile, 'rb'),
                     'ACL' => 'public-read'
                 ]);
                 $photos = new Photos();
@@ -175,6 +187,8 @@ class PhotoCatalog extends \yii\db\ActiveRecord
                 $photos->catalog_id = $this->id;
                 $photos->url_thumbnail = '/uploads/thumbnail/'.$nameFile;
                 $photos->save();
+                unlink("../web/uploads/temp/".$nameFile);
+
             }
 
         } catch(S3Exception $e){
