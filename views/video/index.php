@@ -55,7 +55,7 @@ use yii\widgets\LinkPager;
                 <?php
                 if($k == 7){
                     echo '</div>';
-                    echo \app\components\widgets\TeaserWidget::widget([]);
+                    echo \app\components\widgets\TeaserWidget::widget(['type'=>'video']);
                     echo '<div class="c-c gallery">';
                 }
 

@@ -113,7 +113,7 @@ use yii\helpers\Html;
 
 
         <!-- teasers -->
-        <?php echo \app\components\widgets\TeaserWidget::widget([]); ?>
+        <?php echo \app\components\widgets\TeaserWidget::widget(['type'=>'video']); ?>
         <!-- teasers -->
 
     </div>
@@ -173,7 +173,7 @@ use yii\helpers\Html;
 
 
         <!-- teasers -->
-       <?php echo \app\components\widgets\TeaserWidget::widget([]); ?>
+       <?php echo \app\components\widgets\TeaserWidget::widget(['type'=>'photo']); ?>
         <!-- teasers -->
 
     </div>

@@ -86,7 +86,7 @@ use app\components\MyHelper;
 
 
         <!-- teasers -->
-        <?php echo \app\components\widgets\TeaserWidget::widget([]); ?>
+        <?php echo \app\components\widgets\TeaserWidget::widget(['type'=>'video']); ?>
         <!-- teasers -->
 
     </div>
@@ -146,7 +146,7 @@ use app\components\MyHelper;
 
 
         <!-- teasers -->
-        <?php echo \app\components\widgets\TeaserWidget::widget([]); ?>
+        <?php echo \app\components\widgets\TeaserWidget::widget(['type'=>'photo']); ?>
         <!-- teasers -->
 
     </div>

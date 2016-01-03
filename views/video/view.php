@@ -35,8 +35,8 @@
     </div>
     <div class="g w1140 video">
 <!--        <a href="#"><img class="r" src="/images/player.jpg" alt=""></a>-->
-        <video  width="1140" controls >
-            <source src="<?= $video->object_url; ?>" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' />
+        <video  width="1140" controls preload="auto">
+            <source src="<?= \app\models\Video::getVideoUrl(1280, 720, $video->object_url); ?>" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' />
         </video>
 
     </div>
