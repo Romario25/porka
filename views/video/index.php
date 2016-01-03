@@ -7,7 +7,7 @@ use yii\widgets\LinkPager;
 <div class="g w1140 main">
 
     <!-- menu -->
-    <?php echo \app\components\widgets\CategoryWidget::widget([]); ?>
+    <?php echo \app\components\widgets\CategoryWidget::widget(['type'=>'video']); ?>
     <!-- menu -->
 
     <div class="c">

@@ -12,7 +12,7 @@ use app\components\MyHelper;
 
         <?php
 
-        echo \app\components\widgets\CategoryWidget::widget([]);
+        echo \app\components\widgets\CategoryWidget::widget(['type'=>'video']);
         ?>
         <!-- intro text -->
         <div class="c text-center">
@@ -103,7 +103,7 @@ use app\components\MyHelper;
         </div>
 
         <!-- menu -->
-        <?= \app\components\widgets\CategoryWidget::widget([]); ?>
+        <?= \app\components\widgets\CategoryWidget::widget(['type'=>'photo']); ?>
         <!-- menu -->
 
         <!-- intro text -->

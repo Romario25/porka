@@ -50,7 +50,7 @@ $config = [
             'enableStrictParsing' => false,
             'rules' => [
 
-                '<_c:(category)>/<url:\w+>' => 'category/index',
+                '<_c:(category)>/<type:\w+>/<url:\w+>' => 'category/index',
                 '<_c:(video)>/<_a:(index)>' => 'video/index',
                 '<_c:(video)>/<url>' => 'video/view',
                 '<_c:(photo)>/<_a:(index)>' => 'photo/index',

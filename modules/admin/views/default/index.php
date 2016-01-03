@@ -31,4 +31,8 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a("Слайдер", ['/admin/slider/index'], ['class' => 'btn btn-primary']) ?>
     </p>
 
+    <p>
+        <?= Html::a("Реклама", ['/admin/ads/index'], ['class' => 'btn btn-primary']) ?>
+    </p>
+
 </div>

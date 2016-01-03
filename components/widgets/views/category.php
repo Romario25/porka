@@ -7,7 +7,7 @@ use yii\helpers\Html;
     <ul class="relative">
         <div class="cc x5d6--d x1--t x1--m itemset">
             <?php foreach($categoryShow as $category): ?>
-                <li class="cc x1d5--d x1d5--t x1--m item"><?= Html::a($category->name, '/category/'.$category->url)?></li>
+                <li class="cc x1d5--d x1d5--t x1--m item"><?= Html::a($category->name, '/category/'.$type.'/'.$category->url)?></li>
             <?php endforeach; ?>
         </div>
         <li class="cc x1d6--d x1--t x1--m item relative">
@@ -17,7 +17,7 @@ use yii\helpers\Html;
             <div class="dropdown">
                 <ul>
                     <?php foreach($categoryHide as $category): ?>
-                    <li><?= Html::a($category->name, '/category/'.$category->url)?></li>
+                    <li><?= Html::a($category->name, '/category/'.$type.'/'.$category->url)?></li>
                     <?php endforeach; ?>
                 </ul>
             </div>

@@ -39,7 +39,7 @@ use yii\helpers\Html;
 
         <?php
 
-            echo \app\components\widgets\CategoryWidget::widget([]);
+            echo \app\components\widgets\CategoryWidget::widget(['type'=>'video']);
         ?>
         <!-- intro text -->
         <div class="c text-center">
@@ -115,6 +115,9 @@ use yii\helpers\Html;
         <!-- teasers -->
         <?php echo \app\components\widgets\TeaserWidget::widget(['type'=>'video']); ?>
         <!-- teasers -->
+        <!-- ads -->
+        <?php echo \app\components\widgets\AdsWidget::widget(['url'=>'/']); ?>
+        <!-- /ads -->
 
     </div>
     <!-- gallery -->
@@ -130,7 +133,7 @@ use yii\helpers\Html;
         </div>
 
         <!-- menu -->
-       <?= \app\components\widgets\CategoryWidget::widget([]); ?>
+       <?= \app\components\widgets\CategoryWidget::widget(['type'=>'photo']); ?>
         <!-- menu -->
 
         <!-- intro text -->
