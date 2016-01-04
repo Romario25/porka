@@ -16,10 +16,12 @@
             </div>
             <div class="c x1d3--d x1d3--t vmiddle inflated-v">
                 <div class="cc x1d3 vmiddle">
-                    <p class="c fs24 fw400 white chopped text-right">98%</p>
+<!--                    <p class="c fs24 fw400 white chopped text-right">98%</p>-->
                 </div>
                 <div class="cc x1d3 vmiddle">
-                    <span class="fs10 gray uppercase"><span class="white">80</span> лайков<br><span class="white"><?= $model->hits; ?></span> просмотров</span>
+                    <span class="fs10 gray uppercase"><span class="white"><!--80--></span> <!--лайков-->
+                    <br>
+                    <span class="white"><?= $model->hits; ?></span> просмотров</span>
                 </div>
                 <!-- <div class="cc x1d3 vmiddle ta-center">
                     <a href="#"><img src="img/i-like.png" alt=""></a>
@@ -27,9 +29,9 @@
                     <a href="#"><img src="img/i-fave.png" alt=""></a>
                 </div> -->
                 <div class="cc x1d3 vmiddle ta-center">
-                    <a href="#" class="fs18 btn gray"><span class="white fa fa-thumbs-up"></span></a>
-                    <a href="#" class="fs18 btn gray"><span class="white fa fa-thumbs-down"></span></a>
-                    <a href="#" class="fs18 btn gray"><span class="white fa fa-heart"></span></a>
+<!--                    <a href="#" class="fs18 btn gray"><span class="white fa fa-thumbs-up"></span></a>-->
+<!--                    <a href="#" class="fs18 btn gray"><span class="white fa fa-thumbs-down"></span></a>-->
+<!--                    <a href="#" class="fs18 btn gray"><span class="white fa fa-heart"></span></a>-->
                 </div>
             </div>
         </div>
@@ -103,137 +105,12 @@ echo newerton\fancybox\FancyBox::widget([
 
 
     <div class="gray-bg">
-        <div class="c-c gallery">
-            <article class="c x1d4--d x1d3--t x1d2--m gallery-element">
-                <div class="photo-element new">
-                    <a href="#">
-                        <div class="preview">
-                            <img src="http://placehold.it/300x400?text=+" class="r" alt="Видео: Отсосала и дала в попку...">
-                            <div class="duration">30 фото</div>
-                        </div>
-                        <p class="fs20 semichopped black cursive text-center">Jessica Albert</p>
-                        <h1 class="title semichopped">Отсосала у классного мужика прямов жопу получила член...</h1>
-                    </a>
-                    <div class="cc meta">
-                        <div class="c x1d2--d x1d2--t x1--m">
-                            <span>12 мар 2015</span>
-                        </div>
-                        <div class="cc x1d2--d x1d2--t x1--m">
-                            <span class="c x1d2--d x1d2--t x1--m nowrap">114&nbsp;<i class="fa fa-eye"></i></span>
-                            <span class="c x1d2--d x1d2--t x1--m nowrap">86%&nbsp;<i class="fa fa-thumbs-up"></i></span>
-                        </div>
-                    </div>
-                </div>
-            </article>
-            <article class="c x1d4--d x1d3--t x1d2--m gallery-element">
-                <div class="photo-element new">
-                    <a href="#">
-                        <div class="preview">
-                            <img src="http://placehold.it/300x400?text=+" class="r" alt="Видео: Отсосала и дала в попку...">
-                            <div class="duration">30 фото</div>
-                        </div>
-                        <p class="fs20 semichopped black cursive text-center">Jessica Albert</p>
-                        <h1 class="title semichopped">Отсосала у классного мужика прямов жопу получила член...</h1>
-                    </a>
-                    <div class="cc meta">
-                        <div class="c x1d2--d x1d2--t x1--m">
-                            <span>12 мар 2015</span>
-                        </div>
-                        <div class="cc x1d2--d x1d2--t x1--m">
-                            <span class="c x1d2--d x1d2--t x1--m nowrap">114&nbsp;<i class="fa fa-eye"></i></span>
-                            <span class="c x1d2--d x1d2--t x1--m nowrap">86%&nbsp;<i class="fa fa-thumbs-up"></i></span>
-                        </div>
-                    </div>
-                </div>
-            </article>
-            <article class="c x1d4--d x1d3--t x1d2--m gallery-element">
-                <div class="photo-element">
-                    <a href="#">
-                        <div class="preview">
-                            <img src="http://placehold.it/300x400?text=+" class="r" alt="Видео: Отсосала и дала в попку...">
-                            <div class="duration">30 фото</div>
-                        </div>
-                        <p class="fs20 semichopped black cursive text-center">Jessica Albert</p>
-                        <h1 class="title semichopped">Отсосала у классного мужика прямов жопу получила член...</h1>
-                    </a>
-                    <div class="cc meta">
-                        <div class="c x1d2--d x1d2--t x1--m">
-                            <span>12 мар 2015</span>
-                        </div>
-                        <div class="cc x1d2--d x1d2--t x1--m">
-                            <span class="c x1d2--d x1d2--t x1--m nowrap">114&nbsp;<i class="fa fa-eye"></i></span>
-                            <span class="c x1d2--d x1d2--t x1--m nowrap">86%&nbsp;<i class="fa fa-thumbs-up"></i></span>
-                        </div>
-                    </div>
-                </div>
-            </article>
-            <article class="c x1d4--d x1d3--t x1d2--m gallery-element">
-                <div class="photo-element">
-                    <a href="#">
-                        <div class="preview">
-                            <img src="http://placehold.it/300x400?text=+" class="r" alt="Видео: Отсосала и дала в попку...">
-                            <div class="duration">30 фото</div>
-                        </div>
-                        <p class="fs20 semichopped black cursive text-center">Jessica Albert</p>
-                        <h1 class="title semichopped">Отсосала у классного мужика прямов жопу получила член...</h1>
-                    </a>
-                    <div class="cc meta">
-                        <div class="c x1d2--d x1d2--t x1--m">
-                            <span>12 мар 2015</span>
-                        </div>
-                        <div class="cc x1d2--d x1d2--t x1--m">
-                            <span class="c x1d2--d x1d2--t x1--m nowrap">114&nbsp;<i class="fa fa-eye"></i></span>
-                            <span class="c x1d2--d x1d2--t x1--m nowrap">86%&nbsp;<i class="fa fa-thumbs-up"></i></span>
-                        </div>
-                    </div>
-                </div>
-            </article>
-        </div>
+        <?= \app\components\widgets\RandomizeWidget::widget(['type'=>'photo', 'currentId'=>$model->id])?>
+
 
 
         <!-- teasers -->
-        <div class="c-c teasers">
-            <div class="c x1d5--d x1d4--t x1d3--m">
-                <div class="teaser">
-                    <a href="#">
-                        <img class="r" src="http://placehold.it/300x300?text=+" alt="Спортивная мамка показала анальный секс вблизи">
-                        <p>Спортивная мамка показала анальный секс вблизи</p>
-                    </a>
-                </div>
-            </div>
-            <div class="c x1d5--d x1d4--t x1d3--m">
-                <div class="teaser">
-                    <a href="#">
-                        <img class="r" src="http://placehold.it/300x300?text=+" alt="Спортивная мамка показала анальный секс вблизи">
-                        <p>Спортивная мамка показала анальный секс вблизи</p>
-                    </a>
-                </div>
-            </div>
-            <div class="c x1d5--d x1d4--t x1d3--m">
-                <div class="teaser">
-                    <a href="#">
-                        <img class="r" src="http://placehold.it/300x300?text=+" alt="Спортивная мамка показала анальный секс вблизи">
-                        <p>Спортивная мамка показала анальный секс вблизи</p>
-                    </a>
-                </div>
-            </div>
-            <div class="c x1d5--d x1d4--t x1d3--m">
-                <div class="teaser">
-                    <a href="#">
-                        <img class="r" src="http://placehold.it/300x300?text=+" alt="Спортивная мамка показала анальный секс вблизи">
-                        <p>Спортивная мамка показала анальный секс вблизи</p>
-                    </a>
-                </div>
-            </div>
-            <div class="c x1d5--d x1d4--t x1d3--m">
-                <div class="teaser">
-                    <a href="#">
-                        <img class="r" src="http://placehold.it/300x300?text=+" alt="Спортивная мамка показала анальный секс вблизи">
-                        <p>Спортивная мамка показала анальный секс вблизи</p>
-                    </a>
-                </div>
-            </div>
-        </div>
+       <?= \app\components\widgets\TeaserWidget::widget(['type'=>'photo']); ?>
         <!-- teasers -->
 
     </div>

@@ -5,6 +5,7 @@ namespace app\modules\admin\controllers;
 use Yii;
 use app\models\Ads;
 use app\models\AdsSearch;
+use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -12,18 +13,21 @@ use yii\filters\VerbFilter;
 /**
  * AdsController implements the CRUD actions for Ads model.
  */
-class AdsController extends Controller
+class AdsController extends AdminController
 {
     public function behaviors()
     {
-        return [
+
+        $arr = ArrayHelper::merge(parent::behaviors(), [
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['post'],
                 ],
             ],
-        ];
+        ]);
+
+        return $arr;
     }
 
     /**

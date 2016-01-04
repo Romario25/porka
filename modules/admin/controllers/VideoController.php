@@ -15,18 +15,21 @@ use yii\web\UploadedFile;
 /**
  * VideoController implements the CRUD actions for Video model.
  */
-class VideoController extends Controller
+class VideoController extends AdminController
 {
     public function behaviors()
     {
-        return [
+
+        $arr = ArrayHelper::merge(parent::behaviors(), [
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['post'],
                 ],
             ],
-        ];
+        ]);
+
+        return $arr;
     }
 
     /**

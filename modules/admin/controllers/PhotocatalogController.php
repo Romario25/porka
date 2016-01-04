@@ -5,6 +5,7 @@ namespace app\modules\admin\controllers;
 use Yii;
 use app\models\PhotoCatalog;
 use app\models\PhotoCatalogSearch;
+use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -13,18 +14,21 @@ use yii\web\UploadedFile;
 /**
  * PhotoCatalogController implements the CRUD actions for PhotoCatalog model.
  */
-class PhotocatalogController extends Controller
+class PhotocatalogController extends AdminController
 {
     public function behaviors()
     {
-        return [
+
+        $arr = ArrayHelper::merge(parent::behaviors(), [
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['post'],
                 ],
             ],
-        ];
+        ]);
+
+        return $arr;
     }
 
     /**

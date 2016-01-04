@@ -13,18 +13,21 @@ use yii\web\UploadedFile;
 /**
  * SliderController implements the CRUD actions for Slider model.
  */
-class SliderController extends Controller
+class SliderController extends AdminController
 {
     public function behaviors()
     {
-        return [
+
+        $arr = ArrayHelper::merge(parent::behaviors(), [
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['post'],
                 ],
             ],
-        ];
+        ]);
+
+        return $arr;
     }
 
     /**

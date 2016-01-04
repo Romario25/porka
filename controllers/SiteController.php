@@ -135,4 +135,15 @@ class SiteController extends Controller
         echo date_diff(new DateTime(), new DateTime('2015-12-27'))->days;
 
     }
+
+    public function actionUrlvideo(){
+        if(Yii::$app->request->isAjax){
+            $w = Yii::$app->request->post('w');
+            $h = Yii::$app->request->post('h');
+            $file = Yii::$app->request->post('file');
+
+            echo \app\models\Video::getVideoUrl($w, $h, $file);
+        }
+//        echo "test";
+    }
 }

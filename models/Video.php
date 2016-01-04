@@ -249,7 +249,7 @@ class Video extends \yii\db\ActiveRecord
 
     public static function getVideoUrl($w, $h, $url){
         $config = ArrayHelper::map(Config::find()->all(), 'name', 'value');
-        // https://s3-us-west-2.amazonaws.com/romariotest/video/1280_720_1451727455.mp4
+
         $url = "https://s3-us-west-2.amazonaws.com/".$config['amazon_bucket']."/video/".$w."_".$h."_".$url;
 
         return $url;

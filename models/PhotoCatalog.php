@@ -71,10 +71,10 @@ class PhotoCatalog extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'category_id', 'description', 'url'], 'required'],
+            [['title', 'category_id', 'description', 'url', 'actor'], 'required'],
             [['category_id', 'plus', 'minus', 'hits'], 'integer'],
             [['create_at', 'update_at'], 'safe'],
-            [['description'], 'string'],
+            [['description', 'actor'], 'string'],
             ['photosUpload', 'file', 'skipOnEmpty' => ($this->isNewRecord)?false:true, 'extensions' => 'png, jpg', 'maxFiles' => 20],
             [['title'], 'string', 'max' => 255]
         ];

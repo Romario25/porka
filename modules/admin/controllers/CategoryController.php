@@ -5,6 +5,7 @@ namespace app\modules\admin\controllers;
 use Yii;
 use app\models\Category;
 use app\models\CategorySearch;
+use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -12,18 +13,21 @@ use yii\filters\VerbFilter;
 /**
  * CategoryController implements the CRUD actions for Category model.
  */
-class CategoryController extends Controller
+class CategoryController extends AdminController
 {
     public function behaviors()
     {
-        return [
+
+        $arr = ArrayHelper::merge(parent::behaviors(), [
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['post'],
                 ],
             ],
-        ];
+        ]);
+
+        return $arr;
     }
 
     /**

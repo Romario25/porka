@@ -5,6 +5,7 @@ namespace app\modules\admin\controllers;
 use Yii;
 use app\models\Config;
 use yii\data\ActiveDataProvider;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -17,6 +18,18 @@ class ConfigController extends Controller
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::className(),
+                //   'only' => ['logout'],
+                'rules' => [
+                    [
+                        //         'actions' => ['logout'],
+                        'allow' => true,
+                        'roles' => ['admin'],
+                    ],
+                ],
+            ],
+
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [

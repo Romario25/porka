@@ -11,12 +11,18 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="admin-default-index">
     <h1><?= Html::encode($this->title) ?></h1>
 
+
+    <?php if(\app\modules\admin\models\User::getCurrRole() == 'admin'):?>
     <p>
-        <?= Html::a("Категории", ['/admin/category/index'], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a("Настройки приложения", ['/admin/config/index'], ['class' => 'btn btn-primary']) ?>
     </p>
 
     <p>
-        <?= Html::a("Настройки приложения", ['/admin/config/index'], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a("Пользователи", ['/admin/user/index'], ['class' => 'btn btn-primary']) ?>
+    </p>
+    <?php endif; ?>
+    <p>
+        <?= Html::a("Категории", ['/admin/category/index'], ['class' => 'btn btn-primary']) ?>
     </p>
 
     <p>
@@ -34,5 +40,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
         <?= Html::a("Реклама", ['/admin/ads/index'], ['class' => 'btn btn-primary']) ?>
     </p>
+
+
 
 </div>

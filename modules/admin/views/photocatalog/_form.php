@@ -18,6 +18,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'actor')->textInput([['maxlength' => true]]); ?>
+
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 
     <?= $form->field($model, 'category_id')->dropDownList(ArrayHelper::map(Category::find()->all(), 'id', 'name'), [
