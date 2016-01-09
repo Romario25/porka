@@ -12,6 +12,7 @@ use yii\db\Expression;
 use yii\helpers\ArrayHelper;
 use yii\imagine\Image;
 use yii\web\UploadedFile;
+use ZipArchive;
 
 /**
  * This is the model class for table "photo_catalog".
@@ -75,7 +76,8 @@ class PhotoCatalog extends \yii\db\ActiveRecord
             [['category_id', 'plus', 'minus', 'hits'], 'integer'],
             [['create_at', 'update_at'], 'safe'],
             [['description', 'actor'], 'string'],
-            ['photosUpload', 'file', 'skipOnEmpty' => ($this->isNewRecord)?false:true, 'extensions' => 'png, jpg', 'maxFiles' => 20],
+            //['photosUpload', 'file', 'skipOnEmpty' => ($this->isNewRecord)?false:true, 'extensions' => 'png, jpg', 'maxFiles' => 20],
+            ['photosUpload', 'file', 'skipOnEmpty' => ($this->isNewRecord)?false:true, 'extensions' => 'zip'],
             [['title'], 'string', 'max' => 255]
         ];
     }
@@ -158,38 +160,88 @@ class PhotoCatalog extends \yii\db\ActiveRecord
         ]);
         try{
 
-            foreach($this->photosUpload as $photo){
-                $nameFile = time() . '_'.$photo->baseName.'.' . $photo->extension;
+            // Разбираем архив
+            //Создаём объект для работы с ZIP-архивами
+            $zip = new ZipArchive();
+            if ($zip->open($this->photosUpload->tempName) === true) {
+                $zip->extractTo("../web/uploads/temp"); //Извлекаем файлы в указанную директорию
+                $count = $zip->numFiles;
+                for ($i = 0; $i < $count; $i++)
+                {
+                    $stat = $zip->statIndex ($i);
+                    echo $stat['name'], "\n";
+                    $nameFile = time() . '_'.$stat['name'];
 
-                // сохраняем превьюшки
-                // Сохраняем оригинал фотки в temp папку
-                $photo->saveAs("../web/uploads/temp/".$nameFile);
-                Image::getImagine()->open("../web/uploads/temp/".$nameFile)->flipHorizontally()->save("../web/uploads/temp/".$nameFile);
+                    // сохраняем превьюшки
+                    // Сохраняем оригинал фотки в temp папку
 
-                // Вешаем ваатермарку
-                Image::watermark('../web/uploads/temp/'.$nameFile, "../web/uploads/watermark/watermark_big.png")
-                    ->save('../web/uploads/temp/'.$nameFile);
+                    Image::getImagine()->open("../web/uploads/temp/".$stat['name'])->flipHorizontally()->save("../web/uploads/temp/".$nameFile);
+                    unlink("../web/uploads/temp/".$stat['name']);
+                    // Вешаем ваатермарку
+                    Image::watermark('../web/uploads/temp/'.$nameFile, "../web/uploads/watermark/watermark_big.png")
+                        ->save('../web/uploads/temp/'.$nameFile);
 
-                // сохраняем превьюшки
-                Image::thumbnail('../web/uploads/temp/'.$nameFile, 255, 340)
-                    ->save('../web/uploads/thumbnail/'.$nameFile, ['quality' => 80]);
+                    // сохраняем превьюшки
+                    Image::thumbnail('../web/uploads/temp/'.$nameFile, 255, 340)
+                        ->save('../web/uploads/thumbnail/'.$nameFile, ['quality' => 80]);
 
 
 
-                $res = $s3->putObject([
-                    'Bucket' => $config['amazon_bucket'],
-                    'Key' => 'photo/'.$nameFile,
-                    'Body' => fopen("../web/uploads/temp/".$nameFile, 'rb'),
-                    'ACL' => 'public-read'
-                ]);
-                $photos = new Photos();
-                $photos->url = $res['ObjectURL'];
-                $photos->catalog_id = $this->id;
-                $photos->url_thumbnail = '/uploads/thumbnail/'.$nameFile;
-                $photos->save();
-                unlink("../web/uploads/temp/".$nameFile);
+                    $res = $s3->putObject([
+                        'Bucket' => $config['amazon_bucket'],
+                        'Key' => 'photo/'.$nameFile,
+                        'Body' => fopen("../web/uploads/temp/".$nameFile, 'rb'),
+                        'ACL' => 'public-read'
+                    ]);
+                    $photos = new Photos();
+                    $photos->url = $res['ObjectURL'];
+                    $photos->catalog_id = $this->id;
+                    $photos->url_thumbnail = '/uploads/thumbnail/'.$nameFile;
+                    $photos->save();
+                    unlink("../web/uploads/temp/".$nameFile);
 
+                }
+                $zip->close(); //Завершаем работу с архивом
+            } else {
+                echo "NO ARCHIVE";
+                die();
             }
+
+
+
+
+//            foreach($this->photosUpload as $photo){
+//                $nameFile = time() . '_'.$photo->baseName.'.' . $photo->extension;
+//
+//                // сохраняем превьюшки
+//                // Сохраняем оригинал фотки в temp папку
+//                $photo->saveAs("../web/uploads/temp/".$nameFile);
+//                Image::getImagine()->open("../web/uploads/temp/".$nameFile)->flipHorizontally()->save("../web/uploads/temp/".$nameFile);
+//
+//                // Вешаем ваатермарку
+//                Image::watermark('../web/uploads/temp/'.$nameFile, "../web/uploads/watermark/watermark_big.png")
+//                    ->save('../web/uploads/temp/'.$nameFile);
+//
+//                // сохраняем превьюшки
+//                Image::thumbnail('../web/uploads/temp/'.$nameFile, 255, 340)
+//                    ->save('../web/uploads/thumbnail/'.$nameFile, ['quality' => 80]);
+//
+//
+//
+//                $res = $s3->putObject([
+//                    'Bucket' => $config['amazon_bucket'],
+//                    'Key' => 'photo/'.$nameFile,
+//                    'Body' => fopen("../web/uploads/temp/".$nameFile, 'rb'),
+//                    'ACL' => 'public-read'
+//                ]);
+//                $photos = new Photos();
+//                $photos->url = $res['ObjectURL'];
+//                $photos->catalog_id = $this->id;
+//                $photos->url_thumbnail = '/uploads/thumbnail/'.$nameFile;
+//                $photos->save();
+//                unlink("../web/uploads/temp/".$nameFile);
+//
+//            }
 
         } catch(S3Exception $e){
             echo $e->getMessage();

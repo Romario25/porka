@@ -51,7 +51,8 @@
         <!-- intro text -->
         <?php
 
-
+           // $ads = "test";
+           $ads = \app\components\widgets\AdsWidget::widget(['url'=>'photo-slider']);
 
         ?>
         <div class="c-c gallery">
@@ -59,7 +60,7 @@
                 <article class="c x1d4--d x1d3--t x1d2--m gallery-element">
                     <div class="photo-element">
                         <div >
-                            <a href="<?= $photo->url ?>" rel="fancybox" class="thumbnail"><img src="<?= $photo->url_thumbnail; ?>" class="r" alt=""></a>
+                            <a title="" href="<?= $photo->url ?>" rel="fancybox" class="thumbnail"><img src="<?= $photo->url_thumbnail; ?>" class="r" alt=""></a>
                         </div>
                     </div>
                 </article>
@@ -78,6 +79,7 @@ echo newerton\fancybox\FancyBox::widget([
         'fitToView' => false,
         'width' => '70%',
         'height' => '70%',
+        'title' => $ads,
         'autoSize' => false,
         'closeClick' => false,
         'openEffect' => 'elastic',
@@ -87,7 +89,7 @@ echo newerton\fancybox\FancyBox::widget([
         'closeBtn' => false,
         'openOpacity' => true,
         'helpers' => [
-            'title' => ['type' => 'float'],
+            'title' => ['type' => 'outside'],
             'buttons' => [],
             'thumbs' => ['width' => 68, 'height' => 50],
             'overlay' => [

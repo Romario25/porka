@@ -39,7 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'minus',
             // 'hits',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            ['class' => 'yii\grid\ActionColumn', 'template'=>'{update} {delete}'],
         ],
     ]); ?>
 

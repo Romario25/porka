@@ -35,37 +35,77 @@
     </div>
     <div class="g w1140 video">
 <!--        <a href="#"><img class="r" src="/images/player.jpg" alt=""></a>-->
-        <video id="Video1"  width="1140" controls preload="auto">
-            <source src="<?php echo \app\models\Video::getVideoUrl(320, 240, $video->object_url); ?>" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' />
-        </video>
-        <div style="position: relative; top:-40px;">
-            <select name="hd" id="hd" >
-                <option value="320X240">320</option>
-                <option value="640X480">640</option>
-                <option value="1280X720">1280</option>
-            </select>
-        </div>
+<!--        <video id="Video1"  width="1140" controls preload="auto">-->
+<!--            <source src="--><?php //echo \app\models\Video::getVideoUrl(320, 240, $video->object_url); ?><!--" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' />-->
+<!--        </video>-->
+<!--        <div style="position: relative; top:-40px;">-->
+<!--            <select name="hd" id="hd" >-->
+<!--                <option value="320X240">320</option>-->
+<!--                <option value="640X480">640</option>-->
+<!--                <option value="1280X720">1280</option>-->
+<!--            </select>-->
+<!--        </div>-->
         <script>
-            $(function(){
-                $("#hd").change(function(){
-                    //arr = "a,b,c".split(',')
-                    var arr = $(this).val().split("X");
-                    var w = arr[0];
-                    var h = arr[1];
-                    var url = $.ajax({
-                        type: "POST",
-                        url: "/site/urlvideo",
-                        data: "w="+w+"&h="+h+"&file="+"<?php echo $video->object_url; ?>",
-                        async: false
-                    }).responseText;
-                    //alert(url);
-                    //$("video source").attr("src", url);
-                    var video = document.getElementById("Video1");
-                    video.src = url;
-                    video.load();  // if HTML source element is used
-                    //video.currentTime = 0;
-                    video.play();
-                });
+//            $(function(){
+//                $("#hd").change(function(){
+//                    //arr = "a,b,c".split(',')
+//                    var arr = $(this).val().split("X");
+//                    var w = arr[0];
+//                    var h = arr[1];
+//                    var url = $.ajax({
+//                        type: "POST",
+//                        url: "/site/urlvideo",
+//                        data: "w="+w+"&h="+h+"&file="+"<?php //echo $video->object_url; ?>//",
+//                        async: false
+//                    }).responseText;
+//                    //alert(url);
+//                    //$("video source").attr("src", url);
+//                    var video = document.getElementById("Video1");
+//                    video.src = url;
+//                    video.load();  // if HTML source element is used
+//                    //video.currentTime = 0;
+//                    video.play();
+//                });
+//            });
+        </script>
+        <!-- JS jwplayer 6.8 -->
+        <script type="text/javascript" src="/jwplayer/jwplayer.js"></script>
+        <!-- JWplayer Licence - put your licence here -->
+        <script type="text/javascript">jwplayer.key="sufeUGJJuZVgifO9BAztb33TNTvTYpGgHLYfVw==";</script>
+
+        <div id="video">Loading the player...</div>
+        <script type="text/javascript">
+            var playerInstance = jwplayer("video");
+            playerInstance.setup({
+                   image: "/uploads/screenshotvideo/<?= $video->screenshot; ?>",
+                width: 1140,
+                height: 620,
+                title: "<?php echo $video->title; ?>",
+                description: "<?php echo $video->description; ?>",
+                playlist:[
+                    {
+                        image: "/uploads/screenshotvideo/<?= $video->screenshot; ?>",
+                        sources :[
+                            {
+                                file: "<?php echo \app\models\Video::getVideoUrl(320, 240, $video->object_url); ?>",
+                                label:"320p"
+                            },
+                            {
+                                file: "<?php echo \app\models\Video::getVideoUrl(640, 480, $video->object_url); ?>",
+                                label:"640p"
+                            },
+                            {
+                                file: "<?php echo \app\models\Video::getVideoUrl(1280, 720, $video->object_url); ?>",
+                                label:"1280p"
+                            }
+                        ]
+                    }
+
+
+
+
+
+                ]
             });
         </script>
 

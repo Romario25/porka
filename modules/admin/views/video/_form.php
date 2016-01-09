@@ -21,9 +21,19 @@ use yii\widgets\ActiveForm;
     ?>
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
+    <?php if(!$model->isNewRecord): ?>
+        <?= $form->field($model, 'url')->textInput(['maxlength' => true]) ?>
+    <?php endif; ?>
+
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'videoFile')->fileInput(); ?>
+    <?= $form->field($model, 'videoFile[]')->fileInput()->label("video 320X240"); ?>
+
+    <?= $form->field($model, 'videoFile[]')->fileInput()->label("video 640X480"); ?>
+
+    <?= $form->field($model, 'videoFile[]')->fileInput()->label("video 1280X720"); ?>
+
+    <?= $form->field($model, 'screenShotVideo')->fileInput(['accept' => 'image/*']); ?>
 
     <?= $form->field($model, 'screenFiles[]')->fileInput(['multiple' => true, 'accept' => 'image/*']); ?>
 

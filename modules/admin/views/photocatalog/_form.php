@@ -18,6 +18,11 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
+    <?php if(!$model->isNewRecord): ?>
+        <?= $form->field($model, 'url')->textInput(['maxlength' => true]) ?>
+    <?php endif; ?>
+
+
     <?= $form->field($model, 'actor')->textInput([['maxlength' => true]]); ?>
 
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
@@ -26,7 +31,7 @@ use yii\widgets\ActiveForm;
         'prompt' => 'Выберите категорию'
     ]) ?>
 
-    <?= $form->field($model, 'photosUpload[]')->fileInput(['multiple' => true, 'accept' => 'image/*']); ?>
+    <?= $form->field($model, 'photosUpload')->fileInput(); ?>
 
 
     <div class="form-group">

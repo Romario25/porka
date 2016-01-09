@@ -35,7 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'preview_url:url',
             // 'category_id',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            ['class' => 'yii\grid\ActionColumn', 'template'=>'{update} {delete}'],
         ],
     ]); ?>
 

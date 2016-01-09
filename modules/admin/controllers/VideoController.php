@@ -72,8 +72,12 @@ class VideoController extends AdminController
         $model = new Video();
 
         if ($model->load(Yii::$app->request->post())) {
-            $model->videoFile = UploadedFile::getInstance($model, 'videoFile');
+
+            $model->videoFile = UploadedFile::getInstances($model, 'videoFile');
             $model->screenFiles = UploadedFile::getInstances($model, 'screenFiles');
+            $model->screenShotVideo = UploadedFile::getInstance($model, 'screenShotVideo');
+
+
             if($model->save()){
                 return $this->redirect(['index']);
             } else {
@@ -100,8 +104,9 @@ class VideoController extends AdminController
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post())) {
-            $model->videoFile = UploadedFile::getInstance($model, 'videoFile');
+            $model->videoFile = UploadedFile::getInstances($model, 'videoFile');
             $model->screenFiles = UploadedFile::getInstances($model, 'screenFiles');
+            $model->screenShotVideo = UploadedFile::getInstance($model, 'screenShotVideo');
             if($model->save()){
                 return $this->redirect(['index']);
             } else {

@@ -70,7 +70,7 @@ class PhotocatalogController extends AdminController
 
         if ($model->load(Yii::$app->request->post()) ) {
 
-            $model->photosUpload = UploadedFile::getInstances($model, 'photosUpload');
+            $model->photosUpload = UploadedFile::getInstance($model, 'photosUpload');
 
             if($model->save()){
                 return $this->redirect(['index']);
@@ -95,7 +95,7 @@ class PhotocatalogController extends AdminController
 
         if ($model->load(Yii::$app->request->post()) ) {
 
-            $model->photosUpload = UploadedFile::getInstances($model, 'photosUpload');
+            $model->photosUpload = UploadedFile::getInstance($model, 'photosUpload');
 
             if($model->save()){
                 return $this->redirect(['index']);
