@@ -22,6 +22,10 @@ $this->params['breadcrumbs'][] = $this->title;
     </p>
     <?php endif; ?>
     <p>
+        <?= Html::a("Страницы", ['/admin/pages/index'], ['class' => 'btn btn-primary']) ?>
+    </p>
+
+    <p>
         <?= Html::a("Категории", ['/admin/category/index'], ['class' => 'btn btn-primary']) ?>
     </p>
 

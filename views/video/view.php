@@ -1,5 +1,17 @@
 <?php
 /** @var \app\models\Video $video  */
+/** @var \yii\web\View $this */
+?>
+
+<?php
+    $this->title = $video->meta_title;
+    $this->registerMetaTag([
+        'name' => 'keywords', 'value' => $video->meta_keywords
+    ]);
+    $this->registerMetaTag([
+        'name' => 'description', 'value' => $video->meta_description
+    ]);
+
 ?>
 <!-- video -->
 <div class="herounit turquoise-gradient-bg">

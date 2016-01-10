@@ -1,8 +1,13 @@
 <?php
 /** @var \app\models\Video $videos */
 /** @var \app\models\Category $category */
+
 ?>
 
+<?php
+
+    $this->title = "TEST";
+?>
 <div class="g w1140 main">
 <!-- main -->
 

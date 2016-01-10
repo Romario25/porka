@@ -2,6 +2,17 @@
 /** @var \app\models\PhotoCatalog $model */
 ?>
 
+<?php
+$this->title = $model->meta_title;
+$this->registerMetaTag([
+    'name' => 'keywords', 'value' => $model->meta_keywords
+]);
+$this->registerMetaTag([
+    'name' => 'description', 'value' => $model->meta_description
+]);
+
+?>
+
 <!-- video -->
 <div class="herounit turquoise-gradient-bg">
     <div class="herounit darkgray-bg">

@@ -1,8 +1,22 @@
 <?php
 /** @var \app\models\Video $videos */
 /** @var \app\models\Category $category */
+/** @var \yii\web\View $this */
 ?>
+<?php
 
+$this->title = "TEST";
+
+$this->registerMetaTag([
+    'name' => 'keywords', 'content' => 'keyword1, keyword2'
+]);
+$this->registerMetaTag([
+    'name' => 'description', 'content' => 'desc1, desc2'
+]);
+
+
+
+?>
 <div class="g w1140 main">
     <!-- main -->
 

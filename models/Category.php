@@ -30,7 +30,7 @@ class Category extends \yii\db\ActiveRecord
         return [
             [['name', 'url'], 'required'],
             ['show_expand', 'boolean'],
-            [['name', 'url', 'description'], 'string', 'max' => 255]
+            [['name', 'url', 'description', 'meta_title', 'meta_keywords', 'meta_description'], 'string', 'max' => 255]
         ];
     }
 

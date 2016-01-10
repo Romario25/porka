@@ -78,7 +78,7 @@ class PhotoCatalog extends \yii\db\ActiveRecord
             [['description', 'actor'], 'string'],
             //['photosUpload', 'file', 'skipOnEmpty' => ($this->isNewRecord)?false:true, 'extensions' => 'png, jpg', 'maxFiles' => 20],
             ['photosUpload', 'file', 'skipOnEmpty' => ($this->isNewRecord)?false:true, 'extensions' => 'zip'],
-            [['title'], 'string', 'max' => 255]
+            [['title', 'meta_title', 'meta_keywords', 'meta_description'], 'string', 'max' => 255]
         ];
     }
 
@@ -163,7 +163,7 @@ class PhotoCatalog extends \yii\db\ActiveRecord
             // Разбираем архив
             //Создаём объект для работы с ZIP-архивами
             $zip = new ZipArchive();
-            if ($zip->open($this->photosUpload->tempName) === true) {
+            if ($this->photosUpload != null && $zip->open($this->photosUpload->tempName) === true) {
                 $zip->extractTo("../web/uploads/temp"); //Извлекаем файлы в указанную директорию
                 $count = $zip->numFiles;
                 for ($i = 0; $i < $count; $i++)
@@ -202,9 +202,6 @@ class PhotoCatalog extends \yii\db\ActiveRecord
 
                 }
                 $zip->close(); //Завершаем работу с архивом
-            } else {
-                echo "NO ARCHIVE";
-                die();
             }
 
 

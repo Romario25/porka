@@ -21,16 +21,17 @@ AppAsset::register($this);
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="keywords" content="">
+<!--    <meta name="description" content="">-->
+<!--    <meta name="keywords" content="">-->
+
     <?= Html::csrfMetaTags() ?>
 
-
-    <title>Главная - PornClub</title>
+    <?php $this->head() ?>
+    <title><?= $this->title; ?></title>
     <link rel="shortcut icon" href="/img/favicon.ico">
     <link rel="icon" type="image/gif" href="img/favicon.gif">
 
-    <?php $this->head() ?>
+
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&subset=latin,cyrillic">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:400,300,500,700&subset=latin,cyrillic">

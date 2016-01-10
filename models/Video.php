@@ -92,7 +92,7 @@ class Video extends \yii\db\ActiveRecord
             ['screenShotVideo', 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg'],
             ['videoFile', 'file', 'skipOnEmpty' => true, 'extensions' => 'mp4', 'maxFiles' => 3],
             ['screenFiles', 'file', 'skipOnEmpty' => ($this->isNewRecord)?false:true, 'extensions' => 'png, jpg', 'maxFiles' => 4],
-            [['title', 'object_url', 'preview_url'], 'string', 'max' => 255]
+            [['title', 'object_url', 'preview_url', 'meta_title', 'meta_keywords', 'meta_description'], 'string', 'max' => 255]
         ];
     }
 

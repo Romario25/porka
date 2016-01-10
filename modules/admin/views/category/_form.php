@@ -14,9 +14,15 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'description')->textInput([]); ?>
+    <?= $form->field($model, 'description')->textarea([]); ?>
 
     <?= $form->field($model, 'url')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'meta_title')->textInput(['maxlength' => true]); ?>
+
+    <?= $form->field($model, 'meta_keywords')->textInput(['maxlength' => true]); ?>
+
+    <?= $form->field($model, 'meta_description')->textInput(['maxlength' => true]); ?>
 
     <?= $form->field($model, 'show_expand')->checkbox([]); ?>
 
