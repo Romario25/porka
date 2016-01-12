@@ -69,15 +69,35 @@ AppAsset::register($this);
         </div>
         <div class="c x4d12--d x1d4--t x1d2--m vmiddle">
             <ul class="inline unstyled">
-                <li><a class="inflated half fw600" href="#" title="Порно фото и видео"><i class="fa fa-home"></i> Главная</a></li>
-                <li><a class="inflated half fw600" href="#" title="Порно видео HD"><span class="fa fa-video-camera"></span> Видео</a></li>
-                <li><a class="inflated half fw600" href="#" title="Порно фото"><span class="fa fa-picture-o"></span> Фото</a></li>
+                <li><a class="inflated half fw600" href="/" title="Порно фото и видео"><i class="fa fa-home"></i> Главная</a></li>
+                <li><a class="inflated half fw600" href="/video" title="Порно видео HD"><span class="fa fa-video-camera"></span> Видео</a></li>
+                <li><a class="inflated half fw600" href="/photo" title="Порно фото"><span class="fa fa-picture-o"></span> Фото</a></li>
             </ul>
         </div>
-        <form class="cc x6d12--d x1d2--t x1--m vmiddle inflated-v">
-            <div class="c x3d5--d x1d2--t x1d2--m"><input class="c" type="text" placeholder="Ваш e-mail"></div>
-            <div class="c x2d5--d x1d2--t x1d2--m"><button class="c">Подписаться</button></div>
+        <form class="cc x6d12--d x1d2--t x1--m vmiddle inflated-v footer-sub">
+            <div class="c x3d5--d x1d2--t x1d2--m"><input style="color:black;" class="c email-subscribe-footer" type="text" placeholder="Ваш e-mail"></div>
+            <div class="c x2d5--d x1d2--t x1d2--m"><button class="c footer-but">Подписаться</button></div>
         </form>
+        <script>
+            $(function(){
+                $("form.footer-sub button.footer-but").click(function(){
+
+                    var email = $(".email-subscribe-footer").val();
+
+                    $.ajax({
+                        url: '/site/subscribe',
+                        type: 'POST',
+                        data: 'email='+email,
+                        success: function(sucess){
+                            alert(sucess);
+                            $(".email-subscribe-footer").val("");
+                        }
+                    });
+                    //alert("test");
+                    return false;
+                });
+            })
+        </script>
         <div class="inflated-v">
             <div class="c x7d12--d x1d2--t x1--m">
                 <p class="fs12">Все материалы, представленные на данном сайте, разрешины к просмотру лицам достигшим 18 лет или старше. Посетив этот сайт, Вы подтверждаете, что Вы достигли установленного законом возраста в вашей стране, чтобы просматривать материалы для взрослых, и что Вы хотите посмотреть такой материал.</p>
@@ -86,11 +106,14 @@ AppAsset::register($this);
             <div class="c x5d12--d x1d2--t x1--m text-right">
                 <p class="fs14">Поделитесь с друзьями</p>
                 <p>
-                    <a class="social" href="http://vk.com" title="Поделиться вКонтакте"><img src="/img/icon-vk.png" alt="Поделиться вКонтакте"></a>
-                    <a class="social" href="http://facebook.com" title="Поделиться в Facebook"><img src="/img/icon-fb.png" alt="Поделиться в Facebook"></a>
-                    <a class="social" href="http://twitter.com" title="Поделиться в Twitter"><img src="/img/icon-tw.png" alt="Поделиться в Twitter"></a>
-                    <a class="social" href="http://ok.ru" title="Поделиться в Одноклассниках"><img src="/img/icon-ok.png" alt="Поделиться в Одноклассниках"></a>
-                    <a class="social" href="http://plus.google.com" title="Поделиться в Google Plus"><img src="/img/icon-gp.png" alt="Поделиться в Google Plus"></a>
+<!--                    <a class="social" href="http://vk.com" title="Поделиться вКонтакте"><img src="/img/icon-vk.png" alt="Поделиться вКонтакте"></a>-->
+<!--                    <a class="social" href="http://facebook.com" title="Поделиться в Facebook"><img src="/img/icon-fb.png" alt="Поделиться в Facebook"></a>-->
+<!--                    <a class="social" href="http://twitter.com" title="Поделиться в Twitter"><img src="/img/icon-tw.png" alt="Поделиться в Twitter"></a>-->
+<!--                    <a class="social" href="http://ok.ru" title="Поделиться в Одноклассниках"><img src="/img/icon-ok.png" alt="Поделиться в Одноклассниках"></a>-->
+<!--                    <a class="social" href="http://plus.google.com" title="Поделиться в Google Plus"><img src="/img/icon-gp.png" alt="Поделиться в Google Plus"></a>-->
+                <div class="share42init"></div>
+                <script type="text/javascript" src="/share42/share42.js"></script>
+
                 </p>
             </div>
         </div>

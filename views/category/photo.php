@@ -3,6 +3,22 @@
 use yii\widgets\LinkPager;
 
 ?>
+
+<?php
+
+$this->title = $category->meta_title;
+
+$this->registerMetaTag([
+    'name' => 'keywords', 'content' => $category->meta_keywords
+]);
+$this->registerMetaTag([
+    'name' => 'description', 'content' => $category->meta_description
+]);
+
+
+
+?>
+
 <div class="g w1140 main">
 
     <!-- menu -->
@@ -10,13 +26,13 @@ use yii\widgets\LinkPager;
     <!-- menu -->
 
     <div class="c">
-        <p class="fs24 fw700 text-center opensans">Фото голых и привлекательных девушек, красивого секса, порно фото красивых моделей и ххх кадры на сайте tukituki.org</p>
+        <p class="fs24 fw700 text-center opensans"><?= $category->name; ?></p>
     </div>
 
     <!-- intro text -->
     <div class="c-c">
         <div class="c">
-            <p>Для любого мужчины, если конечно он мужчина традиционной сексуальной ориентации, нет ничего прекраснее, чем видобольстительного обнаженного женского тела. Тем более,  что на данный момент в интернете есть множество сайтов, накоторых выложены целые галереи с фотографиями прекрасных, сексапильных голых девушек. Они  будут манить вас  толькоодним видом своего божественного девичьего тела и неприкрытой наготой. Любой мужчина, увидев на улице прекрасную представительницу слабого пола, на которой минимум одежды, всеми фибрами души к ней тянется, и его взор может надолгозаостриться на области пониже талии или декольте. Ещё старина Фрейд ставил либидо на первое место, которое отвечаетза все наши действия. По его мнению, именно либидо движет человеком, говоря ему как себя вести, как выбирать друзей и многое другое. Женщины, по мнению Фрейда не так склонны терять голову, при виде красивого мачо, как мужчины при виде обольстительных голых девушек.</p>
+            <p><?= $category->description; ?></p>
         </div>
     </div>
     <!-- intro text -->
@@ -37,7 +53,7 @@ use yii\widgets\LinkPager;
                                 <img src="<?= (isset($photo->photos[0]))?$photo->photos[0]:"#" ?>" class="r" alt="<?= $photo->title ?>">
                                 <div class="duration"><?= $photo->photosCount; ?> фото</div>
                             </div>
-                            <p class="fs20 semichopped black cursive text-center">Jessica Albert</p>
+                            <p class="fs20 semichopped black cursive text-center"><?= $photo->actor?></p>
                             <h1 class="title semichopped"><?= $photo->title ?></h1>
                         </a>
                         <div class="cc meta">
@@ -46,7 +62,7 @@ use yii\widgets\LinkPager;
                             </div>
                             <div class="cc x1d2--d x1d2--t x1--m">
                                 <span class="c x1d2--d x1d2--t x1--m nowrap"><?= $photo->hits; ?>&nbsp;<i class="fa fa-eye"></i></span>
-                                <span class="c x1d2--d x1d2--t x1--m nowrap">86%&nbsp;<i class="fa fa-thumbs-up"></i></span>
+<!--                                <span class="c x1d2--d x1d2--t x1--m nowrap">86%&nbsp;<i class="fa fa-thumbs-up"></i></span>-->
                             </div>
                         </div>
                     </div>

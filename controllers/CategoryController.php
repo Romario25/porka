@@ -35,7 +35,7 @@ class CategoryController extends Controller
 
         if($type == 'photo'){
             $photo = PhotoCatalog::find()->where('category_id = :category_id', [':category_id'=>$category->id])->all();
-            return $this->render('photo', ['photos'=>$photo]);
+            return $this->render('photo', ['photos'=>$photo, 'category'=>$category]);
         }
 
 

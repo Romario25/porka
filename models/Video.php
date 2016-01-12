@@ -91,9 +91,17 @@ class Video extends \yii\db\ActiveRecord
             [['category_id'], 'integer'],
             ['screenShotVideo', 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg'],
             ['videoFile', 'file', 'skipOnEmpty' => true, 'extensions' => 'mp4', 'maxFiles' => 3],
+            ['videoFile', 'countVideoValidator'],
             ['screenFiles', 'file', 'skipOnEmpty' => ($this->isNewRecord)?false:true, 'extensions' => 'png, jpg', 'maxFiles' => 4],
             [['title', 'object_url', 'preview_url', 'meta_title', 'meta_keywords', 'meta_description'], 'string', 'max' => 255]
         ];
+    }
+
+    public function countVideoValidator($attribute, $params){
+        if(count($this->$attribute) < 3){
+            $this->addError($attribute, "Не все расширения залиты !");
+        }
+
     }
 
     public function beforeSave($insert)
@@ -160,30 +168,36 @@ class Video extends \yii\db\ActiveRecord
 //            unlink(__DIR__."/../web/uploads/temp/{$item['w']}_{$item['h']}_$fileName");
 //
 //        }
-        $fileName = time() . '.mp4';
+
 //     echo "RESPONSE";
 //       print_r($this->videoFile); die();
-
-        foreach($this->videoFile as $k => $file){
-            try{
-                $res = $s3->putObject([
-                    'Bucket' => $config['amazon_bucket'],
-                    'Key' => "video/{$arr[$k]['w']}_{$arr[$k]['h']}_$fileName",
-                    'Body' => fopen($file->tempName, 'rb'),
-                    'ACL' => 'public-read'
-                ]);
-            }catch(S3Exception $e){
-                echo $e->getMessage();
-                Yii::$app->session->setFlash('error', $e->getMessage());
+        if(count($this->videoFile) > 0){
+            $fileName = time() . '.mp4';
+            foreach($this->videoFile as $k => $file){
+                try{
+                    $res = $s3->putObject([
+                        'Bucket' => $config['amazon_bucket'],
+                        'Key' => "video/{$arr[$k]['w']}_{$arr[$k]['h']}_$fileName",
+                        'Body' => fopen($file->tempName, 'rb'),
+                        'ACL' => 'public-read'
+                    ]);
+                }catch(S3Exception $e){
+                    echo $e->getMessage();
+                    Yii::$app->session->setFlash('error', $e->getMessage());
+                }
             }
+            $this->object_url = $fileName;
         }
-        $this->object_url = $fileName;
+
 
         return true;
     }
 
     private function uploadScrrenVideo($video_id){
 
+        if(count($this->screenFiles) > 0){
+            VideoScreens::deleteAll('video_id = :video_id', [':video_id'=>$video_id]);
+        }
 
         foreach($this->screenFiles as $file){
 
@@ -207,13 +221,16 @@ class Video extends \yii\db\ActiveRecord
 
     private function uploadScreenShotVideo(){
 
-            $nameFile = time() . '_'.$this->screenShotVideo->baseName.'.' . $this->screenShotVideo->extension;
+            if($this->screenShotVideo != null){
+                $nameFile = time() . '_'.$this->screenShotVideo->baseName.'.' . $this->screenShotVideo->extension;
 
-            // сохраняем превьюшки
-            Image::thumbnail($this->screenShotVideo->tempName, 1100, 620)
-                ->save('../web/uploads/screenshotvideo/'.$nameFile, ['quality' => 80]);
+                // сохраняем превьюшки
+                Image::thumbnail($this->screenShotVideo->tempName, 1100, 620)
+                    ->save('../web/uploads/screenshotvideo/'.$nameFile, ['quality' => 80]);
 
-            $this->screenshot = $nameFile;
+                $this->screenshot = $nameFile;
+            }
+
 
         return true;
     }
@@ -290,9 +307,23 @@ class Video extends \yii\db\ActiveRecord
 
     public static function getVideoUrl($w, $h, $url){
         $config = ArrayHelper::map(Config::find()->all(), 'name', 'value');
+        $s3 = new S3Client([
+            'version'     => 'latest',
+            'region'      => 'us-west-2',
+            'credentials' => [
+                'key'    => $config['amazon_key'],
+                'secret' => $config['amazon_secret']
+            ]
+        ]);
+        $result = "https://s3-us-west-2.amazonaws.com/".$config['amazon_bucket']."/video/".$w."_".$h."_".$url;
 
-        $url = "https://s3-us-west-2.amazonaws.com/".$config['amazon_bucket']."/video/".$w."_".$h."_".$url;
+//        if($s3->doesObjectExist($config['amazon_bucket'], "video/".$w."_".$h."_".$url)){
+//            return $result;
+//        } else {
+//            return "";
+//        }
+        return $result;
 
-        return $url;
+
     }
 }

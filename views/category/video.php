@@ -5,13 +5,13 @@
 ?>
 <?php
 
-$this->title = "TEST";
+$this->title = $category->meta_title;
 
 $this->registerMetaTag([
-    'name' => 'keywords', 'content' => 'keyword1, keyword2'
+    'name' => 'keywords', 'content' => $category->meta_keywords
 ]);
 $this->registerMetaTag([
-    'name' => 'description', 'content' => 'desc1, desc2'
+    'name' => 'description', 'content' => $category->meta_description
 ]);
 
 

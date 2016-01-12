@@ -1,5 +1,5 @@
 <div class="subscription opensans">
-    <form action="#" method="post" class="c-c x3d5--d x3d4--t x1--m">
+    <form action="#" method="post" class="c-c x3d5--d x3d4--t x1--m sub-main">
         <p class="c title x1d2--m">Хотите <span class="fw600">свеженькое и лучшее?</span></p>
         <p class="c fs18 white">Получайте <span class="fw600">эксклюзивные фото</span> и видео <span class="fw600">самых горячих девушек</span> в <span class="fw600">лучшем качестве</span> первыми!</p>
         <div class="g">
@@ -11,7 +11,7 @@
 </div>
 <script>
     $(function(){
-        $("form button.c").click(function(){
+        $("form.sub-main button.c").click(function(){
 
             var email = $(".email-subscribe").val();
 

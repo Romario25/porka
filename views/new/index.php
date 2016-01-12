@@ -46,7 +46,7 @@ $this->registerMetaTag([
                 <article class="c x1d3--d x1d3--t x1d2--m gallery-element">
                     <div class="video-element new">
                         <a href="/video/<?= $video->url; ?>">
-                            <div class="preview" >
+                            <div class="preview preview-video" >
 
                                 <img src="<?= $video->screens[0];?>" data="<?= implode(",", $video->screens); ?>" class="r" alt="Видео: Отсосала и дала в попку...">
 
@@ -70,14 +70,14 @@ $this->registerMetaTag([
             <?php endforeach; ?>
             <script>
                 $(function() {
-                    $('.preview').hover(function() {
-                        console.log("START");
-                        console.log($(this).find("img").attr('data'));
+                    $('.preview-video').hover(function() {
+//                        console.log("START");
+//                        console.log($(this).find("img").attr('data'));
                         var _this = this,
                             curImage = $(this).find("img"),
                             images = curImage.attr('data').split(',');
                         counter = 0;
-                        console.log(images);
+                      //  console.log(images);
 
                         curImage.attr('data-src', curImage.attr('src'));
 

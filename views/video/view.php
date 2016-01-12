@@ -87,13 +87,30 @@
 
         <div id="video">Loading the player...</div>
         <script type="text/javascript">
+            var h = null;
+//            alert(screen.width);
+//            //var screenWidth = screen.width;
+//            if(Number(screen.width) < 1000){
+//                h = 270;
+//            } else {
+//                h = 610;
+//            }
+            //var h = "100%";
+            if(Number(screen.width) > 1000){
+                h = 610;
+            } else if(Number(screen.width) < 1000 && Number(screen.width) > 640 ){
+                h = 270;
+            } else {
+                h = 180;
+            }
             var playerInstance = jwplayer("video");
             playerInstance.setup({
                    image: "/uploads/screenshotvideo/<?= $video->screenshot; ?>",
-                width: 1140,
-                height: 620,
+                width: "100%",
+                height: h,
+
                 title: "<?php echo $video->title; ?>",
-                description: "<?php echo $video->description; ?>",
+                description: "",
                 playlist:[
                     {
                         image: "/uploads/screenshotvideo/<?= $video->screenshot; ?>",
