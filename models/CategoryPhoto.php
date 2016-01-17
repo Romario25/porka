@@ -5,24 +5,25 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "pages".
+ * This is the model class for table "category_photo".
  *
  * @property integer $id
- * @property string $title
+ * @property string $name
  * @property string $url
+ * @property integer $show_expand
  * @property string $description
  * @property string $meta_title
  * @property string $meta_keywords
  * @property string $meta_description
  */
-class Pages extends \yii\db\ActiveRecord
+class CategoryPhoto extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'pages';
+        return 'category_photo';
     }
 
     /**
@@ -31,9 +32,10 @@ class Pages extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'url'], 'required'],
+            [['name', 'url'], 'required'],
+            [['show_expand'], 'integer'],
             [['description'], 'string'],
-            [['title', 'url', 'meta_title', 'meta_keywords', 'meta_description'], 'string', 'max' => 255]
+            [['name', 'url', 'meta_title', 'meta_keywords', 'meta_description'], 'string', 'max' => 255]
         ];
     }
 
@@ -44,22 +46,13 @@ class Pages extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'title' => 'Заголовок страницы',
+            'name' => 'Name',
             'url' => 'Url',
-            'description' => 'Описание',
-            'meta_title' => 'Title страницы',
+            'show_expand' => 'показывать как главная',
+            'description' => 'Description',
+            'meta_title' => 'Meta Title',
             'meta_keywords' => 'Meta Keywords',
             'meta_description' => 'Meta Description',
         ];
-    }
-
-    public static function getPage($url, $field){
-        $page = Pages::find()->where("url = :url", [':url'=>$url])->one();
-        if($page != null){
-            return $page->$field;
-        } else {
-            return '';
-        }
-
     }
 }

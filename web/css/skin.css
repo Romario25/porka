@@ -354,7 +354,7 @@ a.pink:hover {
 
 /* line 242, scss/skin.scss */
 .cursive {
-  font-family: "Pacifico", cursive;
+  font-family: "Lobster", cursive;
 }
 
 /* line 251, scss/skin.scss */
@@ -1104,7 +1104,7 @@ a.pink:hover {
   color: #fff;
   text-transform: uppercase;
   z-index: 1;
-  font-family: "Pacifico", sans-serif;
+  font-family: "Lobster", sans-serif;
   width: 140px;
   height: 40px;
   font-size: 18px;

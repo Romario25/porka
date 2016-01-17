@@ -2,18 +2,19 @@
 
 use yii\helpers\Html;
 
-/* @var $this yii\web\View */
-/* @var $model app\models\Ads */
 
-$this->title = 'Update Ads: ' . ' ' . $model->title;
+/* @var $this yii\web\View */
+/* @var $model app\models\CategoryPhoto */
+
+$this->title = 'Create Category Photo';
 $this->params['breadcrumbs'][] = [
     'label' => 'Admin',
     'url' => "/admin/default/index"
 ];
-$this->params['breadcrumbs'][] = ['label' => 'Ads', 'url' => ['index']];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = ['label' => 'Category Photos', 'url' => ['index']];
+$this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="ads-update">
+<div class="category-photo-create">
 
     <h1><?= Html::encode($this->title) ?></h1>
 

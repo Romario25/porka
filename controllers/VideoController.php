@@ -17,7 +17,7 @@ use yii\web\HttpException;
 
 class VideoController extends Controller
 {
-    public function actionView($url = null){
+    public function actionView($category = null, $url = null){
         $video = Video::find()->where("url = :url", [":url"=>$url])->one();
 
         if($video == null) throw new HttpException(404);

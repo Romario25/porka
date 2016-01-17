@@ -45,7 +45,7 @@ $this->registerMetaTag([
             <?php foreach($videos as $video): ?>
                 <article class="c x1d3--d x1d3--t x1d2--m gallery-element">
                     <div class="video-element new">
-                        <a href="/video/<?= $video->url; ?>">
+                        <a href="/video/<?= $video->category->url; ?>/<?= $video->url; ?>">
                             <div class="preview preview-video" >
 
                                 <img src="<?= $video->screens[0];?>" data="<?= implode(",", $video->screens); ?>" class="r" alt="Видео: Отсосала и дала в попку...">
@@ -102,32 +102,23 @@ $this->registerMetaTag([
 
 
         <!-- teasers -->
-        <?php echo \app\components\widgets\TeaserWidget::widget(['type'=>'video']); ?>
+        <?php echo \app\components\widgets\AdsWidget::widget(['url'=>'/new/video']); ?>
         <!-- teasers -->
 
     </div>
     <!-- gallery -->
 
     <!-- subscription -->
-    <?= \app\components\widgets\SubscriptionWidget::widget([]); ?>
+
     <!-- subscription -->
 
     <div class="c-c">
 
-        <div class="c">
-            <p class="fs24 fw300 text-center opensans"><a class="pink" href="#" title="Эксклюзивные порно фото и видео в HD качестве!">Смотреть <span class="fw700">350+</span> видео в <span class="fw700">HD качестве</span></a></p>
-        </div>
+
 
         <!-- menu -->
         <?= \app\components\widgets\CategoryWidget::widget(['type'=>'photo']); ?>
         <!-- menu -->
-
-        <!-- intro text -->
-        <div class="c text-center">
-            <h1 class="fs22 fw400 opensans">Фото голых и привлекательных девушек, красивого секса, порно фото красивых моделей и ххх кадры на сайте tukituki.org</h1>
-            <p>Для любого мужчины, если конечно он мужчина традиционной сексуальной ориентации, нет ничего прекраснее, чем видобольстительного обнаженного женского тела. Тем более,  что на данный момент в интернете есть множество сайтов, накоторых выложены целые галереи с фотографиями прекрасных, сексапильных голых девушек. Они  будут манить вас  толькоодним видом своего божественного девичьего тела и неприкрытой наготой. Любой мужчина, увидев на улице прекрасную представительницу слабого пола, на которой минимум одежды, всеми фибрами души к ней тянется, и его взор может надолгозаостриться на области пониже талии или декольте. Ещё старина Фрейд ставил либидо на первое место, которое отвечаетза все наши действия. По его мнению, именно либидо движет человеком, говоря ему как себя вести, как выбирать друзей и многое другое. Женщины, по мнению Фрейда не так склонны терять голову, при виде красивого мачо, как мужчины при виде обольстительных голых девушек.</p>
-        </div>
-        <!-- intro text -->
 
     </div>
 
@@ -138,7 +129,7 @@ $this->registerMetaTag([
             <?php foreach($photos as $photo): ?>
                 <article class="c x1d4--d x1d3--t x1d2--m gallery-element">
                     <div class="photo-element <?= (MyHelper::isClassNew($photo->create_at))?'new':''; ?>">
-                        <a href="/photo/<?= $photo->url; ?>">
+                        <a href="/photo/<?= $photo->category->url; ?>/<?= $photo->url; ?>">
                             <div class="preview">
                                 <img src="<?= (isset($photo->photos[0]))?$photo->photos[0]:"#"; ?>" class="r" alt="<?= $photo->title; ?>">
                                 <div class="duration"><?= $photo->photosCount; ?> фото</div>
@@ -162,7 +153,7 @@ $this->registerMetaTag([
 
 
         <!-- teasers -->
-        <?php echo \app\components\widgets\TeaserWidget::widget(['type'=>'photo']); ?>
+        <?php echo \app\components\widgets\AdsWidget::widget(['url'=>'/new/photo']); ?>
         <!-- teasers -->
 
     </div>

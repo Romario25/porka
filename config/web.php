@@ -56,9 +56,9 @@ $config = [
 
                 '<_c:(category)>/<type:\w+>/<url:\w+>' => 'category/index',
                 '<_c:(video)>/<_a:(index)>' => 'video/index',
-                '<_c:(video)>/<url>' => 'video/view',
+                '<_c:(video)>/<category>/<url>' => 'video/view',
                 '<_c:(photo)>/<_a:(index)>' => 'photo/index',
-                '<_c:(photo)>/<url>' => 'photo/view',
+                '<_c:(photo)>/<category>/<url>' => 'photo/view',
                 '<_c:\w+>/<_a:[\w\-]+>/' => '<_c>/<_a>',
             ],
         ],

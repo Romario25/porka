@@ -10,6 +10,7 @@ namespace app\controllers;
 
 
 use app\models\Category;
+use app\models\CategoryPhoto;
 use app\models\PhotoCatalog;
 use app\models\Video;
 use yii\web\Controller;
@@ -23,7 +24,11 @@ class CategoryController extends Controller
         if($type != 'photo' && $type != 'video'){
             throw new HttpException(404);
         }
-        $category = Category::find()->where('url = :url', [':url'=>$url])->one();
+        if($type == 'video')
+            $category = Category::find()->where('url = :url', [':url'=>$url])->one();
+        if($type == 'photo')
+            $category = CategoryPhoto::find()->where('url = :url', [':url'=>$url])->one();
+
         if($category == null){
             throw new HttpException(404);
         }

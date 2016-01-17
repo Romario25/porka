@@ -116,15 +116,15 @@
                         image: "/uploads/screenshotvideo/<?= $video->screenshot; ?>",
                         sources :[
                             {
-                                file: "<?php echo \app\models\Video::getVideoUrl(320, 240, $video->object_url); ?>",
+                                file: "<?php echo $video->object_url_0; ?>",
                                 label:"320p"
                             },
                             {
-                                file: "<?php echo \app\models\Video::getVideoUrl(640, 480, $video->object_url); ?>",
+                                file: "<?php echo $video->object_url_1; ?>",
                                 label:"640p"
                             },
                             {
-                                file: "<?php echo \app\models\Video::getVideoUrl(1280, 720, $video->object_url); ?>",
+                                file: "<?php echo $video->object_url_2; ?>",
                                 label:"1280p"
                             }
                         ]
@@ -161,7 +161,7 @@
 
 
         <!-- teasers -->
-        <?= \app\components\widgets\TeaserWidget::widget(['type'=>'video'])?>
+        <?= \app\components\widgets\AdsWidget::widget(['url'=>'video/view']); ?>
         <!-- teasers -->
 
     </div>

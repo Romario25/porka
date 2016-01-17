@@ -67,11 +67,13 @@ $this->registerMetaTag([
 
         ?>
         <div class="c-c gallery">
-            <?php foreach(\app\models\Photos::find()->where("catalog_id = :catalog_id", [':catalog_id'=>$model->id])->all() as $photo): ?>
+            <?php foreach(\app\models\Photos::find()->where("catalog_id = :catalog_id", [':catalog_id'=>$model->id])->all() as $k=>$photo): ?>
                 <article class="c x1d4--d x1d3--t x1d2--m gallery-element">
                     <div class="photo-element">
                         <div >
-                            <a title="" href="<?= $photo->url ?>" rel="fancybox" class="thumbnail"><img src="<?= $photo->url_thumbnail; ?>" class="r" alt=""></a>
+                            <a title="" href="<?= $photo->url ?>" rel="fancybox" class="thumbnail">
+                                <img src="<?= $photo->url_thumbnail; ?>" class="r" alt="<?= $model->title."-".($k+1) ?>">
+                            </a>
                         </div>
                     </div>
                 </article>
@@ -123,7 +125,7 @@ echo newerton\fancybox\FancyBox::widget([
 
 
         <!-- teasers -->
-       <?= \app\components\widgets\TeaserWidget::widget(['type'=>'photo']); ?>
+       <?= \app\components\widgets\AdsWidget::widget(['url'=>'photo/view']); ?>
         <!-- teasers -->
 
     </div>

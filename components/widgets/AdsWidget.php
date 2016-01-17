@@ -20,7 +20,7 @@ class AdsWidget extends Widget
     public function run(){
 
         $ads = Ads::find()->where('url = :url', [':url'=>$this->url])->one();
-
+        if($ads == null) return "";
         return $this->render('ads', ['code'=>$ads->code]);
 
     }

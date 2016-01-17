@@ -10,6 +10,7 @@ namespace app\components\widgets;
 
 
 use app\models\Category;
+use app\models\CategoryPhoto;
 use yii\base\Widget;
 
 class CategoryWidget extends Widget
@@ -19,8 +20,15 @@ class CategoryWidget extends Widget
 
     public function run(){
 
-        $categoryShow = Category::find()->where('show_expand = :show_expand', [':show_expand'=>true])->all();
-        $categoryHide = Category::find()->where('show_expand = :show_expand', [':show_expand'=>false])->all();
+        if($this->type == 'video'){
+            $categoryShow = Category::find()->where('show_expand = :show_expand', [':show_expand'=>true])->all();
+            $categoryHide = Category::find()->where('show_expand = :show_expand', [':show_expand'=>false])->all();
+        }
+        if($this->type == 'photo'){
+            $categoryShow = CategoryPhoto::find()->where('show_expand = :show_expand', [':show_expand'=>true])->all();
+            $categoryHide = CategoryPhoto::find()->where('show_expand = :show_expand', [':show_expand'=>false])->all();
+        }
+
 
         return $this->render("category", ['categoryShow'=>$categoryShow, 'categoryHide'=>$categoryHide, 'type'=>$this->type]);
     }

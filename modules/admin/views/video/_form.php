@@ -17,7 +17,7 @@ use yii\widgets\ActiveForm;
     ]); ?>
 
     <?php
-        print_r($model->getErrors());
+       // print_r($model->getErrors());
     ?>
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
@@ -27,11 +27,13 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'videoFile[]')->fileInput()->label("video 320X240"); ?>
+    <?php echo  $form->field($model, 'videoFile[]')->fileInput()->label("video 320X240"); ?>
 
-    <?= $form->field($model, 'videoFile[]')->fileInput()->label("video 640X480"); ?>
+    <?php echo  $form->field($model, 'videoFile[]')->fileInput()->label("video 640X480"); ?>
 
-    <?= $form->field($model, 'videoFile[]')->fileInput()->label("video 1280X720"); ?>
+    <?php echo  $form->field($model, 'videoFile[]')->fileInput()->label("video 1280X720"); ?>
+
+    <?php // echo $form->field($model, 'videoFile')->fileInput([]) ?>
 
     <?= $form->field($model, 'screenShotVideo')->fileInput(['accept' => 'image/*']); ?>
 
@@ -47,9 +49,11 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'meta_title')->textInput(['maxlength' => true]); ?>
 
-    <?= $form->field($model, 'meta_keywords')->textInput(['maxlength' => true]); ?>
+    <?php //echo $form->field($model, 'meta_keywords')->textInput(['maxlength' => true]); ?>
 
     <?= $form->field($model, 'meta_description')->textInput(['maxlength' => true]); ?>
+
+    <?= $form->field($model, 'storage')->dropDownList([0=>'GoDaddy', 1=>'Server', 2=>'Amazon']); ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

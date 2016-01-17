@@ -4,25 +4,25 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Category */
+/* @var $model app\models\CategoryPhoto */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="category-form">
+<div class="category-photo-form">
 
     <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'description')->textarea([]); ?>
-
     <?= $form->field($model, 'url')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'meta_title')->textInput(['maxlength' => true]); ?>
+    <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 
-    <?php echo  $form->field($model, 'meta_keywords')->textInput(['maxlength' => true]); ?>
+    <?= $form->field($model, 'meta_title')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'meta_description')->textInput(['maxlength' => true]); ?>
+    <?php //echo $form->field($model, 'meta_keywords')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'meta_description')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'show_expand')->checkbox([]); ?>
 

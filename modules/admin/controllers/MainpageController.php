@@ -3,50 +3,46 @@
 namespace app\modules\admin\controllers;
 
 use Yii;
-use app\models\Ads;
-use app\models\AdsSearch;
-use yii\helpers\ArrayHelper;
+use app\models\MainPage;
+use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * AdsController implements the CRUD actions for Ads model.
+ * MainpageController implements the CRUD actions for MainPage model.
  */
-class AdsController extends AdminController
+class MainpageController extends Controller
 {
     public function behaviors()
     {
-
-        $arr = ArrayHelper::merge(parent::behaviors(), [
+        return [
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['post'],
                 ],
             ],
-        ]);
-
-        return $arr;
+        ];
     }
 
     /**
-     * Lists all Ads models.
+     * Lists all MainPage models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new AdsSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider = new ActiveDataProvider([
+            'query' => MainPage::find(),
+        ]);
 
         return $this->render('index', [
-            'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
     }
 
     /**
-     * Displays a single Ads model.
+     * Displays a single MainPage model.
      * @param integer $id
      * @return mixed
      */
@@ -58,13 +54,13 @@ class AdsController extends AdminController
     }
 
     /**
-     * Creates a new Ads model.
+     * Creates a new MainPage model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Ads();
+        $model = new MainPage();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['index']);
@@ -76,7 +72,7 @@ class AdsController extends AdminController
     }
 
     /**
-     * Updates an existing Ads model.
+     * Updates an existing MainPage model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -95,7 +91,7 @@ class AdsController extends AdminController
     }
 
     /**
-     * Deletes an existing Ads model.
+     * Deletes an existing MainPage model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -108,15 +104,15 @@ class AdsController extends AdminController
     }
 
     /**
-     * Finds the Ads model based on its primary key value.
+     * Finds the MainPage model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Ads the loaded model
+     * @return MainPage the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Ads::findOne($id)) !== null) {
+        if (($model = MainPage::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

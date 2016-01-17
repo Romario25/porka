@@ -7,14 +7,17 @@ use yii\helpers\Html;
 ?>
 
 <?php
-    $this->title = \app\models\Pages::getPage('/', 'title');
+   $dataPage = \app\models\MainPage::findOne(1);
+
+
+    $this->title = $dataPage->meta_title;
     $this->registerMetaTag([
         'name' => 'keywords',
-        'content' => \app\models\Pages::getPage('/', 'meta_keywords')
+        'content' => $dataPage->meta_keywords
     ]);
     $this->registerMetaTag([
         'name' => 'description',
-        'content' => \app\models\Pages::getPage('/', 'meta_description')
+        'content' => $dataPage->meta_description
     ]);
 
 ?>
@@ -58,8 +61,8 @@ use yii\helpers\Html;
         <!-- intro text -->
 
         <div class="c text-center">
-            <h1 class="fs22 fw400 opensans"><?= \app\models\Pages::getPage('/', 'title')?></h1>
-            <p><?= \app\models\Pages::getPage('/', 'description'); ?></p>
+            <h1 class="fs22 fw400 opensans"><?= $dataPage->title_video ?></h1>
+            <p><?= $dataPage->description_video ?></p>
         </div>
         <!-- intro text -->
 
@@ -71,7 +74,7 @@ use yii\helpers\Html;
             <?php foreach($videos as $video): ?>
                 <article class="c x1d3--d x1d3--t x1d2--m gallery-element">
                     <div class="video-element new">
-                        <a href="/video/<?= $video->url; ?>">
+                        <a href="/video/<?= $video->category->url; ?>/<?= $video->url; ?>">
                             <div class="preview preview-video" >
 
                                 <img src="<?= $video->screens[0];?>" data="<?= implode(",", $video->screens); ?>" class="r" alt="Видео: Отсосала и дала в попку...">
@@ -128,10 +131,10 @@ use yii\helpers\Html;
 
 
         <!-- teasers -->
-        <?php echo \app\components\widgets\TeaserWidget::widget(['type'=>'video']); ?>
+        <?php //echo \app\components\widgets\TeaserWidget::widget(['type'=>'video']); ?>
         <!-- teasers -->
         <!-- ads -->
-        <?php echo \app\components\widgets\AdsWidget::widget(['url'=>'/']); ?>
+        <?php echo \app\components\widgets\AdsWidget::widget(['url'=>'/main/video']); ?>
         <!-- /ads -->
 
     </div>
@@ -153,8 +156,8 @@ use yii\helpers\Html;
 
         <!-- intro text -->
         <div class="c text-center">
-            <h1 class="fs22 fw400 opensans"><?= \app\models\Pages::getPage('/', 'title')?></h1>
-            <p><?= \app\models\Pages::getPage('/', 'description'); ?></p>
+            <h1 class="fs22 fw400 opensans"><?= $dataPage->title_photo ?></h1>
+            <p><?= $dataPage->description_photo ?></p>
 
         </div>
         <!-- intro text -->
@@ -168,7 +171,7 @@ use yii\helpers\Html;
             <?php foreach($photos as $photo): ?>
             <article class="c x1d4--d x1d3--t x1d2--m gallery-element">
                 <div class="photo-element <?= (MyHelper::isClassNew($photo->create_at))?'new':''; ?>">
-                    <a href="/photo/<?= $photo->url; ?>">
+                    <a href="/photo/<?= $photo->category->url; ?>/<?= $photo->url; ?>">
                         <div class="preview">
                             <img src="<?= (isset($photo->photos[0]))?$photo->photos[0]:"#"; ?>" class="r" alt="<?= $photo->title; ?>">
                             <div class="duration"><?= $photo->photosCount; ?> фото</div>
@@ -190,9 +193,9 @@ use yii\helpers\Html;
             <?php endforeach; ?>
         </div>
 
-
+        <?php echo \app\components\widgets\AdsWidget::widget(['url'=>'/main/photo']); ?>
         <!-- teasers -->
-       <?php echo \app\components\widgets\TeaserWidget::widget(['type'=>'photo']); ?>
+       <?php //echo \app\components\widgets\TeaserWidget::widget(['type'=>'photo']); ?>
         <!-- teasers -->
 
     </div>

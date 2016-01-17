@@ -7,6 +7,10 @@ use yii\helpers\Html;
 /* @var $model app\models\PhotoCatalog */
 
 $this->title = 'Create Photo Catalog';
+$this->params['breadcrumbs'][] = [
+    'label' => 'Admin',
+    'url' => "/admin/default/index"
+];
 $this->params['breadcrumbs'][] = ['label' => 'Photo Catalogs', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

@@ -43,6 +43,7 @@ class Category extends \yii\db\ActiveRecord
             'id' => 'ID',
             'name' => 'Name',
             'url' => 'Url',
+            'show_expand' => 'показывать как главная',
         ];
     }
 }
