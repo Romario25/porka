@@ -3,7 +3,7 @@
     <?php foreach($model as $k=>$video): ?>
     <article class="c x1d3--d x1d3--t x1d2--m gallery-element">
         <div class="video-element new">
-            <a href="/video/<?= $video->url; ?>">
+            <a href="/video/<?= $video->category->url; ?>/<?= $video->url; ?>">
                 <div class="preview preview-video" >
 
                     <img src="<?= $video->screens[0];?>" data="<?= implode(",", $video->screens); ?>" class="r" alt="Видео: Отсосала и дала в попку...">

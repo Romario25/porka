@@ -77,7 +77,7 @@ class PhotoCatalog extends \yii\db\ActiveRecord
             [['title', 'category_id', 'description', 'url', 'actor'], 'required'],
             [['category_id', 'plus', 'minus', 'hits', 'storage'], 'integer'],
             [['create_at', 'update_at'], 'safe'],
-            [['description', 'actor'], 'string'],
+            [['description', 'actor', 'alt'], 'string'],
             //['photosUpload', 'file', 'skipOnEmpty' => ($this->isNewRecord)?false:true, 'extensions' => 'png, jpg', 'maxFiles' => 20],
             ['photosUpload', 'file', 'skipOnEmpty' => ($this->isNewRecord)?false:true, 'extensions' => 'zip'],
             [['title', 'meta_title', 'meta_keywords', 'meta_description'], 'string', 'max' => 255]
@@ -322,6 +322,7 @@ class PhotoCatalog extends \yii\db\ActiveRecord
             // Разбираем архив
             //Создаём объект для работы с ZIP-архивами
             $zip = new ZipArchive();
+
             if ($this->photosUpload != null && $zip->open($this->photosUpload->tempName) === true) {
                 $zip->extractTo("../web/uploads/temp"); //Извлекаем файлы в указанную директорию
 
@@ -367,8 +368,6 @@ class PhotoCatalog extends \yii\db\ActiveRecord
 
                 }
                 $zip->close(); //Завершаем работу с архивом
-            } else {
-                echo "ERROR"; die();
             }
 
         } catch(Exception $e){

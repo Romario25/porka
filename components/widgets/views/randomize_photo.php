@@ -3,7 +3,7 @@
 
     <article class="c x1d4--d x1d3--t x1d2--m gallery-element">
         <div class="photo-element new">
-            <a href="/photo/<?= $photo->url; ?>">
+            <a href="/photo/<?= $photo->category->url; ?>/<?= $photo->url; ?>">
                 <div class="preview">
                     <img src="<?= (isset($photo->photos[0]))?$photo->photos[0]:"#" ?>" class="r" alt="<?= $photo->title ?>">
                     <div class="duration"><?= $photo->photosCount; ?> фото</div>

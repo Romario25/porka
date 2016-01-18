@@ -34,7 +34,11 @@ use yii\web\UploadedFile;
 class Video extends \yii\db\ActiveRecord
 {
 
-
+    private $ftp_conig = [
+        'ftp_server' => "ftp.loveporno.net",
+        'ftp_user_name' => "ataman@loveporno.net",
+        'ftp_user_pass' => "ko6Shehah"
+    ];
 
 
     /**
@@ -90,7 +94,12 @@ class Video extends \yii\db\ActiveRecord
             [['create_at', 'update_at', 'screenshot'], 'safe'],
             [['description', 'url'], 'string'],
             [['category_id', 'storage'], 'integer'],
-            ['screenShotVideo', 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg'],
+            ['screenShotVideo', 'image',
+                'skipOnEmpty' => true,
+                'extensions' => 'png, jpg',
+                'minWidth'=>1140,
+                'minHeight'=>620
+            ],
             ['videoFile', 'file', 'skipOnEmpty' => true, 'extensions' => 'mp4', 'maxFiles' => 3, 'maxSize'=>2000000000],
          //   ['videoFile', 'countVideoValidator'],
             ['screenFiles', 'file', 'skipOnEmpty' => ($this->isNewRecord)?false:true, 'extensions' => 'png, jpg', 'maxFiles' => 4],
@@ -305,7 +314,7 @@ class Video extends \yii\db\ActiveRecord
                 $nameFile = time() . '_'.$this->screenShotVideo->baseName.'.' . $this->screenShotVideo->extension;
 
                 // сохраняем превьюшки
-                Image::thumbnail($this->screenShotVideo->tempName, 1100, 620)
+                Image::thumbnail($this->screenShotVideo->tempName, 1140, 620)
                     ->save('../web/uploads/screenshotvideo/'.$nameFile, ['quality' => 80]);
 
                 $this->screenshot = $nameFile;
@@ -325,9 +334,9 @@ class Video extends \yii\db\ActiveRecord
      */
     private function ftpUpload($filePath, $folder, $nameFile){
 
-        $ftp_server = "ftp.loveporno.net";
-        $ftp_user_name = "ataman@loveporno.net";
-        $ftp_user_pass = "ko6Shehah";
+        $ftp_server = $this->ftp_conig['ftp_server'];
+        $ftp_user_name = $this->ftp_conig['ftp_user_name'];
+        $ftp_user_pass = $this->ftp_conig['ftp_user_pass'];
         $destination_file = "loveporno.net/web/uploads/".$folder.'/'.$nameFile;
         $source_file = fopen($filePath, 'r');
 
@@ -337,6 +346,8 @@ class Video extends \yii\db\ActiveRecord
 
         // вход с именем пользователя и паролем
         $login_result = ftp_login($conn_id, $ftp_user_name, $ftp_user_pass);
+
+        ftp_pasv($conn_id, true);
 
         // проверка соединения
         if ((!$conn_id) || (!$login_result)) {
@@ -356,6 +367,40 @@ class Video extends \yii\db\ActiveRecord
         } else {
             //  echo "Файл $source_file закачен на $ftp_server под именем $destination_file";
         }
+
+        // закрытие соединения
+        ftp_close($conn_id);
+
+    }
+
+    private function ftp_delete($file){
+        $ftp_server = $this->ftp_conig['ftp_server'];
+        $ftp_user_name = $this->ftp_conig['ftp_user_name'];
+        $ftp_user_pass = $this->ftp_conig['ftp_user_pass'];
+
+        // установка соединения
+        $conn_id = ftp_connect($ftp_server);
+
+        // вход с именем пользователя и паролем
+        $login_result = ftp_login($conn_id, $ftp_user_name, $ftp_user_pass);
+        ftp_pasv($conn_id, true);
+        if ((!$conn_id) || (!$login_result)) {
+            echo "Не удалось установить соединение с FTP сервером!";
+            echo "Попытка подключения к серверу $ftp_server под именем $ftp_user_name!";
+            exit;
+        }
+
+        // попытка удалить файл
+//        if (ftp_delete($conn_id, $file)) {
+//            echo "Файл $file удален\n";
+//        } else {
+//            echo "Не удалось удалить $file\n";
+//        }
+        $contents_on_server = ftp_nlist($conn_id, "loveporno.net/web/uploads/videos/");
+        if(in_array($file, $contents_on_server)){
+            ftp_delete($conn_id, "loveporno.net/web/uploads/videos/".$file);
+        }
+
 
         // закрытие соединения
         ftp_close($conn_id);
@@ -406,7 +451,7 @@ class Video extends \yii\db\ActiveRecord
         ])->all();
 
         foreach($photos as $photo){
-            //echo "../web".$photo->screen_url."<br />";
+
             if(file_exists("../web".$photo->screen_url)){
                 unlink("../web".$photo->screen_url);
             }
@@ -414,7 +459,7 @@ class Video extends \yii\db\ActiveRecord
         $config = ArrayHelper::map(Config::find()->all(), 'name', 'value');
 
 
-        if($this->storage){
+        if($this->storage == 2){
             $s3 = new S3Client([
                 'version'     => 'latest',
                 'region'      => 'us-west-2',
@@ -429,7 +474,7 @@ class Video extends \yii\db\ActiveRecord
                     if(!empty($this->$field)){
                         $res = $s3->deleteObject([
                             'Bucket' => $config['amazon_bucket'],
-                            'Key' => 'video/'.urldecode(mb_substr ($this->object_url,  mb_strrpos($this->$field, '/')+1)),
+                            'Key' => 'video/'.urldecode(mb_substr ($this->$field,  mb_strrpos($this->$field, '/')+1)),
                         ]);
                     }
                 }
@@ -437,11 +482,22 @@ class Video extends \yii\db\ActiveRecord
                 echo $e->getMessage();
                 Yii::$app->session->setFlash('error', $e->getMessage());
             }
-        } else {
+        } else if($this->storage == 1) {
             for($i=0; $i<3; $i++) {
                 $field = "object_url_" . $i;
                 unlink("../web".$this->$field);
             }
+        } else {
+            for($i=0; $i<3; $i++) {
+                $field = "object_url_" . $i;
+                $arr = explode('/', $this->$field);
+                $f = array_pop($arr);
+                //echo $f;
+                //die();
+               // $f = '14529312860.mp4';
+                $this->ftp_delete($f);
+            }
+
         }
 
         //die();

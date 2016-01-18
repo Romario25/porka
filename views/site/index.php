@@ -11,10 +11,10 @@ use yii\helpers\Html;
 
 
     $this->title = $dataPage->meta_title;
-    $this->registerMetaTag([
-        'name' => 'keywords',
-        'content' => $dataPage->meta_keywords
-    ]);
+//    $this->registerMetaTag([
+//        'name' => 'keywords',
+//        'content' => $dataPage->meta_keywords
+//    ]);
     $this->registerMetaTag([
         'name' => 'description',
         'content' => $dataPage->meta_description
@@ -26,7 +26,7 @@ use yii\helpers\Html;
 <!-- slider -->
 <div class="herounit blue-gradient-bg">
     <div class="g w1140 slider">
-<!--        <a href="#"><img class="r" src="/images/slide-01.png" alt=""></a>-->
+        <a href="#"><img class="r" src="/images/slide-01.png" alt=""></a>
         <?php
 //        $images = [
 //            Html::a(Html::img("http://goods.marketgid.com/img/new-year.jpg", ['alt' => 'Для праздников и карнавалов', 'title' => 'Для праздников и карнавалов']), ['category/dla_prazdnikov_i_karnavalov/2054']),
@@ -35,13 +35,13 @@ use yii\helpers\Html;
 //            //Html::a(Html::img("/img/chancellery.png", ['alt' => 'Канцелярия', 'title' => 'Канцелярия']), ['category/kancelarskie_prinadleznosti/1246']),
 //        ];
 
-        $slider = \app\models\Slider::find()->all();
-        $images = [];
-        foreach($slider as $slide){
-            $images[] = Html::a(Html::img($slide->src, ['alt' => $slide->title, 'title' => $slide->title]), [$slide->url]);
-        }
-
-        echo yii\bootstrap\Carousel::widget(['items' => $images, 'controls' => false]);
+//        $slider = \app\models\Slider::find()->all();
+//        $images = [];
+//        foreach($slider as $slide){
+//            $images[] = Html::a(Html::img($slide->src, ['alt' => $slide->title, 'title' => $slide->title]), [$slide->url]);
+//        }
+//
+//        echo yii\bootstrap\Carousel::widget(['items' => $images, 'controls' => false]);
         ?>
     </div>
 </div>
@@ -51,7 +51,11 @@ use yii\helpers\Html;
 
     <div class="c-c">
         <div class="c">
-            <p class="fs24 fw300 text-center opensans"><a class="pink" href="#" title="Эксклюзивные порно фото и видео в HD качестве!">Смотреть <span class="fw700">350+</span> видео в <span class="fw700">HD качестве</span></a></p>
+            <?php
+                $countVideo = \app\models\Video::find()->count('*');
+
+            ?>
+            <p class="fs24 fw300 text-center opensans"><a class="pink" href="/video" title="Эксклюзивные порно фото и видео в HD качестве!">Смотреть <span class="fw700"><?= $countVideo ?>+</span> видео в <span class="fw700">HD качестве</span></a></p>
         </div>
 
         <?php
@@ -83,7 +87,7 @@ use yii\helpers\Html;
 
                                 <div class="duration"><?= $video->duration ?></div>
                             </div>
-                            <h1 class="title"><?= $video->title ?></h1>
+                            <h1 class="title"  style="height: 27px;"><?= $video->title ?></h1>
                         </a>
                         <div class="cc meta">
                             <div class="c x3d5--d x3d6--t x1--m">
@@ -91,7 +95,7 @@ use yii\helpers\Html;
                             </div>
                             <div class="cc x2d5--d x3d6--t x1--m">
                                 <span class="c x1d2--d x1d2--t x1--m nowrap"><?= $video->hits; ?>&nbsp;<i class="fa fa-eye"></i></span>
-<!--                                <span class="c x1d2--d x1d2--t x1--m nowrap">86%&nbsp;<i class="fa fa-thumbs-up"></i></span>-->
+                                <span class="c x1d2--d x1d2--t x1--m nowrap">86%&nbsp;<i class="fa fa-thumbs-up"></i></span>
                             </div>
                         </div>
                     </div>
@@ -145,9 +149,12 @@ use yii\helpers\Html;
     <!-- subscription -->
 
     <div class="c-c">
+        <?php
 
+            $photoSet = \app\models\PhotoCatalog::find()->count("*");
+        ?>
         <div class="c">
-            <p class="fs24 fw300 text-center opensans"><a class="pink" href="#" title="Эксклюзивные порно фото и видео в HD качестве!">Смотреть <span class="fw700">350+</span> видео в <span class="fw700">HD качестве</span></a></p>
+            <p class="fs24 fw300 text-center opensans"><a class="pink" href="/photo" title="Эксклюзивные порно фото и видео в HD качестве!">Смотреть <span class="fw700"><?= $photoSet; ?>+</span> фотосетов <span class="fw700">в лучшем качестве</span></a></p>
         </div>
 
         <!-- menu -->
@@ -185,7 +192,7 @@ use yii\helpers\Html;
                         </div>
                         <div class="cc x1d2--d x1d2--t x1--m">
                             <span class="c x1d2--d x1d2--t x1--m nowrap"><?= $photo->hits; ?>&nbsp;<i class="fa fa-eye"></i></span>
-<!--                            <span class="c x1d2--d x1d2--t x1--m nowrap">86%&nbsp;<i class="fa fa-thumbs-up"></i></span>-->
+                            <span class="c x1d2--d x1d2--t x1--m nowrap">86%&nbsp;<i class="fa fa-thumbs-up"></i></span>
                         </div>
                     </div>
                 </div>

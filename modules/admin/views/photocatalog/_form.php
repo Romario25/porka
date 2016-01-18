@@ -28,6 +28,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 
+    <?= $form->field($model, 'alt')->textInput([]); ?>
+
     <?= $form->field($model, 'category_id')->dropDownList(ArrayHelper::map(CategoryPhoto::find()->all(), 'id', 'name'), [
         'prompt' => 'Выберите категорию'
     ]) ?>

@@ -5,9 +5,9 @@
 
 <?php
     $this->title = $video->meta_title;
-    $this->registerMetaTag([
-        'name' => 'keywords', 'value' => $video->meta_keywords
-    ]);
+//    $this->registerMetaTag([
+//        'name' => 'keywords', 'value' => $video->meta_keywords
+//    ]);
     $this->registerMetaTag([
         'name' => 'description', 'value' => $video->meta_description
     ]);
@@ -27,10 +27,10 @@
             </div>
             <div class="c x1d3--d x1d3--t vmiddle inflated-v">
                 <div class="cc x1d3 vmiddle">
-<!--                    <p class="c fs24 fw400 white chopped text-right">98%</p>-->
+                    <p class="c fs24 fw400 white chopped text-right">98%</p>
                 </div>
                 <div class="cc x1d3 vmiddle">
-                    <span class="fs10 gray uppercase"><span class="white"><!--80--></span> <!--лайков--><br><span class="white"><?= $video->hits; ?></span> просмотров</span>
+                    <span class="fs10 gray uppercase"><span class="white">80</span> лайков<br><span class="white"><?= $video->hits; ?></span> просмотров</span>
                 </div>
                 <!-- <div class="cc x1d3 vmiddle ta-center">
                     <a href="#"><img src="img/i-like.png" alt=""></a>
@@ -38,9 +38,9 @@
                     <a href="#"><img src="img/i-fave.png" alt=""></a>
                 </div> -->
                 <div class="cc x1d3 vmiddle ta-center">
-<!--                    <a href="#" class="fs18 btn gray"><span class="white fa fa-thumbs-up"></span></a>-->
-<!--                    <a href="#" class="fs18 btn gray"><span class="white fa fa-thumbs-down"></span></a>-->
-<!--                    <a href="#" class="fs18 btn gray"><span class="white fa fa-heart"></span></a>-->
+                    <a href="#" class="fs18 btn gray"><span class="white fa fa-thumbs-up"></span></a>
+                    <a href="#" class="fs18 btn gray"><span class="white fa fa-thumbs-down"></span></a>
+                    <a href="#" class="fs18 btn gray"><span class="white fa fa-heart"></span></a>
                 </div>
             </div>
         </div>
@@ -48,7 +48,7 @@
     <div class="g w1140 video">
 <!--        <a href="#"><img class="r" src="/images/player.jpg" alt=""></a>-->
 <!--        <video id="Video1"  width="1140" controls preload="auto">-->
-<!--            <source src="--><?php //echo \app\models\Video::getVideoUrl(320, 240, $video->object_url); ?><!--" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' />-->
+<!--            <source src="--><?php //echo $video->object_url_0; ?><!--" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' />-->
 <!--        </video>-->
 <!--        <div style="position: relative; top:-40px;">-->
 <!--            <select name="hd" id="hd" >-->
@@ -67,7 +67,7 @@
 //                    var url = $.ajax({
 //                        type: "POST",
 //                        url: "/site/urlvideo",
-//                        data: "w="+w+"&h="+h+"&file="+"<?php //echo $video->object_url; ?>//",
+//                        data: "w="+w+"&h="+h+"&file="+"<?php //echo $video->object_url_0; ?>//",
 //                        async: false
 //                    }).responseText;
 //                    //alert(url);

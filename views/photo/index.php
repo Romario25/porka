@@ -5,10 +5,10 @@ use yii\widgets\LinkPager;
 ?>
 <?php
 $this->title = \app\models\Pages::getPage('/photo', 'title');
-$this->registerMetaTag([
-    'name' => 'keywords',
-    'content' => \app\models\Pages::getPage('/photo', 'meta_keywords')
-]);
+//$this->registerMetaTag([
+//    'name' => 'keywords',
+//    'content' => \app\models\Pages::getPage('/photo', 'meta_keywords')
+//]);
 $this->registerMetaTag([
     'name' => 'description',
     'content' => \app\models\Pages::getPage('/photo', 'meta_description')
@@ -60,7 +60,7 @@ $this->registerMetaTag([
                         </div>
                         <div class="cc x1d2--d x1d2--t x1--m">
                             <span class="c x1d2--d x1d2--t x1--m nowrap"><?= $photo->hits; ?>&nbsp;<i class="fa fa-eye"></i></span>
-<!--                            <span class="c x1d2--d x1d2--t x1--m nowrap">86%&nbsp;<i class="fa fa-thumbs-up"></i></span>-->
+                            <span class="c x1d2--d x1d2--t x1--m nowrap">86%&nbsp;<i class="fa fa-thumbs-up"></i></span>
                         </div>
                     </div>
                 </div>

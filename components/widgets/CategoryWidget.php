@@ -29,7 +29,10 @@ class CategoryWidget extends Widget
             $categoryHide = CategoryPhoto::find()->where('show_expand = :show_expand', [':show_expand'=>false])->all();
         }
 
+        if($this->type == 'video')
+            return $this->render("category", ['categoryShow'=>$categoryShow, 'categoryHide'=>$categoryHide, 'type'=>$this->type]);
 
-        return $this->render("category", ['categoryShow'=>$categoryShow, 'categoryHide'=>$categoryHide, 'type'=>$this->type]);
+        if($this->type == 'photo')
+            return $this->render("category_photo", ['categoryShow'=>$categoryShow, 'categoryHide'=>$categoryHide, 'type'=>$this->type]);
     }
 }

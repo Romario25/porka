@@ -22,7 +22,8 @@ class AppAsset extends AssetBundle
        // 'css/site.css',
         'css/grid.css',
         'css/skin.css',
-        'css/nice-select.css'
+        'css/nice-select.css',
+        //'https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css'
     ];
 
     public $js = [
@@ -31,11 +32,14 @@ class AppAsset extends AssetBundle
         '/js/no-hover.min.js',
         '/js/jquery.nice-select.min.js',
         'js/html5shiv.js',
-        'js/uppod.js'
+
     ];
 
     public $jsOptions = [
         'position' => View::POS_HEAD
+    ];
+    public $cssOptions = [
+        'position' => View::POS_LOAD
     ];
 
     public $depends = [

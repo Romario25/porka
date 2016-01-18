@@ -21,13 +21,13 @@ AppAsset::register($this);
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-<!--    <meta name="description" content="">-->
-<!--    <meta name="keywords" content="">-->
+
+
+
+    <title><?= $this->title; ?></title>
+    <?php $this->head() ?>
 
     <?= Html::csrfMetaTags() ?>
-
-    <?php $this->head() ?>
-    <title><?= $this->title; ?></title>
     <link rel="shortcut icon" href="/img/favicon.ico">
     <link rel="icon" type="image/gif" href="img/favicon.gif">
 
@@ -112,8 +112,16 @@ AppAsset::register($this);
 <!--                    <a class="social" href="http://twitter.com" title="Поделиться в Twitter"><img src="/img/icon-tw.png" alt="Поделиться в Twitter"></a>-->
 <!--                    <a class="social" href="http://ok.ru" title="Поделиться в Одноклассниках"><img src="/img/icon-ok.png" alt="Поделиться в Одноклассниках"></a>-->
 <!--                    <a class="social" href="http://plus.google.com" title="Поделиться в Google Plus"><img src="/img/icon-gp.png" alt="Поделиться в Google Plus"></a>-->
-                <div class="share42init"></div>
-                <script type="text/javascript" src="/share42/share42.js"></script>
+                    <script type="text/javascript">(function() {
+                            if (window.pluso)if (typeof window.pluso.start == "function") return;
+                            if (window.ifpluso==undefined) { window.ifpluso = 1;
+                                var d = document, s = d.createElement('script'), g = 'getElementsByTagName';
+                                s.type = 'text/javascript'; s.charset='UTF-8'; s.async = true;
+                                s.src = ('https:' == window.location.protocol ? 'https' : 'http')  + '://share.pluso.ru/pluso-like.js';
+                                var h=d[g]('body')[0];
+                                h.appendChild(s);
+                            }})();</script>
+                <div class="pluso" data-background="#000000" data-options="big,square,line,horizontal,nocounter,theme=04" data-services="twitter,vkontakte,facebook,google"></div>
 
                 </p>
             </div>

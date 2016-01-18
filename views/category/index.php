@@ -6,7 +6,11 @@
 
 <?php
 
-    $this->title = "TEST";
+    $this->title = $category->meta_title;
+    $this->registerMetaTag([
+        'name' => 'description',
+        'content' => $category->meta_description
+    ]);
 ?>
 <div class="g w1140 main">
 <!-- main -->

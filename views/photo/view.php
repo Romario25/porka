@@ -4,9 +4,9 @@
 
 <?php
 $this->title = $model->meta_title;
-$this->registerMetaTag([
-    'name' => 'keywords', 'value' => $model->meta_keywords
-]);
+//$this->registerMetaTag([
+//    'name' => 'keywords', 'value' => $model->meta_keywords
+//]);
 $this->registerMetaTag([
     'name' => 'description', 'value' => $model->meta_description
 ]);
@@ -27,10 +27,10 @@ $this->registerMetaTag([
             </div>
             <div class="c x1d3--d x1d3--t vmiddle inflated-v">
                 <div class="cc x1d3 vmiddle">
-<!--                    <p class="c fs24 fw400 white chopped text-right">98%</p>-->
+                    <p class="c fs24 fw400 white chopped text-right">98%</p>
                 </div>
                 <div class="cc x1d3 vmiddle">
-                    <span class="fs10 gray uppercase"><span class="white"><!--80--></span> <!--лайков-->
+                    <span class="fs10 gray uppercase"><span class="white">80</span> лайков
                     <br>
                     <span class="white"><?= $model->hits; ?></span> просмотров</span>
                 </div>
@@ -40,9 +40,9 @@ $this->registerMetaTag([
                     <a href="#"><img src="img/i-fave.png" alt=""></a>
                 </div> -->
                 <div class="cc x1d3 vmiddle ta-center">
-<!--                    <a href="#" class="fs18 btn gray"><span class="white fa fa-thumbs-up"></span></a>-->
-<!--                    <a href="#" class="fs18 btn gray"><span class="white fa fa-thumbs-down"></span></a>-->
-<!--                    <a href="#" class="fs18 btn gray"><span class="white fa fa-heart"></span></a>-->
+                    <a href="#" class="fs18 btn gray"><span class="white fa fa-thumbs-up"></span></a>
+                    <a href="#" class="fs18 btn gray"><span class="white fa fa-thumbs-down"></span></a>
+                    <a href="#" class="fs18 btn gray"><span class="white fa fa-heart"></span></a>
                 </div>
             </div>
         </div>
@@ -72,7 +72,7 @@ $this->registerMetaTag([
                     <div class="photo-element">
                         <div >
                             <a title="" href="<?= $photo->url ?>" rel="fancybox" class="thumbnail">
-                                <img src="<?= $photo->url_thumbnail; ?>" class="r" alt="<?= $model->title."-".($k+1) ?>">
+                                <img src="<?= $photo->url_thumbnail; ?>" class="r" alt="<?= $model->alt."-".($k+1) ?>">
                             </a>
                         </div>
                     </div>
@@ -93,19 +93,21 @@ echo newerton\fancybox\FancyBox::widget([
         'width' => '70%',
         'height' => '70%',
         'title' => $ads,
-        'autoSize' => false,
+        'autoSize' => true,
         'closeClick' => false,
         'openEffect' => 'elastic',
         'closeEffect' => 'elastic',
         'prevEffect' => 'elastic',
         'nextEffect' => 'elastic',
-        'closeBtn' => false,
+        'closeBtn' => true,
         'openOpacity' => true,
+        'loop' => false,
         'helpers' => [
             'title' => ['type' => 'outside'],
             'buttons' => [],
             'thumbs' => ['width' => 68, 'height' => 50],
             'overlay' => [
+
                 'css' => [
                     'background' => 'rgba(0, 0, 0, 0.8)'
                 ]
