@@ -20,7 +20,7 @@ $this->registerMetaTag([
 
     <div class="c-c">
 
-        <br><br>
+        
         <?php
 
         echo \app\components\widgets\CategoryWidget::widget(['type'=>'video']);
@@ -28,7 +28,7 @@ $this->registerMetaTag([
         <!-- intro text -->
         <div class="c text-center">
             <h1 class="fs22 fw400 opensans"><?= $category->name; ?></h1>
-            <p><?= $category->description; ?></p>
+            <p class="text-center"><?= $category->description; ?></p>
         </div>
         <!-- intro text -->
 
@@ -38,18 +38,18 @@ $this->registerMetaTag([
     <div class="c-c gallery">
 
         <?php foreach($videos as $k=>$video): ?>
-            <article class="c x1d3--d x1d3--t x1d2--m gallery-element">
+            <div class="c x1d3--d x1d3--t x1d2--m gallery-element">
                 <div class="video-element new">
                     <a href="/video/<?= $video->category->url; ?>/<?= $video->url; ?>">
                         <div class="preview" >
 
-                            <img src="<?= $video->screens[0];?>" data="<?= implode(",", $video->screens); ?>" class="r" alt="Видео: Отсосала и дала в попку...">
+                            <img src="<?= $video->screens[0];?>" data="<?= implode(",", $video->screens); ?>" class="r" alt="<?= $video->alt; ?>">
 
 
 
                             <div class="duration"><?= $video->duration; ?></div>
                         </div>
-                        <h1 class="title"><?= $video->title ?></h1>
+                        <p class="title"><?= $video->title ?></p>
                     </a>
                     <div class="cc meta">
                         <div class="c x3d5--d x3d6--t x1--m">
@@ -61,7 +61,7 @@ $this->registerMetaTag([
                         </div>
                     </div>
                 </div>
-            </article>
+            </div>
             <?php
             if($k == 7){
                 echo '</div>';

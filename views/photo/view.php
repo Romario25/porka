@@ -64,57 +64,71 @@ $this->registerMetaTag([
 
            // $ads = "test";
            $ads = \app\components\widgets\AdsWidget::widget(['url'=>'photo-slider']);
-
+            $photos = \app\models\Photos::find()->where("catalog_id = :catalog_id", [':catalog_id'=>$model->id])->all();
         ?>
         <div class="c-c gallery">
-            <?php foreach(\app\models\Photos::find()->where("catalog_id = :catalog_id", [':catalog_id'=>$model->id])->all() as $k=>$photo): ?>
-                <article class="c x1d4--d x1d3--t x1d2--m gallery-element">
+            <?php foreach($photos as $k=>$photo): ?>
+                <div class="c x1d4--d x1d3--t x1d2--m gallery-element">
                     <div class="photo-element">
-                        <div >
-                            <a title="" href="<?= $photo->url ?>" rel="fancybox" class="thumbnail">
+                        <div class="preview-photo" >
+                            <a title="" href="<?= $photo->url ?>" class="thumbnail">
                                 <img src="<?= $photo->url_thumbnail; ?>" class="r" alt="<?= $model->alt."-".($k+1) ?>">
                             </a>
                         </div>
                     </div>
-                </article>
+                </div>
             <?php endforeach; ?>
         </div>
-<?php
-echo newerton\fancybox\FancyBox::widget([
-    'target' => 'a[rel=fancybox]',
-    'helpers' => true,
-    'mouse' => true,
-    'config' => [
-        'maxWidth' => '90%',
-        'maxHeight' => '90%',
-        'playSpeed' => 7000,
-        'padding' => 0,
-        'fitToView' => false,
-        'width' => '70%',
-        'height' => '70%',
-        'title' => $ads,
-        'autoSize' => true,
-        'closeClick' => false,
-        'openEffect' => 'elastic',
-        'closeEffect' => 'elastic',
-        'prevEffect' => 'elastic',
-        'nextEffect' => 'elastic',
-        'closeBtn' => true,
-        'openOpacity' => true,
-        'loop' => false,
-        'helpers' => [
-            'title' => ['type' => 'outside'],
-            'buttons' => [],
-            'thumbs' => ['width' => 68, 'height' => 50],
-            'overlay' => [
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $(".gallery").lightGallery({
+                    //thumbnail:false,
+                    thumbnail:true,
+                    height:'100%',
+                    width:'100%',
+                    thumbWidth:60,
+                    download:false,
 
-                'css' => [
-                    'background' => 'rgba(0, 0, 0, 0.8)'
-                ]
-            ]
-        ],
-    ]
-]);
+                    selector:'.thumbnail'
+                });
+            });
+        </script>
+<?php
+//echo newerton\fancybox\FancyBox::widget([
+//    'target' => 'a[rel=fancybox]',
+//    'helpers' => true,
+//    'mouse' => true,
+//    'config' => [
+//        'maxWidth' => '90%',
+//        'maxHeight' => '90%',
+//        'playSpeed' => 7000,
+//        'padding' => 0,
+//        'fitToView' => true,
+//        'width' => '70%',
+//        'height' => '70%',
+//        'title' => $ads,
+//        'autoSize' => true,
+//        'closeClick' => true,
+//        //'openEffect' => 'elastic',
+//     //   'closeEffect' => 'elastic',
+//      //  'prevEffect' => 'elastic',
+//      //  'nextEffect' => 'elastic',
+//        'closeBtn' => true,
+//        'openOpacity' => true,
+//        'loop' => true,
+//        'helpers' => [
+//            'title' => ['type' => 'outside'],
+//            'buttons' => [],
+//            'thumbs' => ['width' => 68, 'height' => 50],
+//            'overlay' => [
+//
+//                'css' => [
+//                    'background' => 'rgba(0, 0, 0, 0.8)'
+//                ]
+//            ]
+//        ],
+//    ]
+//]);
 ?>
 
 <!-- intro text -->

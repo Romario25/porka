@@ -92,12 +92,12 @@ class Video extends \yii\db\ActiveRecord
         return [
             [['title', 'category_id', 'url', 'duration', 'actor'], 'required'],
             [['create_at', 'update_at', 'screenshot'], 'safe'],
-            [['description', 'url'], 'string'],
+            [['description', 'url', 'alt'], 'string'],
             [['category_id', 'storage'], 'integer'],
             ['screenShotVideo', 'image',
                 'skipOnEmpty' => true,
                 'extensions' => 'png, jpg',
-                'minWidth'=>1140,
+                'minWidth'=>1160,
                 'minHeight'=>620
             ],
             ['videoFile', 'file', 'skipOnEmpty' => true, 'extensions' => 'mp4', 'maxFiles' => 3, 'maxSize'=>2000000000],
@@ -314,7 +314,7 @@ class Video extends \yii\db\ActiveRecord
                 $nameFile = time() . '_'.$this->screenShotVideo->baseName.'.' . $this->screenShotVideo->extension;
 
                 // сохраняем превьюшки
-                Image::thumbnail($this->screenShotVideo->tempName, 1140, 620)
+                Image::thumbnail($this->screenShotVideo->tempName, 1160, 620)
                     ->save('../web/uploads/screenshotvideo/'.$nameFile, ['quality' => 80]);
 
                 $this->screenshot = $nameFile;
@@ -472,10 +472,13 @@ class Video extends \yii\db\ActiveRecord
                 for($i=0; $i<3; $i++){
                     $field = "object_url_".$i;
                     if(!empty($this->$field)){
-                        $res = $s3->deleteObject([
-                            'Bucket' => $config['amazon_bucket'],
-                            'Key' => 'video/'.urldecode(mb_substr ($this->$field,  mb_strrpos($this->$field, '/')+1)),
-                        ]);
+                        if($s3->doesObjectExist($config['amazon_bucket'], 'video/'.urldecode(mb_substr ($this->$field,  mb_strrpos($this->$field, '/')+1)))){
+                            $res = $s3->deleteObject([
+                                'Bucket' => $config['amazon_bucket'],
+                                'Key' => 'video/'.urldecode(mb_substr ($this->$field,  mb_strrpos($this->$field, '/')+1)),
+                            ]);
+                        }
+
                     }
                 }
             } catch(S3Exception $e){
@@ -485,7 +488,10 @@ class Video extends \yii\db\ActiveRecord
         } else if($this->storage == 1) {
             for($i=0; $i<3; $i++) {
                 $field = "object_url_" . $i;
-                unlink("../web".$this->$field);
+                if(!empty($this->$field) && file_exists("../web".$this->$field)){
+                    unlink("../web".$this->$field);
+                }
+
             }
         } else {
             for($i=0; $i<3; $i++) {

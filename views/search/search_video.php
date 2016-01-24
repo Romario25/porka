@@ -19,7 +19,7 @@
         <div class="c-c gallery">
 
             <?php foreach($result as $video): ?>
-                <article class="c x1d3--d x1d3--t x1d2--m gallery-element">
+                <div class="c x1d3--d x1d3--t x1d2--m gallery-element">
                     <div class="video-element new">
                         <a href="/video/<?= $video['url']; ?>">
                             <div class="preview" >
@@ -49,7 +49,7 @@
                             </div>
                         </div>
                     </div>
-                </article>
+                </div>
             <?php endforeach; ?>
             <script>
                 $(function() {

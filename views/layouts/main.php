@@ -18,7 +18,7 @@ AppAsset::register($this);
 <!--[if ie 8]> <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt ie 8]><!--> <html class="no-js"> <!--<![endif]-->
 <head>
-    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -32,11 +32,27 @@ AppAsset::register($this);
     <link rel="icon" type="image/gif" href="img/favicon.gif">
 
 
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&subset=latin,cyrillic">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:400,300,500,700&subset=latin,cyrillic">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Lobster">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Pacifico">
+    
+    <link type="text/css" rel="stylesheet" href="/css/lightgallery.css" />
+
+    <link type="text/css" rel="stylesheet" href="/css/grid.css" />
+    <link type="text/css" rel="stylesheet" href="/css/skin.css" />
+    <link type="text/css" rel="stylesheet" href="/css/nice-select.css" />
+
+    <script src="/js/lightgallery.js"></script>
+
+    <!-- A jQuery plugin that adds cross-browser mouse wheel support. (Optional) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js"></script>
+
+    <!-- lightgallery plugins -->
+    <script src="/js/lg-thumbnail.js"></script>
+    <script src="/js/lg-fullscreen.js"></script>
+
 </head>
 <body>
 <?php $this->beginBody() ?>
@@ -44,7 +60,7 @@ AppAsset::register($this);
 <div class="herounit black-bg opensans">
     <div class="g w1140 page-top">
         <div class="c x3d12--d x2d4--t x1--m vmiddle">
-            <a class="ta-cll" href="/" title="Порно фото и видео в HD качестве"><img class="inflated-v-half logotype" src="/img/pornclub-logo.png" alt="PornClub Network Social"></a>
+            <a class="ta-cll" href="/" title="Порно фото и видео в HD качестве"><img class="inflated-v-half logotype" src="/img/Logo.png" alt="PornClub Network Social"></a>
         </div>
         <div class="c x5d12--d x2d4--t x1--m vmiddle nav">
             <ul class="inline unstyled">
@@ -66,7 +82,7 @@ AppAsset::register($this);
 <div class="herounit black-bg">
     <footer class="g w1140 page-bottom">
         <div class="c x2d12--d x1d4--t x1d2--m vmiddle">
-            <a href="#" title="Порно фото и видео в HD качестве"><img class="inflated-v-half logotype" src="/img/pornclub-logo.png" alt="PornClub Network Social"></a>
+            <a href="#" title="Порно фото и видео в HD качестве"><img class="inflated-v-half logotype" src="/img/Logo.png" alt="PornClub Network Social"></a>
         </div>
         <div class="c x4d12--d x1d4--t x1d2--m vmiddle">
             <ul class="inline unstyled">
@@ -107,21 +123,16 @@ AppAsset::register($this);
             <div class="c x5d12--d x1d2--t x1--m text-right">
                 <p class="fs14">Поделитесь с друзьями</p>
                 <p>
-<!--                    <a class="social" href="http://vk.com" title="Поделиться вКонтакте"><img src="/img/icon-vk.png" alt="Поделиться вКонтакте"></a>-->
-<!--                    <a class="social" href="http://facebook.com" title="Поделиться в Facebook"><img src="/img/icon-fb.png" alt="Поделиться в Facebook"></a>-->
-<!--                    <a class="social" href="http://twitter.com" title="Поделиться в Twitter"><img src="/img/icon-tw.png" alt="Поделиться в Twitter"></a>-->
-<!--                    <a class="social" href="http://ok.ru" title="Поделиться в Одноклассниках"><img src="/img/icon-ok.png" alt="Поделиться в Одноклассниках"></a>-->
-<!--                    <a class="social" href="http://plus.google.com" title="Поделиться в Google Plus"><img src="/img/icon-gp.png" alt="Поделиться в Google Plus"></a>-->
-                    <script type="text/javascript">(function() {
-                            if (window.pluso)if (typeof window.pluso.start == "function") return;
-                            if (window.ifpluso==undefined) { window.ifpluso = 1;
-                                var d = document, s = d.createElement('script'), g = 'getElementsByTagName';
-                                s.type = 'text/javascript'; s.charset='UTF-8'; s.async = true;
-                                s.src = ('https:' == window.location.protocol ? 'https' : 'http')  + '://share.pluso.ru/pluso-like.js';
-                                var h=d[g]('body')[0];
-                                h.appendChild(s);
-                            }})();</script>
-                <div class="pluso" data-background="#000000" data-options="big,square,line,horizontal,nocounter,theme=04" data-services="twitter,vkontakte,facebook,google"></div>
+<!--                    <script type="text/javascript">(function() {-->
+<!--                            if (window.pluso)if (typeof window.pluso.start == "function") return;-->
+<!--                            if (window.ifpluso==undefined) { window.ifpluso = 1;-->
+<!--                                var d = document, s = d.createElement('script'), g = 'getElementsByTagName';-->
+<!--                                s.type = 'text/javascript'; s.charset='UTF-8'; s.async = true;-->
+<!--                                s.src = ('https:' == window.location.protocol ? 'https' : 'http')  + '://share.pluso.ru/pluso-like.js';-->
+<!--                                var h=d[g]('body')[0];-->
+<!--                                h.appendChild(s);-->
+<!--                            }})();</script>-->
+<!--                <div class="pluso" data-background="#000000" data-options="big,square,line,horizontal,nocounter,theme=01" data-services="twitter,vkontakte,facebook,google" data-user="1779697249"></div>-->
 
                 </p>
             </div>

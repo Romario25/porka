@@ -6,13 +6,13 @@
             <a href="/video/<?= $video->category->url; ?>/<?= $video->url; ?>">
                 <div class="preview preview-video" >
 
-                    <img src="<?= $video->screens[0];?>" data="<?= implode(",", $video->screens); ?>" class="r" alt="Видео: Отсосала и дала в попку...">
+                    <img src="<?= $video->screens[0];?>" data="<?= implode(",", $video->screens); ?>" class="r" alt="<?= $video->alt ?>">
 
 
 
                     <div class="duration"><?= $video->duration; ?></div>
                 </div>
-                <h1 class="title"><?= $video->title ?></h1>
+                <p class="title"><?= $video->title ?></p>
             </a>
             <div class="cc meta">
                 <div class="c x3d5--d x3d6--t x1--m">
@@ -20,7 +20,7 @@
                 </div>
                 <div class="cc x2d5--d x3d6--t x1--m">
                     <span class="c x1d2--d x1d2--t x1--m nowrap"><?= $video->hits; ?>&nbsp;<i class="fa fa-eye"></i></span>
-                    <!--                                <span class="c x1d2--d x1d2--t x1--m nowrap">86%&nbsp;<i class="fa fa-thumbs-up"></i></span>-->
+                                                    <span class="c x1d2--d x1d2--t x1--m nowrap">86%&nbsp;<i class="fa fa-thumbs-up"></i></span>
                 </div>
             </div>
         </div>

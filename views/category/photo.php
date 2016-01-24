@@ -24,12 +24,12 @@ $this->registerMetaTag([
     <!-- menu -->
 
     <div class="c">
-        <p class="fs24 fw700 text-center opensans"><?= $category->name; ?></p>
+        <p class="fs24 text-center opensans"><?= $category->name; ?></p>
     </div>
 
     <!-- intro text -->
     <div class="c-c">
-        <div class="c">
+        <div class="c text-center">
             <p><?= $category->description; ?></p>
         </div>
     </div>
@@ -44,7 +44,7 @@ $this->registerMetaTag([
 
             <?php foreach($photos as $k=>$photo): ?>
 
-                <article class="c x1d4--d x1d3--t x1d2--m gallery-element">
+                <div class="c x1d4--d x1d3--t x1d2--m gallery-element">
                     <div class="photo-element new">
                         <a href="/photo/<?= $photo->category->url; ?>/<?= $photo->url; ?>">
                             <div class="preview">
@@ -52,7 +52,7 @@ $this->registerMetaTag([
                                 <div class="duration"><?= $photo->photosCount; ?> фото</div>
                             </div>
                             <p class="fs20 semichopped black cursive text-center"><?= $photo->actor?></p>
-                            <h1 class="title semichopped"><?= $photo->title ?></h1>
+                            <p class="title semichopped"><?= $photo->title ?></p>
                         </a>
                         <div class="cc meta">
                             <div class="c x1d2--d x1d2--t x1--m">
@@ -64,7 +64,7 @@ $this->registerMetaTag([
                             </div>
                         </div>
                     </div>
-                </article>
+                </div>
                 <?php
                 if($k == 7){
                     echo '</div>';

@@ -117,15 +117,15 @@
                         sources :[
                             {
                                 file: "<?php echo $video->object_url_0; ?>",
-                                label:"320p"
+                                label:"360p"
                             },
                             {
                                 file: "<?php echo $video->object_url_1; ?>",
-                                label:"640p"
+                                label:"480p"
                             },
                             {
                                 file: "<?php echo $video->object_url_2; ?>",
-                                label:"1280p"
+                                label:"720p"
                             }
                         ]
                     }

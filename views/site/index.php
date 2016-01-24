@@ -3,7 +3,10 @@
 /** @var \app\models\PhotoCatalog $photos */
 /** @var \yii\web\View $this */
 use app\components\MyHelper;
+use evgeniyrru\yii2slick\Slick;
 use yii\helpers\Html;
+use yii\web\JsExpression;
+
 ?>
 
 <?php
@@ -22,11 +25,12 @@ use yii\helpers\Html;
 
 ?>
 
+<div class="herounit blue-gradient-bg">
 <div class="g w1140 main">
 <!-- slider -->
-<div class="herounit blue-gradient-bg">
+
     <div class="g w1140 slider">
-        <a href="#"><img class="r" src="/images/slide-01.png" alt=""></a>
+<!--        <a href="#"><img class="r" src="/images/slide-01.png" alt=""></a>-->
         <?php
 //        $images = [
 //            Html::a(Html::img("http://goods.marketgid.com/img/new-year.jpg", ['alt' => 'Для праздников и карнавалов', 'title' => 'Для праздников и карнавалов']), ['category/dla_prazdnikov_i_karnavalov/2054']),
@@ -35,16 +39,45 @@ use yii\helpers\Html;
 //            //Html::a(Html::img("/img/chancellery.png", ['alt' => 'Канцелярия', 'title' => 'Канцелярия']), ['category/kancelarskie_prinadleznosti/1246']),
 //        ];
 
-//        $slider = \app\models\Slider::find()->all();
-//        $images = [];
-//        foreach($slider as $slide){
-//            $images[] = Html::a(Html::img($slide->src, ['alt' => $slide->title, 'title' => $slide->title]), [$slide->url]);
-//        }
+        $slider = \app\models\Slider::find()->all();
+        $images = [];
+        foreach($slider as $slide){
+            $images[] = Html::a(Html::img($slide->src, ['alt' => $slide->title, 'title' => $slide->title]), [$slide->url]);
+        }
 //
-//        echo yii\bootstrap\Carousel::widget(['items' => $images, 'controls' => false]);
+        echo yii\bootstrap\Carousel::widget(['items' => $images]);
+//        echo Slick::widget([
+//
+//            // HTML tag for container. Div is default.
+//            'itemContainer' => 'div',
+//
+//            // HTML attributes for widget container
+//            'containerOptions' => ['class' => 'container'],
+//
+//            // Items for carousel. Empty array not allowed, exception will be throw, if empty
+//            'items' => $images,
+//
+//            // HTML attribute for every carousel item
+//            'itemOptions' => ['class' => 'r'],
+//
+//            // settings for js plugin
+//            // @see http://kenwheeler.github.io/slick/#settings
+//            'clientOptions' => [
+//                'autoplay' => true,
+//                'dots'     => true,
+//                'centerPadding' => '0',
+//                'adaptiveHeight' => true,
+//                'mobileFirst' => true,
+//                // note, that for params passing function you should use JsExpression object
+//                'onAfterChange' => new JsExpression('function() {console.log("The cat has shown")}'),
+//            ],
+//
+//        ]);
         ?>
     </div>
 </div>
+</div>
+<div class="g w1140 main">
 <!-- slider -->
 
 <!-- main -->
@@ -66,7 +99,7 @@ use yii\helpers\Html;
 
         <div class="c text-center">
             <h1 class="fs22 fw400 opensans"><?= $dataPage->title_video ?></h1>
-            <p><?= $dataPage->description_video ?></p>
+            <p class="text-center" style="margin-top: 20px;"><?= $dataPage->description_video ?></p>
         </div>
         <!-- intro text -->
 
@@ -76,18 +109,18 @@ use yii\helpers\Html;
     <div class="gray-bg">
         <div class="c-c gallery">
             <?php foreach($videos as $video): ?>
-                <article class="c x1d3--d x1d3--t x1d2--m gallery-element">
+                <div class="c x1d3--d x1d3--t x1d2--m gallery-element">
                     <div class="video-element new">
                         <a href="/video/<?= $video->category->url; ?>/<?= $video->url; ?>">
                             <div class="preview preview-video" >
 
-                                <img src="<?= $video->screens[0];?>" data="<?= implode(",", $video->screens); ?>" class="r" alt="Видео: Отсосала и дала в попку...">
+                                <img src="<?= $video->screens[0];?>" data-image="<?= implode(",", $video->screens); ?>" class="r" alt="<?= $video->alt; ?>" />
 
 
 
                                 <div class="duration"><?= $video->duration ?></div>
                             </div>
-                            <h1 class="title"  style="height: 27px;"><?= $video->title ?></h1>
+                            <p class="title"  style="height: 27px;"><?= $video->title ?></p>
                         </a>
                         <div class="cc meta">
                             <div class="c x3d5--d x3d6--t x1--m">
@@ -99,7 +132,7 @@ use yii\helpers\Html;
                             </div>
                         </div>
                     </div>
-                </article>
+                </div>
             <?php endforeach; ?>
             <script>
                 $(function() {
@@ -176,15 +209,15 @@ use yii\helpers\Html;
     <div class="gray-bg">
         <div class="c-c gallery">
             <?php foreach($photos as $photo): ?>
-            <article class="c x1d4--d x1d3--t x1d2--m gallery-element">
+            <div class="c x1d4--d x1d3--t x1d2--m gallery-element">
                 <div class="photo-element <?= (MyHelper::isClassNew($photo->create_at))?'new':''; ?>">
                     <a href="/photo/<?= $photo->category->url; ?>/<?= $photo->url; ?>">
                         <div class="preview">
-                            <img src="<?= (isset($photo->photos[0]))?$photo->photos[0]:"#"; ?>" class="r" alt="<?= $photo->title; ?>">
+                            <img src="<?= (isset($photo->photos[0]))?$photo->photos[0]:"#"; ?>" class="r" alt="<?= $photo->title; ?>" />
                             <div class="duration"><?= $photo->photosCount; ?> фото</div>
                         </div>
                         <p class="fs20 semichopped black cursive text-center"><?= $photo->actor?></p>
-                        <h1 class="title semichopped"><?= $photo->title; ?></h1>
+                        <p class="title semichopped"><?= $photo->title; ?></p>
                     </a>
                     <div class="cc meta">
                         <div class="c x1d2--d x1d2--t x1--m">
@@ -196,7 +229,7 @@ use yii\helpers\Html;
                         </div>
                     </div>
                 </div>
-            </article>
+            </div>
             <?php endforeach; ?>
         </div>
 

@@ -27,11 +27,11 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 
-    <?php echo  $form->field($model, 'videoFile[]')->fileInput()->label("video 320X240"); ?>
+    <?php echo  $form->field($model, 'videoFile[]')->fileInput()->label("video 360"); ?>
 
-    <?php echo  $form->field($model, 'videoFile[]')->fileInput()->label("video 640X480"); ?>
+    <?php echo  $form->field($model, 'videoFile[]')->fileInput()->label("video 480"); ?>
 
-    <?php echo  $form->field($model, 'videoFile[]')->fileInput()->label("video 1280X720"); ?>
+    <?php echo  $form->field($model, 'videoFile[]')->fileInput()->label("video 720"); ?>
 
     <?php // echo $form->field($model, 'videoFile')->fileInput([]) ?>
 
@@ -46,6 +46,8 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'duration')->textInput()->label("Длительность"); ?>
 
     <?= $form->field($model, 'actor')->textInput()->label('Актер'); ?>
+
+    <?= $form->field($model, 'alt')->textInput(); ?>
 
     <?= $form->field($model, 'meta_title')->textInput(['maxlength' => true]); ?>
 

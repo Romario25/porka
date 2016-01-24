@@ -43,18 +43,18 @@ $this->registerMetaTag([
     <div class="gray-bg">
         <div class="c-c gallery">
             <?php foreach($videos as $video): ?>
-                <article class="c x1d3--d x1d3--t x1d2--m gallery-element">
+                <div class="c x1d3--d x1d3--t x1d2--m gallery-element">
                     <div class="video-element new">
                         <a href="/video/<?= $video->category->url; ?>/<?= $video->url; ?>">
                             <div class="preview preview-video" >
 
-                                <img src="<?= $video->screens[0];?>" data="<?= implode(",", $video->screens); ?>" class="r" alt="Видео: Отсосала и дала в попку...">
+                                <img src="<?= $video->screens[0];?>" data-image="<?= implode(",", $video->screens); ?>" class="r" alt="<?= $video->alt; ?>" />
 
 
 
                                 <div class="duration"><?= $video->duration ?></div>
                             </div>
-                            <h1 class="title"><?= $video->title ?></h1>
+                            <p class="title"><?= $video->title ?></p>
                         </a>
                         <div class="cc meta">
                             <div class="c x3d5--d x3d6--t x1--m">
@@ -66,7 +66,7 @@ $this->registerMetaTag([
                             </div>
                         </div>
                     </div>
-                </article>
+                </div>
             <?php endforeach; ?>
             <script>
                 $(function() {
@@ -127,15 +127,15 @@ $this->registerMetaTag([
     <div class="gray-bg">
         <div class="c-c gallery">
             <?php foreach($photos as $photo): ?>
-                <article class="c x1d4--d x1d3--t x1d2--m gallery-element">
+                <div class="c x1d4--d x1d3--t x1d2--m gallery-element">
                     <div class="photo-element <?= (MyHelper::isClassNew($photo->create_at))?'new':''; ?>">
                         <a href="/photo/<?= $photo->category->url; ?>/<?= $photo->url; ?>">
                             <div class="preview">
-                                <img src="<?= (isset($photo->photos[0]))?$photo->photos[0]:"#"; ?>" class="r" alt="<?= $photo->title; ?>">
+                                <img src="<?= (isset($photo->photos[0]))?$photo->photos[0]:"#"; ?>" class="r" alt="<?= $photo->title; ?>" />
                                 <div class="duration"><?= $photo->photosCount; ?> фото</div>
                             </div>
                             <p class="fs20 semichopped black cursive text-center"><?= $photo->actor?></p>
-                            <h1 class="title semichopped"><?= $photo->title; ?></h1>
+                            <p class="title semichopped"><?= $photo->title; ?></p>
                         </a>
                         <div class="cc meta">
                             <div class="c x1d2--d x1d2--t x1--m">
@@ -147,7 +147,7 @@ $this->registerMetaTag([
                             </div>
                         </div>
                     </div>
-                </article>
+                </div>
             <?php endforeach; ?>
         </div>
 

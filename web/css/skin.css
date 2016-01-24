@@ -5,6 +5,13 @@ html {
   color: #2d2d2d;
 }
 
+@font-face {
+    font-family: "Lobster";
+    url("../fonts/lobster.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal;
+}
+
 /* line 25, scss/skin.scss */
 html,
 body {
@@ -35,7 +42,7 @@ body {
 /* line 50, scss/skin.scss */
 .disable-hover,
 .disable-hover * {
-  pointer-events: none !important;
+  /*pointer-events: none !important;*/
 }
 
 /* line 55, scss/skin.scss */
@@ -291,7 +298,7 @@ ul.unstyled {
   /* IE10+ */
   background: linear-gradient(to bottom, #69cef6 0%, #0096c6 100%);
   /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#69cef6', endColorstr='#0096c6',GradientType=0 );
+  /*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#69cef6', endColorstr='#0096c6',GradientType=0 );*/
   /* IE6-9 */
   border-bottom: 3px solid #cd1d6a;
 }
@@ -353,6 +360,10 @@ a.pink:hover {
 }
 
 /* line 242, scss/skin.scss */
+/*.cursive {
+  font-family: "Pacifico", cursive;
+}*/
+
 .cursive {
   font-family: "Lobster", cursive;
 }
@@ -367,7 +378,7 @@ a.pink:hover {
 .page-top .logotype,
 .page-bottom .logotype {
   width: 100%;
-  max-width: 160px;
+  max-width: 250px;
   height: auto;
 }
 /* line 259, scss/skin.scss */
@@ -421,7 +432,7 @@ a.pink:hover {
   background: -o-linear-gradient(top, #cd1d6a 0%, #f06393 100%);
   background: -ms-linear-gradient(top, #cd1d6a 0%, #f06393 100%);
   background: linear-gradient(to bottom, #cd1d6a 0%, #f06393 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#cd1d6a', endColorstr='#f06393',GradientType=0 );
+  /*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#cd1d6a', endColorstr='#f06393',GradientType=0 );*/
 }
 /* line 304, scss/skin.scss */
 .page-top .nav a {
@@ -502,7 +513,7 @@ a.pink:hover {
   background: -o-linear-gradient(top, #cd1d6a 0%, #f06393 100%);
   background: -ms-linear-gradient(top, #cd1d6a 0%, #f06393 100%);
   background: linear-gradient(to bottom, #cd1d6a 0%, #f06393 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#cd1d6a', endColorstr='#f06393',GradientType=0 );
+  /*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#cd1d6a', endColorstr='#f06393',GradientType=0 );*/
 }
 /* line 357, scss/skin.scss */
 .navitron label:after {
@@ -731,7 +742,7 @@ a.pink:hover {
   /* IE10+ */
   background: linear-gradient(to bottom, #cd1d6a 0%, #f06494 100%);
   /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#cd1d6a', endColorstr='#f06494',GradientType=0 );
+  /*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#cd1d6a', endColorstr='#f06494',GradientType=0 );*/
   /* IE6-9 */
   padding-top: .5em;
   padding-bottom: .5em;
@@ -882,10 +893,16 @@ a.pink:hover {
   background-color: #cd1d6a;
   color: #fff;
   padding: 0.25em 0.75em;
-  height: 20px;
+  height: 27px;
   line-height: 20px;
   overflow: hidden;
   text-overflow: ellipsis;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  white-space: nowrap;
+  margin-top: 0;
 }
 /* line 691, scss/skin.scss */
 .gallery .video-element .title:hover {
@@ -1002,6 +1019,11 @@ a.pink:hover {
   overflow: hidden;
   text-overflow: ellipsis;
   text-align: center;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  white-space: nowrap;
 }
 /* line 799, scss/skin.scss */
 .gallery .photo-element .title:hover {
@@ -1104,7 +1126,7 @@ a.pink:hover {
   color: #fff;
   text-transform: uppercase;
   z-index: 1;
-  font-family: "Lobster", sans-serif;
+  font-family: "Pacifico", sans-serif;
   width: 140px;
   height: 40px;
   font-size: 18px;
@@ -1164,8 +1186,20 @@ a.pink:hover {
   display: inline-block;
   border-radius: 3px;
 }
+
+.pagination li {
+  border: 1px solid #e3e3e3;
+  background-color: #fcfcfc;
+  color: #969696;
+  font-size: 15px;
+  margin: 3px;
+  line-height: 32px;
+  text-align: center;
+  display: inline-block;
+  border-radius: 3px;
+}
 /* line 947, scss/skin.scss */
-.pagination .button a {
+.pagination .button a, .pagination .button span, .pagination li a {
   padding: 0.4em 0.7em;
   color: #969696;
 }
@@ -1255,4 +1289,76 @@ a.pink:hover {
   .d-only {
     display: inline-block;
   }
+}
+
+@media (max-width: 480px) {
+  .x1d2--m, .x2d4--m, .x3d6--m {
+    width: 100%;
+  }
+}
+
+@media (max-width: 960px) {
+  .c.navitron .itemset{
+    display: block;
+  }
+}
+
+.c.navitron{
+  padding-top: 13px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.c-c .c.navitron{
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.carousel .carousel-indicators{
+  display: none;
+}
+
+.carousel .left.carousel-control{
+  width: 50px;
+  height: 50px;
+  background: url(button-slider.png) no-repeat;
+  -webkit-background-size: 100%;
+       -o-background-size: 100%;
+          background-size: 100%;
+  -webkit-transform: rotate(180deg);
+     -moz-transform: rotate(180deg);
+      -ms-transform: rotate(180deg);
+       -o-transform: rotate(180deg);
+          transform: rotate(180deg);
+  left: -65px;
+  top: 50%;
+  margin-top: -25px;
+  color: transparent;
+  text-shadow: none;
+}
+
+.carousel .right.carousel-control{
+  width: 50px;
+  height: 50px;
+  background: url(button-slider.png) no-repeat;
+  -webkit-background-size: 100%;
+       -o-background-size: 100%;
+          background-size: 100%;
+  right: -65px;
+  top: 50%;
+  margin-top: -25px;
+  color: transparent;
+  text-shadow: none;
+}
+
+@media (max-width: 1300px) {
+  .carousel .left.carousel-control{
+    left: 18px;
+  }
+  .carousel .right.carousel-control{
+    right: 18px;
+  }
+}
+.fs24.fw300.text-center.opensans{
+  padding: 1em 0;
 }

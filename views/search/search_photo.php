@@ -28,7 +28,7 @@
                     $photosCount = \app\models\Photos::find()->where("catalog_id = :catalog_id", [":catalog_id"=>$photo['id']])->count("*");
 
                 ?>
-                <article class="c x1d4--d x1d3--t x1d2--m gallery-element">
+                <div class="c x1d4--d x1d3--t x1d2--m gallery-element">
                     <div class="photo-element new">
                         <a href="/photo/<?= $photo['url']; ?>">
                             <div class="preview">
@@ -48,7 +48,7 @@
                             </div>
                         </div>
                     </div>
-                </article>
+                </div>
             <?php endforeach; ?>
         </div>
         <!-- gallery -->

@@ -21,15 +21,15 @@ $this->registerMetaTag([
     <?php echo \app\components\widgets\CategoryWidget::widget(['type'=>'photo']) ?>
     <!-- menu -->
 
-    <div class="c">
-        <p class="fs24 fw700 text-center opensans">
+    <div class="c text-center">
+        <h1 class="fs22 fw400 opensans" style="margin-bottom: 5px;">
             <?= \app\models\Pages::getPage('/photo', 'title');?>
-        </p>
+        </h1>
     </div>
 
     <!-- intro text -->
     <div class="c-c">
-        <div class="c">
+        <div class="c text-center">
             <p><?= \app\models\Pages::getPage('/photo', 'description');?></p>
         </div>
     </div>
@@ -44,7 +44,7 @@ $this->registerMetaTag([
 
             <?php foreach($photos as $k=>$photo): ?>
 
-            <article class="c x1d4--d x1d3--t x1d2--m gallery-element">
+            <div class="c x1d4--d x1d3--t x1d2--m gallery-element">
                 <div class="photo-element new">
                     <a href="/photo/<?= $photo->category->url; ?>/<?= $photo->url; ?>">
                         <div class="preview">
@@ -52,7 +52,7 @@ $this->registerMetaTag([
                             <div class="duration"><?= $photo->photosCount; ?> фото</div>
                         </div>
                         <p class="fs20 semichopped black cursive text-center"><?= $photo->actor; ?></p>
-                        <h1 class="title semichopped"><?= $photo->title ?></h1>
+                        <p class="title semichopped"><?= $photo->title ?></p>
                     </a>
                     <div class="cc meta">
                         <div class="c x1d2--d x1d2--t x1--m">
@@ -64,11 +64,11 @@ $this->registerMetaTag([
                         </div>
                     </div>
                 </div>
-            </article>
+            </div>
                 <?php
                     if($k == 7){
                         echo '</div>';
-                        echo \app\components\widgets\AdsWidget::widget(['type'=>'photo']);
+                        echo \app\components\widgets\AdsWidget::widget(['url'=>'photo/view']);
                         echo '<div class="c-c gallery">';
                     }
 

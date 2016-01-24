@@ -34,13 +34,13 @@ use yii\helpers\Html;
 
         <nav class="c navitron">
             <ul class="relative">
-                <div class="cc x5d6--d x1--t x1--m itemset">
-                    <li class="cc x1d5--d x1d5--t x1--m item"><a href="#">Модели</a></li>
-                    <li class="cc x1d5--d x1d5--t x1--m item"><a href="#">Экзотика</a></li>
-                    <li class="cc x1d5--d x1d5--t x1--m item"><a href="#">Мамочки</a></li>
-                    <li class="cc x1d5--d x1d5--t x1--m item"><a href="#">Лесбиянки</a></li>
-                    <li class="cc x1d5--d x1d5--t x1--m item"><a href="#">Брюнетки</a></li>
-                </div>
+                <li class="cc x5d6-d x1--t x1--m itemset">
+                    <div class="cc x1d5--d x1d5--t x1--m item"><a href="#">Модели</a></div>
+                    <div class="cc x1d5--d x1d5--t x1--m item"><a href="#">Экзотика</a></div>
+                    <div class="cc x1d5--d x1d5--t x1--m item"><a href="#">Мамочки</a></div>
+                    <div class="cc x1d5--d x1d5--t x1--m item"><a href="#">Лесбиянки</a></div>
+                    <div class="cc x1d5--d x1d5--t x1--m item"><a href="#">Брюнетки</a></div>
+                </li>
                 <li class="cc x1d6--d x1--t x1--m item relative">
                     <input type="checkbox" id="dropdown-trigger" class="dropdown-trigger hidden">
                     <label for="dropdown-trigger">Все категории</label>
@@ -75,7 +75,7 @@ use yii\helpers\Html;
     <!-- gallery -->
     <div class="gray-bg">
         <div class="c-c gallery">
-            <article class="c x1d3--d x1d3--t x1d2--m gallery-element">
+            <div class="c x1d3--d x1d3--t x1d2--m gallery-element">
                 <div class="video-element new">
                     <a href="#">
                         <div class="preview">
@@ -94,8 +94,8 @@ use yii\helpers\Html;
                         </div>
                     </div>
                 </div>
-            </article>
-            <article class="c x1d3--d x1d3--t x1d2--m gallery-element">
+            </div>
+            <div class="c x1d3--d x1d3--t x1d2--m gallery-element">
                 <div class="video-element new">
                     <a href="#">
                         <div class="preview">
@@ -114,8 +114,8 @@ use yii\helpers\Html;
                         </div>
                     </div>
                 </div>
-            </article>
-            <article class="c x1d3--d x1d3--t x1d2--m gallery-element">
+            </div>
+            <div class="c x1d3--d x1d3--t x1d2--m gallery-element">
                 <div class="video-element">
                     <a href="#">
                         <div class="preview">
@@ -134,8 +134,8 @@ use yii\helpers\Html;
                         </div>
                     </div>
                 </div>
-            </article>
-            <article class="c x1d3--d x1d3--t x1d2--m gallery-element">
+            </div>
+            <div class="c x1d3--d x1d3--t x1d2--m gallery-element">
                 <div class="video-element">
                     <a href="#">
                         <div class="preview">
@@ -154,8 +154,8 @@ use yii\helpers\Html;
                         </div>
                     </div>
                 </div>
-            </article>
-            <article class="c x1d3--d x1d3--t x1d2--m gallery-element">
+            </div>
+            <div class="c x1d3--d x1d3--t x1d2--m gallery-element">
                 <div class="video-element">
                     <a href="#">
                         <div class="preview">
@@ -174,8 +174,8 @@ use yii\helpers\Html;
                         </div>
                     </div>
                 </div>
-            </article>
-            <article class="c x1d3--d x1d3--t x1d2--m gallery-element">
+            </div>
+            <div class="c x1d3--d x1d3--t x1d2--m gallery-element">
                 <div class="video-element">
                     <a href="#">
                         <div class="preview">
@@ -194,7 +194,7 @@ use yii\helpers\Html;
                         </div>
                     </div>
                 </div>
-            </article>
+            </div>
         </div>
 
 
@@ -269,13 +269,13 @@ use yii\helpers\Html;
         <!-- menu -->
         <nav class="c navitron">
             <ul class="relative">
-                <div class="cc x5d6--d x1--t x1--m itemset">
-                    <li class="cc x1d5--d x1d5--t x1--m item"><a href="#">Модели</a></li>
-                    <li class="cc x1d5--d x1d5--t x1--m item"><a href="#">Экзотика</a></li>
-                    <li class="cc x1d5--d x1d5--t x1--m item"><a href="#">Мамочки</a></li>
-                    <li class="cc x1d5--d x1d5--t x1--m item"><a href="#">Лесбиянки</a></li>
-                    <li class="cc x1d5--d x1d5--t x1--m item"><a href="#">Брюнетки</a></li>
-                </div>
+                <li class="cc x5d6-d x1--t x1--m itemset">
+                    <div class="cc x1d5--d x1d5--t x1--m item"><a href="#">Модели</a></div>
+                    <div class="cc x1d5--d x1d5--t x1--m item"><a href="#">Экзотика</a></div>
+                    <div class="cc x1d5--d x1d5--t x1--m item"><a href="#">Мамочки</a></div>
+                    <div class="cc x1d5--d x1d5--t x1--m item"><a href="#">Лесбиянки</a></div>
+                    <div class="cc x1d5--d x1d5--t x1--m item"><a href="#">Брюнетки</a></div>
+                </li>
                 <li class="cc x1d6--d x1--t x1--m item relative">
                     <input type="checkbox" id="dropdown-trigger2" class="dropdown-trigger hidden">
                     <label for="dropdown-trigger2">Все категории</label>
@@ -312,7 +312,7 @@ use yii\helpers\Html;
     <!-- gallery -->
     <div class="gray-bg">
         <div class="c-c gallery">
-            <article class="c x1d4--d x1d3--t x1d2--m gallery-element">
+            <div class="c x1d4--d x1d3--t x1d2--m gallery-element">
                 <div class="photo-element new">
                     <a href="#">
                         <div class="preview">
@@ -332,8 +332,8 @@ use yii\helpers\Html;
                         </div>
                     </div>
                 </div>
-            </article>
-            <article class="c x1d4--d x1d3--t x1d2--m gallery-element">
+            </div>
+            <div class="c x1d4--d x1d3--t x1d2--m gallery-element">
                 <div class="photo-element new">
                     <a href="#">
                         <div class="preview">
@@ -353,8 +353,8 @@ use yii\helpers\Html;
                         </div>
                     </div>
                 </div>
-            </article>
-            <article class="c x1d4--d x1d3--t x1d2--m gallery-element">
+            </div>
+            <div class="c x1d4--d x1d3--t x1d2--m gallery-element">
                 <div class="photo-element">
                     <a href="#">
                         <div class="preview">
@@ -374,8 +374,8 @@ use yii\helpers\Html;
                         </div>
                     </div>
                 </div>
-            </article>
-            <article class="c x1d4--d x1d3--t x1d2--m gallery-element">
+            </div>
+            <div class="c x1d4--d x1d3--t x1d2--m gallery-element">
                 <div class="photo-element">
                     <a href="#">
                         <div class="preview">
@@ -395,8 +395,8 @@ use yii\helpers\Html;
                         </div>
                     </div>
                 </div>
-            </article>
-            <article class="c x1d4--d x1d3--t x1d2--m gallery-element">
+            </div>
+            <div class="c x1d4--d x1d3--t x1d2--m gallery-element">
                 <div class="photo-element">
                     <a href="#">
                         <div class="preview">
@@ -416,8 +416,8 @@ use yii\helpers\Html;
                         </div>
                     </div>
                 </div>
-            </article>
-            <article class="c x1d4--d x1d3--t x1d2--m gallery-element">
+            </div>
+            <div class="c x1d4--d x1d3--t x1d2--m gallery-element">
                 <div class="photo-element">
                     <a href="#">
                         <div class="preview">
@@ -437,8 +437,8 @@ use yii\helpers\Html;
                         </div>
                     </div>
                 </div>
-            </article>
-            <article class="c x1d4--d x1d3--t x1d2--m gallery-element">
+            </div>
+            <div class="c x1d4--d x1d3--t x1d2--m gallery-element">
                 <div class="photo-element">
                     <a href="#">
                         <div class="preview">
@@ -458,8 +458,8 @@ use yii\helpers\Html;
                         </div>
                     </div>
                 </div>
-            </article>
-            <article class="c x1d4--d x1d3--t x1d2--m gallery-element">
+            </div>
+            <div class="c x1d4--d x1d3--t x1d2--m gallery-element">
                 <div class="photo-element">
                     <a href="#">
                         <div class="preview">
@@ -479,7 +479,7 @@ use yii\helpers\Html;
                         </div>
                     </div>
                 </div>
-            </article>
+            </div>
         </div>
 
 

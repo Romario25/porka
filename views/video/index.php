@@ -23,15 +23,15 @@ $this->registerMetaTag([
     <?php echo \app\components\widgets\CategoryWidget::widget(['type'=>'video']); ?>
     <!-- menu -->
 
-    <div class="c">
-        <p class="fs24 fw700 text-center opensans">
+    <div class="c text-center">
+        <h1 class="fs22 fw400 opensans"  style="margin-bottom: 5px;">
             <?= \app\models\Pages::getPage('/video', 'title');?>
-        </p>
+        </h1>
     </div>
 
     <!-- intro text -->
     <div class="c-c">
-        <div class="c">
+        <div class="c text-center">
             <p><?= \app\models\Pages::getPage('/video', 'description');?></p>
         </div>
     </div>
@@ -43,18 +43,18 @@ $this->registerMetaTag([
         <div class="c-c gallery">
 
             <?php foreach($videos as $k=>$video): ?>
-                <article class="c x1d3--d x1d3--t x1d2--m gallery-element">
+                <div class="c x1d3--d x1d3--t x1d2--m gallery-element">
                     <div class="video-element new">
                         <a href="/video/<?= $video->category->url; ?>/<?= $video->url; ?>">
                             <div class="preview preview-video" >
 
-                                <img src="<?= $video->screens[0];?>" data="<?= implode(",", $video->screens); ?>" class="r" alt="Видео: Отсосала и дала в попку...">
+                                <img src="<?= $video->screens[0];?>" data-image="<?= implode(",", $video->screens); ?>" class="r" alt="<?= $video->alt; ?>" />
 
 
 
                                 <div class="duration"><?= $video->duration; ?></div>
                             </div>
-                            <h1 class="title"><?= $video->title ?></h1>
+                            <p class="title"><?= $video->title ?></p>
                         </a>
                         <div class="cc meta">
                             <div class="c x3d5--d x3d6--t x1--m">
@@ -66,11 +66,11 @@ $this->registerMetaTag([
                             </div>
                         </div>
                     </div>
-                </article>
+                </div>
                 <?php
                 if($k == 7){
                     echo '</div>';
-                    echo \app\components\widgets\TeaserWidget::widget(['type'=>'video']);
+                    echo \app\components\widgets\AdsWidget::widget(['url'=>'video/view']);
                     echo '<div class="c-c gallery">';
                 }
 

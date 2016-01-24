@@ -21,7 +21,9 @@
         "aws/aws-sdk-php": "^3.12",
         "mailchimp/mailchimp": "*",
         "yiisoft/yii2-imagine": "*",
-        "newerton/yii2-fancybox": "dev-master"
+        "newerton/yii2-fancybox": "dev-master",
+        "evgeniyrru/yii2-slick": "*"
+
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",
