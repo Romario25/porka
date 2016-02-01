@@ -16,6 +16,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'description')->textarea([]); ?>
 
+    <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
+
     <?= $form->field($model, 'url')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'meta_title')->textInput(['maxlength' => true]); ?>
@@ -25,6 +27,8 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'meta_description')->textInput(['maxlength' => true]); ?>
 
     <?= $form->field($model, 'show_expand')->checkbox([]); ?>
+
+    <?= $form->field($model, 'sort')->textInput([]); ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

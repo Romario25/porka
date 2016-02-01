@@ -27,7 +27,7 @@ $this->registerMetaTag([
         ?>
         <!-- intro text -->
         <div class="c text-center">
-            <h1 class="fs22 fw400 opensans"><?= $category->name; ?></h1>
+            <h1 class="fs22 fw400 opensans"><?= $category->title; ?></h1>
             <p class="text-center"><?= $category->description; ?></p>
         </div>
         <!-- intro text -->
@@ -43,7 +43,7 @@ $this->registerMetaTag([
                     <a href="/video/<?= $video->category->url; ?>/<?= $video->url; ?>">
                         <div class="preview" >
 
-                            <img src="<?= $video->screens[0];?>" data="<?= implode(",", $video->screens); ?>" class="r" alt="<?= $video->alt; ?>">
+                            <img src="<?= $video->screens[0];?>" data-image="<?= implode(",", $video->screens); ?>" class="r" alt="<?= $video->alt; ?>">
 
 
 
@@ -78,7 +78,7 @@ $this->registerMetaTag([
                     console.log($(this).find("img").attr('data'));
                     var _this = this,
                         curImage = $(this).find("img"),
-                        images = curImage.attr('data').split(',');
+                        images = curImage.attr('data-image').split(',');
                     counter = 0;
                     console.log(images);
 

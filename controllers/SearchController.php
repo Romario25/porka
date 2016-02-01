@@ -23,12 +23,12 @@ class SearchController extends Controller
 
             if($type == 1){
                 //SELECT * FROM `articles` WHERE MATCH (title,body) AGAINST ('database');
-                $sql = "SELECT * FROM video  WHERE MATCH (title, description) AGAINST ('$searchString')";
+                $sql = "SELECT * FROM video  WHERE MATCH (title, description) AGAINST ('$searchString') AND `publish` = 1";
 
                 $template = "search_video";
             }
             if($type == 2){
-                $sql = "SELECT * FROM photo_catalog WHERE MATCH (title, description) AGAINST ('$searchString')";
+                $sql = "SELECT * FROM photo_catalog WHERE MATCH (title, description) AGAINST ('$searchString') AND `publish` = 1";
                 $template = "search_photo";
             }
 

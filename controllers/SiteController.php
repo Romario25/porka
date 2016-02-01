@@ -58,8 +58,8 @@ class SiteController extends Controller
     public function actionIndex()
     {
 
-        $videos = Video::find()->orderBy('id DESC')->limit(9)->all();
-        $photos = PhotoCatalog::find()->orderBy('id DESC')->limit(12)->all();
+        $videos = Video::find()->where('publish = :publish', [":publish"=>1])->orderBy('id DESC')->limit(9)->all();
+        $photos = PhotoCatalog::find()->where('publish = :publish', [":publish"=>1])->orderBy('id DESC')->limit(12)->all();
 
         return $this->render('index', [
             'videos'=>$videos,

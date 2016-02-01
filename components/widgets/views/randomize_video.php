@@ -6,7 +6,7 @@
             <a href="/video/<?= $video->category->url; ?>/<?= $video->url; ?>">
                 <div class="preview preview-video" >
 
-                    <img src="<?= $video->screens[0];?>" data="<?= implode(",", $video->screens); ?>" class="r" alt="<?= $video->alt ?>">
+                    <img src="<?= $video->screens[0];?>" data-image="<?= implode(",", $video->screens); ?>" class="r" alt="<?= $video->alt ?>">
 
 
 
@@ -36,7 +36,7 @@
 //                        console.log($(this).find("img").attr('data'));
             var _this = this,
                 curImage = $(this).find("img"),
-                images = curImage.attr('data').split(',');
+                images = curImage.attr('data-image').split(',');
             counter = 0;
             //  console.log(images);
 

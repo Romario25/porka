@@ -39,7 +39,17 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'minus',
             // 'hits',
 
-            ['class' => 'yii\grid\ActionColumn', 'template'=>'{update} {delete}'],
+            ['class' => 'yii\grid\ActionColumn', 'template'=>'{view} {update} {delete}',
+                'buttons' => [
+                    'view' => function($url, $model, $key){
+                        return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', "/photo/".$model->category->url."/".$model->url, ['target'=>'_blank']);
+                    }
+                ],
+                'options' => [
+                    'width'=>'100px;'
+                ]
+
+            ],
         ],
     ]); ?>
 

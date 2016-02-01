@@ -17,11 +17,11 @@ class NewController extends Controller
 {
     public function actionIndex(){
         $videos = Video::find()
-            ->where("create_at > (now() - interval 7 day)")
+            ->where("create_at > (now() - interval 7 day) && publish = 1")
             ->orderBy('id DESC')
             ->all();
         $photos = PhotoCatalog::find()
-            ->where("create_at > (now() - interval 7 day)")
+            ->where("create_at > (now() - interval 7 day) && publish = 1")
             ->orderBy('id DESC')
             ->all();
 

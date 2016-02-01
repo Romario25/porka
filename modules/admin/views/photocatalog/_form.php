@@ -36,6 +36,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'photosUpload')->fileInput(); ?>
 
+    <?= $form->field($model, 'photoPreviewUpload')->fileInput(); ?>
+
     <?= $form->field($model, 'meta_title')->textInput(['maxlength' => true]); ?>
 
     <?php //echo $form->field($model, 'meta_keywords')->textInput(['maxlength' => true]); ?>
@@ -44,6 +46,8 @@ use yii\widgets\ActiveForm;
 
 
     <?= $form->field($model, 'storage')->dropDownList([0=>'GoDaddy', 1=>'Server', 2=>'Amazon']); ?>
+
+    <?= $form->field($model, 'publish')->checkbox([]); ?>
 
 
     <div class="form-group">

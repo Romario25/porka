@@ -19,7 +19,7 @@ class PhotoController extends Controller
     public function actionIndex(){
 
         // выполняем запрос
-        $query = PhotoCatalog::find();
+        $query = PhotoCatalog::find()->where("publish = 1");
         // делаем копию выборки
         $countQuery = clone $query;
         // подключаем класс Pagination, выводим по 10 пунктов на страницу

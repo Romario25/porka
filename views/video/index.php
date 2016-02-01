@@ -70,7 +70,7 @@ $this->registerMetaTag([
                 <?php
                 if($k == 7){
                     echo '</div>';
-                    echo \app\components\widgets\AdsWidget::widget(['url'=>'video/view']);
+                    echo \app\components\widgets\AdsWidget::widget(['url'=>'video/index']);
                     echo '<div class="c-c gallery">';
                 }
 
@@ -83,7 +83,7 @@ $this->registerMetaTag([
 //                        console.log($(this).find("img").attr('data'));
                         var _this = this,
                             curImage = $(this).find("img"),
-                            images = curImage.attr('data').split(',');
+                            images = curImage.attr('data-image').split(',');
                         counter = 0;
                         //console.log(images);
 

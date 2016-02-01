@@ -1362,3 +1362,28 @@ a.pink:hover {
 .fs24.fw300.text-center.opensans{
   padding: 1em 0;
 }
+@media (max-width: 1200px){
+  .c.semichopped.x4d12--d.x1--m.vmiddle.fs24.text-center{
+    display: none;
+  }
+  .c.x3d12--d.x2d4--t.x1--m.vmiddle{
+    width: 100%;
+  }
+  
+  .c.x3d12--d.x2d4--t.x1--m.vmiddle .ta-cll{
+    text-align: center;
+  }
+  .tablet-hide{
+    display: none !important;
+  }
+  .c.x5d12--d.x2d4--t.x1--m.vmiddle.nav{
+    width: 100%;
+  }
+  .page-top .nav a{
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .page-top .nav {
+    height: auto;
+  }
+}

@@ -16,6 +16,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'url')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
+
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 
     <?= $form->field($model, 'meta_title')->textInput(['maxlength' => true]) ?>
@@ -23,6 +25,8 @@ use yii\widgets\ActiveForm;
     <?php //echo $form->field($model, 'meta_keywords')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'meta_description')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'sort')->textInput([]); ?>
 
     <?= $form->field($model, 'show_expand')->checkbox([]); ?>
 

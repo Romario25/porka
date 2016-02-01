@@ -57,6 +57,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'storage')->dropDownList([0=>'GoDaddy', 1=>'Server', 2=>'Amazon']); ?>
 
+    <?= $form->field($model, 'publish')->checkbox([]); ?>
+
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>

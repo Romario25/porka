@@ -64,7 +64,7 @@ $this->registerMetaTag([
 
            // $ads = "test";
            $ads = \app\components\widgets\AdsWidget::widget(['url'=>'photo-slider']);
-            $photos = \app\models\Photos::find()->where("catalog_id = :catalog_id", [':catalog_id'=>$model->id])->all();
+            $photos = \app\models\Photos::find()->where("catalog_id = :catalog_id", [':catalog_id'=>$model->id])->orderBy('sort')->all();
         ?>
         <div class="c-c gallery">
             <?php foreach($photos as $k=>$photo): ?>
@@ -135,7 +135,7 @@ $this->registerMetaTag([
 
 
 
-    <div class="gray-bg">
+    <div class="gray-bg" style="margin: 0 -20px;">
         <?= \app\components\widgets\RandomizeWidget::widget(['type'=>'photo', 'currentId'=>$model->id])?>
 
 

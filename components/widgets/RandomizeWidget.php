@@ -22,9 +22,9 @@ class RandomizeWidget extends Widget
     public function run(){
         $model = null;
         if($this->type == 'video'){
-            $model = Video::find()->where('id <> :id', [':id'=>$this->currentId])->orderBy('RAND()')->limit(3)->all();
+            $model = Video::find()->where('id <> :id && publish = 1', [':id'=>$this->currentId])->orderBy('RAND()')->limit(3)->all();
         } else {
-            $model = PhotoCatalog::find()->where('id <> :id', [':id'=>$this->currentId])->orderBy('RAND()')->limit(4)->all();
+            $model = PhotoCatalog::find()->where('id <> :id && publish = 1', [':id'=>$this->currentId])->orderBy('RAND()')->limit(4)->all();
         }
 
         return $this->render(($this->type == 'video')?'randomize_video':'randomize_photo', [

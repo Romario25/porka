@@ -21,12 +21,12 @@ class CategoryWidget extends Widget
     public function run(){
 
         if($this->type == 'video'){
-            $categoryShow = Category::find()->where('show_expand = :show_expand', [':show_expand'=>true])->all();
-            $categoryHide = Category::find()->where('show_expand = :show_expand', [':show_expand'=>false])->all();
+            $categoryShow = Category::find()->where('show_expand = :show_expand', [':show_expand'=>true])->orderBy('sort')->all();
+            $categoryHide = Category::find()->where('show_expand = :show_expand', [':show_expand'=>false])->orderBy('sort')->all();
         }
         if($this->type == 'photo'){
-            $categoryShow = CategoryPhoto::find()->where('show_expand = :show_expand', [':show_expand'=>true])->all();
-            $categoryHide = CategoryPhoto::find()->where('show_expand = :show_expand', [':show_expand'=>false])->all();
+            $categoryShow = CategoryPhoto::find()->where('show_expand = :show_expand', [':show_expand'=>true])->orderBy('sort')->all();
+            $categoryHide = CategoryPhoto::find()->where('show_expand = :show_expand', [':show_expand'=>false])->orderBy('sort')->all();
         }
 
         if($this->type == 'video')

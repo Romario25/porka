@@ -141,7 +141,7 @@ use yii\web\JsExpression;
 //                        console.log($(this).find("img").attr('data'));
                         var _this = this,
                             curImage = $(this).find("img"),
-                            images = curImage.attr('data').split(',');
+                            images = curImage.attr('data-image').split(',');
                         counter = 0;
                       //  console.log(images);
 
@@ -209,11 +209,18 @@ use yii\web\JsExpression;
     <div class="gray-bg">
         <div class="c-c gallery">
             <?php foreach($photos as $photo): ?>
-            <div class="c x1d4--d x1d3--t x1d2--m gallery-element">
+                <?php
+                    if(!empty($photo->photo_preview) && file_exists('../web/uploads/previewphoto/'.$photo->photo_preview)){
+                        $src = '/uploads/previewphoto/'.$photo->photo_preview;
+                    } else {
+                        $src = (isset($photo->photos[0]))?$photo->photos[0]:"#";
+                    }
+                ?>
+                <div class="c x1d4--d x1d3--t x1d2--m gallery-element">
                 <div class="photo-element <?= (MyHelper::isClassNew($photo->create_at))?'new':''; ?>">
                     <a href="/photo/<?= $photo->category->url; ?>/<?= $photo->url; ?>">
                         <div class="preview">
-                            <img src="<?= (isset($photo->photos[0]))?$photo->photos[0]:"#"; ?>" class="r" alt="<?= $photo->title; ?>" />
+                            <img src="<?= $src ?>" class="r" alt="<?= $photo->title; ?>" />
                             <div class="duration"><?= $photo->photosCount; ?> фото</div>
                         </div>
                         <p class="fs20 semichopped black cursive text-center"><?= $photo->actor?></p>

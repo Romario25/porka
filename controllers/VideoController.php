@@ -30,7 +30,7 @@ class VideoController extends Controller
 
     public function actionIndex(){
 
-        $query = Video::find();
+        $query = Video::find()->where("publish = 1");
         // делаем копию выборки
         $countQuery = clone $query;
         // подключаем класс Pagination, выводим по 10 пунктов на страницу

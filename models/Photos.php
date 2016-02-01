@@ -11,6 +11,7 @@ use Yii;
  * @property integer $catalog_id
  * @property string $url
  * @property string $url_thumbnail
+ * @property integer $sort
  *
  * @property PhotoCatalog $catalog
  */
@@ -30,7 +31,7 @@ class Photos extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['catalog_id'], 'integer'],
+            [['catalog_id', 'sort'], 'integer'],
             [['url', 'url_thumbnail'], 'string', 'max' => 255]
         ];
     }

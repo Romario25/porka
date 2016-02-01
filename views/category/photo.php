@@ -24,7 +24,7 @@ $this->registerMetaTag([
     <!-- menu -->
 
     <div class="c">
-        <p class="fs24 text-center opensans"><?= $category->name; ?></p>
+        <p class="fs24 text-center opensans"><?= $category->title; ?></p>
     </div>
 
     <!-- intro text -->
@@ -43,12 +43,18 @@ $this->registerMetaTag([
         <div class="c-c gallery">
 
             <?php foreach($photos as $k=>$photo): ?>
-
+                <?php
+                    if(!empty($photo->photo_preview) && file_exists('../web/uploads/previewphoto/'.$photo->photo_preview)){
+                        $src = '/uploads/previewphoto/'.$photo->photo_preview;
+                    } else {
+                        $src = (isset($photo->photos[0]))?$photo->photos[0]:"#";
+                    }
+                ?>
                 <div class="c x1d4--d x1d3--t x1d2--m gallery-element">
                     <div class="photo-element new">
                         <a href="/photo/<?= $photo->category->url; ?>/<?= $photo->url; ?>">
                             <div class="preview">
-                                <img src="<?= (isset($photo->photos[0]))?$photo->photos[0]:"#" ?>" class="r" alt="<?= $photo->title ?>">
+                                <img src="<?= $src; ?>" class="r" alt="<?= $photo->title ?>">
                                 <div class="duration"><?= $photo->photosCount; ?> фото</div>
                             </div>
                             <p class="fs20 semichopped black cursive text-center"><?= $photo->actor?></p>

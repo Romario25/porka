@@ -22,6 +22,12 @@
             <?php foreach($result as $photo): ?>
                 <?php
 
+                    if(!empty($photo->photo_preview) && file_exists('../web/uploads/previewphoto/'.$photo->photo_preview)){
+                        $src = '/uploads/previewphoto/'.$photo->photo_preview;
+                    } else {
+                        $src = (isset($photo->photos[0]))?$photo->photos[0]:"#";
+                    }
+
                     $photos = \app\models\Photos::find()
                     ->where("catalog_id = :catalog_id", [":catalog_id"=>$photo['id']])
                     ->select("url_thumbnail")->asArray()->column();
@@ -32,7 +38,7 @@
                     <div class="photo-element new">
                         <a href="/photo/<?= $photo['url']; ?>">
                             <div class="preview">
-                                <img src="<?= (isset($photos[0]))?$photos[0]:"#" ?>" class="r" alt="<?= $photo['title'] ?>">
+                                <img src="<?= $src; ?>" class="r" alt="<?= $photo['title'] ?>">
                                 <div class="duration"><?= $photosCount; ?> фото</div>
                             </div>
                             <p class="fs20 semichopped black cursive text-center">Jessica Albert</p>

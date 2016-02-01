@@ -34,12 +34,18 @@ class CategoryController extends Controller
         }
 
         if($type == 'video'){
-            $videos = Video::find()->where('category_id = :category_id', [':category_id'=>$category->id])->all();
+            $videos = Video::find()->where('category_id = :category_id && publish = :publish', [
+                ':category_id'=>$category->id,
+                ':publish'=> 1
+            ])->all();
             return $this->render('video', ['videos'=>$videos, 'category'=>$category]);
         }
 
         if($type == 'photo'){
-            $photo = PhotoCatalog::find()->where('category_id = :category_id', [':category_id'=>$category->id])->all();
+            $photo = PhotoCatalog::find()->where('category_id = :category_id && publish = :publish', [
+                ':category_id'=>$category->id,
+                ':publish' => 1
+            ])->all();
             return $this->render('photo', ['photos'=>$photo, 'category'=>$category]);
         }
 

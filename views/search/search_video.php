@@ -31,7 +31,7 @@
                                     ->column();
 
                                 ?>
-                                <img src="<?= $screens[0];?>" data="<?= implode(",", $screens); ?>" class="r" alt="Видео: Отсосала и дала в попку...">
+                                <img src="<?= $screens[0];?>" data-image="<?= implode(",", $screens); ?>" class="r" alt="Видео: Отсосала и дала в попку...">
 
 
 
@@ -58,7 +58,7 @@
                         console.log($(this).find("img").attr('data'));
                         var _this = this,
                             curImage = $(this).find("img"),
-                            images = curImage.attr('data').split(',');
+                            images = curImage.attr('data-image').split(',');
                         counter = 0;
                         console.log(images);
 
