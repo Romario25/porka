@@ -39,7 +39,7 @@
                         <a href="/photo/<?= $photo['url']; ?>">
                             <div class="preview">
                                 <img src="<?= $src; ?>" class="r" alt="<?= $photo['title'] ?>">
-                                <div class="duration"><?= $photosCount; ?> фото</div>
+                                <div class="duration"><?= $photosCount; ?> шт.</div>
                             </div>
                             <p class="fs20 semichopped black cursive text-center">Jessica Albert</p>
                             <h1 class="title semichopped"><?= $photo['title'] ?></h1>

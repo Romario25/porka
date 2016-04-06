@@ -55,6 +55,13 @@ class PhotoCatalogSearch extends PhotoCatalog
             return $dataProvider;
         }
 
+        if(!Yii::$app->user->can('admin')){
+            $query->andFilterWhere([
+                'block_edit' => 0
+            ]);
+        }
+
+
         $query->andFilterWhere([
             'id' => $this->id,
             'category_id' => $this->category_id,
@@ -67,7 +74,7 @@ class PhotoCatalogSearch extends PhotoCatalog
 
         $query->andFilterWhere(['like', 'title', $this->title])
             ->andFilterWhere(['like', 'description', $this->description]);
-
+        $query->orderBy('id DESC');
         return $dataProvider;
     }
 }

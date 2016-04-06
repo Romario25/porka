@@ -30,7 +30,7 @@ use yii\web\UploadedFile;
  * @property string $actor
  * @property integer $storage
  * @property integer $publish
- *
+ * @property integer $block_edit
  * @property Category $category
  */
 class Video extends \yii\db\ActiveRecord
@@ -72,7 +72,7 @@ class Video extends \yii\db\ActiveRecord
 
             [
                 'class' => SluggableBehavior::className(),
-                'attribute' => 'title',
+                'attribute' => 'meta_title',
                 'slugAttribute' => 'url',
             ],
         ];
@@ -95,7 +95,7 @@ class Video extends \yii\db\ActiveRecord
             [['title', 'category_id', 'url', 'duration', 'actor'], 'required'],
             [['create_at', 'update_at', 'screenshot'], 'safe'],
             [['description', 'url', 'alt'], 'string'],
-            [['category_id', 'storage', 'publish'], 'integer'],
+            [['category_id', 'storage', 'publish', 'block_edit'], 'integer'],
             ['screenShotVideo', 'image',
                 'skipOnEmpty' => true,
                 'extensions' => 'png, jpg',
@@ -430,7 +430,8 @@ class Video extends \yii\db\ActiveRecord
             'storage' => 'Хранилище',
             'meta_title' => "Тайтл страницы",
             'meta_keywords' => 'Keywords',
-            'meta_description' => 'Description'
+            'meta_description' => 'Description',
+            'block_edit' => 'Блокировать редактирование'
         ];
     }
 

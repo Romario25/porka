@@ -18,7 +18,7 @@ use yii\web\HttpException;
 class VideoController extends Controller
 {
     public function actionView($category = null, $url = null){
-        $video = Video::find()->where("url = :url", [":url"=>$url])->one();
+        $video = Video::find()->where("url = :url && publish = 1", [":url"=>$url])->one();
 
         if($video == null) throw new HttpException(404);
 
@@ -34,7 +34,7 @@ class VideoController extends Controller
         // делаем копию выборки
         $countQuery = clone $query;
         // подключаем класс Pagination, выводим по 10 пунктов на страницу
-        $pages = new Pagination(['totalCount' => $countQuery->count(), 'pageSize' => 16]);
+        $pages = new Pagination(['totalCount' => $countQuery->count(), 'pageSize' => 24]);
         // приводим параметры в ссылке к ЧПУ
         $pages->pageSizeParam = false;
         $videos = $query->offset($pages->offset)

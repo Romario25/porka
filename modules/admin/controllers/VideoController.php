@@ -8,6 +8,7 @@ use app\models\Video;
 use yii\data\ActiveDataProvider;
 use yii\helpers\ArrayHelper;
 use yii\web\Controller;
+use yii\web\HttpException;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
@@ -38,8 +39,15 @@ class VideoController extends AdminController
      */
     public function actionIndex()
     {
+        $query = Video::find();
+        if(!Yii::$app->user->can('admin')){
+            $query->andFilterWhere([
+                'block_edit' => 0
+            ]);
+        }
+        $query->orderBy('id DESC');
         $dataProvider = new ActiveDataProvider([
-            'query' => Video::find(),
+            'query' => $query,
         ]);
 
         return $this->render('index', [
@@ -102,6 +110,10 @@ class VideoController extends AdminController
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+
+        if($model->block_edit == 1 && !Yii::$app->user->can('admin')){
+            throw new HttpException(403, 'Доступ запрещен');
+        }
 
         if ($model->load(Yii::$app->request->post())) {
             $model->videoFile = UploadedFile::getInstances($model, 'videoFile');

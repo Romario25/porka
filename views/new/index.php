@@ -5,7 +5,7 @@ use app\components\MyHelper;
 /** @var \app\models\PhotoCatalog $photos */
 ?>
 <?php
-$this->title = \app\models\Pages::getPage('/new', 'title');
+$this->title = \app\models\Pages::getPage('/new', 'meta_title');
 //$this->registerMetaTag([
 //    'name' => 'keywords',
 //    'content' => \app\models\Pages::getPage('/new', 'meta_keywords')
@@ -139,7 +139,7 @@ $this->registerMetaTag([
                         <a href="/photo/<?= $photo->category->url; ?>/<?= $photo->url; ?>">
                             <div class="preview">
                                 <img src="<?= $src; ?>" class="r" alt="<?= $photo->title; ?>" />
-                                <div class="duration"><?= $photo->photosCount; ?> фото</div>
+                                <div class="duration"><?= $photo->photosCount; ?> шт.</div>
                             </div>
                             <p class="fs20 semichopped black cursive text-center"><?= $photo->actor?></p>
                             <p class="title semichopped"><?= $photo->title; ?></p>

@@ -55,7 +55,7 @@ $this->registerMetaTag([
                         <a href="/photo/<?= $photo->category->url; ?>/<?= $photo->url; ?>">
                             <div class="preview">
                                 <img src="<?= $src; ?>" class="r" alt="<?= $photo->title ?>">
-                                <div class="duration"><?= $photo->photosCount; ?> фото</div>
+                                <div class="duration"><?= $photo->photosCount; ?> шт.</div>
                             </div>
                             <p class="fs20 semichopped black cursive text-center"><?= $photo->actor?></p>
                             <p class="title semichopped"><?= $photo->title ?></p>
@@ -74,7 +74,7 @@ $this->registerMetaTag([
                 <?php
                 if($k == 7){
                     echo '</div>';
-                    echo \app\components\widgets\TeaserWidget::widget(['type'=>'photo']);
+                    echo \app\components\widgets\AdsWidget::widget(['url'=>'photo/index']);
                     echo '<div class="c-c gallery">';
                 }
 

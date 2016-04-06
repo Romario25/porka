@@ -8,7 +8,7 @@ $this->title = $model->meta_title;
 //    'name' => 'keywords', 'value' => $model->meta_keywords
 //]);
 $this->registerMetaTag([
-    'name' => 'description', 'value' => $model->meta_description
+    'name' => 'description', 'content' => $model->meta_description
 ]);
 
 ?>

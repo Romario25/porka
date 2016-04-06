@@ -9,7 +9,7 @@
 //        'name' => 'keywords', 'value' => $video->meta_keywords
 //    ]);
     $this->registerMetaTag([
-        'name' => 'description', 'value' => $video->meta_description
+        'name' => 'description', 'content' => $video->meta_description
     ]);
 
 ?>

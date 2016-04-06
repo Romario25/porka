@@ -119,22 +119,23 @@ AppAsset::register($this);
                 <p class="fs12">Если у вас есть какие-либо вопросы, предложения, пожалуйста, обращайтесь: <a class="pink" href="mailto:admin@pornbubs.com">admin@pornbubs.com</a></p>
             </div>
             <div class="c x5d12--d x1d2--t x1--m text-right">
-                <p class="fs14">Поделитесь с друзьями</p>
+<!--                <p class="fs14">Поделитесь с друзьями</p>-->
                 <div>
-                    <script type="text/javascript">(function() {
-                            if (window.pluso)if (typeof window.pluso.start == "function") return;
-                            if (window.ifpluso==undefined) { window.ifpluso = 1;
-                                var d = document, s = d.createElement('script'), g = 'getElementsByTagName';
-                                s.type = 'text/javascript'; s.charset='UTF-8'; s.async = true;
-                                s.src = ('https:' == window.location.protocol ? 'https' : 'http')  + '://share.pluso.ru/pluso-like.js';
-                                var h=d[g]('body')[0];
-                                h.appendChild(s);
-                            }})();</script>
-                <div class="pluso" data-background="#000000" data-options="big,square,line,horizontal,nocounter,theme=01" data-services="twitter,vkontakte,facebook,google" data-user="1779697249"></div>
+<!--                    <script type="text/javascript">(function() {-->
+<!--                            if (window.pluso)if (typeof window.pluso.start == "function") return;-->
+<!--                            if (window.ifpluso==undefined) { window.ifpluso = 1;-->
+<!--                                var d = document, s = d.createElement('script'), g = 'getElementsByTagName';-->
+<!--                                s.type = 'text/javascript'; s.charset='UTF-8'; s.async = true;-->
+<!--                                s.src = ('https:' == window.location.protocol ? 'https' : 'http')  + '://share.pluso.ru/pluso-like.js';-->
+<!--                                var h=d[g]('body')[0];-->
+<!--                                h.appendChild(s);-->
+<!--                            }})();</script>-->
+<!--                <div class="pluso" data-background="#000000" data-options="big,square,line,horizontal,nocounter,theme=01" data-services="twitter,vkontakte,facebook,google" data-user="1779697249"></div>-->
 
                 </div>
             </div>
         </div>
+        <?php echo \app\components\widgets\AdsWidget::widget(['url'=>'/counter']) ?>
     </footer>
 </div>
 <!-- footer -->

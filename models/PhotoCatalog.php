@@ -33,6 +33,7 @@ use ZipArchive;
  * @property Photos[] $photos
  * @property integer $storage
  * @property integer $publish
+ * @property integer $block_edit
  */
 class PhotoCatalog extends \yii\db\ActiveRecord
 {
@@ -59,7 +60,7 @@ class PhotoCatalog extends \yii\db\ActiveRecord
 
             [
                 'class' => SluggableBehavior::className(),
-                'attribute' => 'title',
+                'attribute' => 'meta_title',
                 'slugAttribute' => 'url',
             ],
         ];
@@ -82,7 +83,7 @@ class PhotoCatalog extends \yii\db\ActiveRecord
     {
         return [
             [['title', 'category_id', 'description', 'url', 'actor'], 'required'],
-            [['category_id', 'plus', 'minus', 'hits', 'storage', 'publish'], 'integer'],
+            [['category_id', 'plus', 'minus', 'hits', 'storage', 'publish', 'block_edit'], 'integer'],
             [['create_at', 'update_at'], 'safe'],
             [['description', 'actor', 'alt', 'photo_preview'], 'string'],
             //['photosUpload', 'file', 'skipOnEmpty' => ($this->isNewRecord)?false:true, 'extensions' => 'png, jpg', 'maxFiles' => 20],
@@ -111,6 +112,7 @@ class PhotoCatalog extends \yii\db\ActiveRecord
             'meta_title' => "Тайтл страницы",
             'meta_keywords' => 'Keywords',
             'meta_description' => 'Description',
+            'block_edit' => 'Блокировать редактирование'
 
 
         ];
@@ -230,11 +232,11 @@ class PhotoCatalog extends \yii\db\ActiveRecord
                     // Вешаем ваатермарку
                     $size = getimagesize("../web/uploads/temp/".$nameFile);
                     Image::watermark('../web/uploads/temp/'.$nameFile, "../web/uploads/watermark/LogoForNewPhoto.png", [$size[0] - 218, 0])
-                        ->save('../web/uploads/temp/'.$nameFile);
+                        ->save('../web/uploads/temp/'.$nameFile, ['quality' => 70]);
 
                     // сохраняем превьюшки
                     Image::thumbnail('../web/uploads/temp/'.$nameFile, 255, 340)
-                        ->save('../web/uploads/thumbnail/'.$nameFile, ['quality' => 80]);
+                        ->save('../web/uploads/thumbnail/'.$nameFile, ['quality' => 100]);
 
                     unlink("../web/uploads/temp/".$arrFiles[$i]);
 

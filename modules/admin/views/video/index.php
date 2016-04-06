@@ -27,9 +27,10 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
+            'meta_title',
             //'create_at',
             'update_at',
-            'title',
+            'publish',
             //'description:ntext',
             // 'object_url:url',
             // 'preview_url:url',
@@ -38,7 +39,8 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\ActionColumn', 'template'=>'{view} {update} {delete}',
                 'buttons' => [
                     'view' => function($url, $model, $key){
-                        return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', "/video/".$model->category->url."/".$model->url, ['target'=>'_blank']);
+                        $controller = ($model->publish == 1)?'video':'predvideo';
+                        return Html::a('<span class="glyphicon glyphicon-eye-open"></span>', "/$controller/".$model->category->url."/".$model->url, ['target'=>'_blank']);
                     }
                 ],
                 'options' => [

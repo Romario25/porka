@@ -5,7 +5,7 @@ use yii\widgets\LinkPager;
 ?>
 
 <?php
-$this->title = \app\models\Pages::getPage('/video', 'title');
+$this->title = \app\models\Pages::getPage('/video', 'meta_title');
 //$this->registerMetaTag([
 //    'name' => 'keywords',
 //    'content' => \app\models\Pages::getPage('/video', 'meta_keywords')
@@ -68,7 +68,7 @@ $this->registerMetaTag([
                     </div>
                 </div>
                 <?php
-                if($k == 7){
+                if($k == 11){
                     echo '</div>';
                     echo \app\components\widgets\AdsWidget::widget(['url'=>'video/index']);
                     echo '<div class="c-c gallery">';

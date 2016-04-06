@@ -54,12 +54,18 @@ $config = [
             'enableStrictParsing' => false,
             'rules' => [
 
-                '<_c:(video)>/<_a:(index)>' => 'video/index',
+                '<_c:(video)>' => 'video/index',
+                '<_c:(photo)>' => 'photo/index',
+
                 '<type:(video|photo)>/<url>' => 'category/index',
 
                 '<_c:(video)>/<category>/<url>' => 'video/view',
-                '<_c:(photo)>/<_a:(index)>' => 'photo/index',
+
                 '<_c:(photo)>/<category>/<url>' => 'photo/view',
+
+                '<_c:(predvideo)>/<category>/<url>' => 'predvideo/view',
+                '<_c:(predphoto)>/<category>/<url>' => 'predphoto/view',
+
                 '<_c:\w+>/<_a:[\w\-]+>/' => '<_c>/<_a>',
             ],
         ],

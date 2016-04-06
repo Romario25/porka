@@ -23,7 +23,7 @@ class PhotoController extends Controller
         // делаем копию выборки
         $countQuery = clone $query;
         // подключаем класс Pagination, выводим по 10 пунктов на страницу
-        $pages = new Pagination(['totalCount' => $countQuery->count(), 'pageSize' => 16]);
+        $pages = new Pagination(['totalCount' => $countQuery->count(), 'pageSize' => 24]);
         // приводим параметры в ссылке к ЧПУ
         $pages->pageSizeParam = false;
         $photos = $query->offset($pages->offset)
@@ -40,7 +40,7 @@ class PhotoController extends Controller
     }
 
     public function actionView($url){
-        $model = PhotoCatalog::find()->where("url = :url", [
+        $model = PhotoCatalog::find()->where("url = :url && publish = 1", [
            ':url' => $url
         ])->one();
 

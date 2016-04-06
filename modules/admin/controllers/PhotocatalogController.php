@@ -2,6 +2,7 @@
 
 namespace app\modules\admin\controllers;
 
+use HttpException;
 use Yii;
 use app\models\PhotoCatalog;
 use app\models\PhotoCatalogSearch;
@@ -93,7 +94,9 @@ class PhotocatalogController extends AdminController
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
+        if($model->block_edit == 1 && !Yii::$app->user->can('admin')){
+            throw new HttpException(403, 'Доступ запрещен');
+        }
         if ($model->load(Yii::$app->request->post()) ) {
 
             $model->photosUpload = UploadedFile::getInstance($model, 'photosUpload');

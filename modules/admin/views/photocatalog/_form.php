@@ -17,6 +17,9 @@ use yii\widgets\ActiveForm;
         'options' => ['enctype' => 'multipart/form-data']
     ]); ?>
 
+
+    <?= $form->field($model, 'meta_title')->textInput(['maxlength' => true]); ?>
+
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
     <?php if(!$model->isNewRecord): ?>
@@ -38,7 +41,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'photoPreviewUpload')->fileInput(); ?>
 
-    <?= $form->field($model, 'meta_title')->textInput(['maxlength' => true]); ?>
+
 
     <?php //echo $form->field($model, 'meta_keywords')->textInput(['maxlength' => true]); ?>
 
@@ -46,6 +49,10 @@ use yii\widgets\ActiveForm;
 
 
     <?= $form->field($model, 'storage')->dropDownList([0=>'GoDaddy', 1=>'Server', 2=>'Amazon']); ?>
+
+    <?php if(Yii::$app->user->can('admin')): ?>
+        <?= $form->field($model, 'block_edit')->checkbox([]); ?>
+    <?php endif; ?>
 
     <?= $form->field($model, 'publish')->checkbox([]); ?>
 

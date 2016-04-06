@@ -65,7 +65,7 @@ $this->registerMetaTag([
             <?php
             if($k == 7){
                 echo '</div>';
-                echo \app\components\widgets\TeaserWidget::widget(['type'=>'video']);
+                echo \app\components\widgets\AdsWidget::widget(['url'=>'video/index']);
                 echo '<div class="c-c gallery">';
             }
 

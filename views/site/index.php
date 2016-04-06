@@ -88,7 +88,7 @@ use yii\web\JsExpression;
                 $countVideo = \app\models\Video::find()->count('*');
 
             ?>
-            <p class="fs24 fw300 text-center opensans"><a class="pink" href="/video" title="Эксклюзивные порно фото и видео в HD качестве!">Смотреть <span class="fw700"><?= $countVideo ?>+</span> видео в <span class="fw700">HD качестве</span></a></p>
+            <p class="fs24 fw300 text-center opensans"><a class="pink" href="/video" title="Перейти в категорию видео">Смотреть <span class="fw700"><?= $countVideo ?>+</span> видео в <span class="fw700">HD качестве</span></a></p>
         </div>
 
         <?php
@@ -187,7 +187,7 @@ use yii\web\JsExpression;
             $photoSet = \app\models\PhotoCatalog::find()->count("*");
         ?>
         <div class="c">
-            <p class="fs24 fw300 text-center opensans"><a class="pink" href="/photo" title="Эксклюзивные порно фото и видео в HD качестве!">Смотреть <span class="fw700"><?= $photoSet; ?>+</span> фотосетов <span class="fw700">в лучшем качестве</span></a></p>
+            <p class="fs24 fw300 text-center opensans"><a class="pink" href="/photo" title="Перейти в категорию фото">Смотреть <span class="fw700"><?= $photoSet; ?>+</span> фотосетов <span class="fw700">в лучшем качестве</span></a></p>
         </div>
 
         <!-- menu -->
@@ -221,7 +221,7 @@ use yii\web\JsExpression;
                     <a href="/photo/<?= $photo->category->url; ?>/<?= $photo->url; ?>">
                         <div class="preview">
                             <img src="<?= $src ?>" class="r" alt="<?= $photo->title; ?>" />
-                            <div class="duration"><?= $photo->photosCount; ?> фото</div>
+                            <div class="duration"><?= $photo->photosCount; ?> шт.</div>
                         </div>
                         <p class="fs20 semichopped black cursive text-center"><?= $photo->actor?></p>
                         <p class="title semichopped"><?= $photo->title; ?></p>
